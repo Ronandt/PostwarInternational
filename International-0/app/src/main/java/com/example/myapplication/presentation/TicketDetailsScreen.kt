@@ -41,6 +41,8 @@ import com.example.myapplication.data.Db
 import com.example.myapplication.data.Event
 import com.example.myapplication.data.EventsRepository
 import com.example.myapplication.data.Ticket
+import java.text.SimpleDateFormat
+import java.util.Date
 
 @Composable
 fun TicketDetailsScreen(navController: NavController, id: Long) {
@@ -63,7 +65,13 @@ LaunchedEffect(key1 = Unit, block = {
 
             Text(text = "Ticket type: ${ticket?.ticketType}")
             Text(text = "Audience's name: ${ticket?.audienceName}")
-            Text(text = "Time: ${ticket?.time}")
+            Text(text = "Time: ${
+                ticket?.time?.let {
+                    Date(
+                        it
+                    )
+                }?.let { SimpleDateFormat("YYYY-MM-dd hh:MM").format(it) }
+            }")
             Text(text = "Seat: ${ticket?.seat}")
         }
         Button(onClick = {
