@@ -2,16 +2,20 @@ package com.example.myapplication.presentation
 
 import android.Manifest.permission.RECORD_AUDIO
 import android.media.MediaRecorder
+import android.os.Environment
 import android.widget.Space
 import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Button
 import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Text
@@ -36,13 +40,16 @@ import java.util.UUID
 enum class RecordingState {
     Recording,
     None,
-
+    PlayingBack
 }
 @Composable
 fun RecordsScreen(navController: NavController) {
 
     val context = LocalContext.current
     var playingState by remember {mutableStateOf(RecordingState.None)}
+
+    var update by remember {mutableStateOf(false)}
+    var audioDirectory =  context.getExternalFilesDir(Environment.DIRECTORY_PODCASTS)?.listFiles()
     val launcher = rememberLauncherForActivityResult(contract = ActivityResultContracts.RequestPermission()) {
         if(!it) Toast.makeText(context, "You need to accept permissions in order to record audio!", Toast.LENGTH_LONG).show()
     }
@@ -55,7 +62,9 @@ fun RecordsScreen(navController: NavController) {
 
     var audioFile: File? = null
 
-
+    LaunchedEffect(update) {
+        audioDirectory = context.getExternalFilesDir(Environment.DIRECTORY_PODCASTS)?.listFiles()
+    }
     LaunchedEffect(key1 = Unit ) {
         launcher.launch(RECORD_AUDIO)
     }
@@ -68,7 +77,7 @@ fun RecordsScreen(navController: NavController) {
             .padding(20.dp)
             .fillMaxWidth()) {
             if( playingState == RecordingState.None) {
-                Button(onClick = { recorder.start(File(context.cacheDir, "audio-${UUID.randomUUID()}.mp3").also {
+                Button(onClick = { recorder.start(File(context.cacheDir, "audio-.mp3").also {
                     recorder.start(it)
                     audioFile = it
                     playingState = RecordingState.Recording
@@ -77,15 +86,17 @@ fun RecordsScreen(navController: NavController) {
 
                 }
             } else {
-                Button(onClick = { recorder.stop() }) {
-                    Text(text = "Stop recording")
+                Button(onClick = { recorder.stop()
                     playingState = RecordingState.None
+                }) {
+                    Text(text = "Stop recording")
+
                 }
             }
 
 
             Button(onClick = {
-
+                println(audioFile)
                 player.playFile(audioFile?:return@Button
 
             ) }, enabled = (playingState!= RecordingState.Recording)) {
@@ -93,8 +104,14 @@ fun RecordsScreen(navController: NavController) {
 
             }
             Spacer(modifier = Modifier.height(10.dp))
-            Button(onClick = { /*TODO*/ }, modifier = Modifier.align(Alignment.End), enabled = (playingState!= RecordingState.Recording)) {
+            Button(onClick = {
+                Toast.makeText(context, "Audio submitted", Toast.LENGTH_LONG).show()
+              audioFile?.copyTo(File(context.getExternalFilesDir(Environment.DIRECTORY_PODCASTS), "audio-${UUID.randomUUID()}"))
+                audioFile = null
+                update = !update
+            }, modifier = Modifier.align(Alignment.End), enabled = (playingState!= RecordingState.Recording)) {
                 Text(text = "Submit")
+
 
             }
         }
@@ -104,7 +121,18 @@ fun RecordsScreen(navController: NavController) {
             .fillMaxSize()
             .padding(20.dp)) {
             Text(text = "Audios list", fontSize = 18.sp)
+            LazyColumn {
+                audioDirectory?.size?.let {
+                    items(it) {
+                        Row(modifier = Modifier.fillMaxWidth().height(40.dp).clickable {
+                            player.playFile(audioDirectory!![it])
+                        }) {
+                            Text(text = audioDirectory!![it].name)
+                        }
 
+                    }
+                }
+            }
         }
     }
 
