@@ -1,0 +1,112 @@
+{
+  "categories": [
+    {
+      "name": "Information Technology",
+      "skills": [
+        {
+          "name": "Programming",
+          "description": "The skill of designing and building computer programs to solve problems and perform tasks."
+        },
+        {
+          "name": "Web Development",
+          "description": "The skill of creating and maintaining websites, involving front-end and back-end development."
+        },
+        {
+          "name": "Mobile App Development",
+          "description": "The skill of creating applications for mobile devices, covering iOS, Android, or cross-platform development."
+        }
+      ]
+    },
+    {
+      "name": "Creative Arts",
+      "skills": [
+        {
+          "name": "Graphic Design",
+          "description": "The skill of visually communicating ideas through the use of images, typography, and layout."
+        },
+        {
+          "name": "Video Editing",
+          "description": "The skill of manipulating and rearranging video shots to create a new work."
+        }
+      ]
+    },
+    {
+      "name": "Culinary Arts",
+      "skills": [
+        {
+          "name": "Culinary Arts",
+          "description": "The skill of preparing and presenting food, including cooking techniques and food safety."
+        },
+        {
+          "name": "Baking and Pastry",
+          "description": "The skill of creating baked goods and desserts through baking and pastry techniques."
+        }
+      ]
+    },
+    {
+      "name": "Metalworking",
+      "skills": [
+        {
+          "name": "Welding",
+          "description": "The skill of joining materials like metals or thermoplastics through fusion processes."
+        },
+        {
+          "name": "Metal Fabrication",
+          "description": "The skill of creating metal structures and products through cutting, bending, and assembling."
+        }
+      ]
+    },
+    {
+      "name": "Robotics",
+      "skills": [
+        {
+          "name": "Robotics",
+          "description": "The skill of designing, building, and programming robots for various applications."
+        },
+        {
+          "name": "Automation",
+          "description": "The skill of using technology to perform tasks with minimal human intervention."
+        }
+      ]
+    },
+    {
+      "name": "Healthcare",
+      "skills": [
+        {
+          "name": "Healthcare Administration",
+          "description": "The skill of managing and coordinating healthcare facilities, including financial and personnel aspects."
+        },
+        {
+          "name": "Medical Coding",
+          "description": "The skill of assigning standardized codes to medical procedures for billing and insurance purposes."
+        }
+      ]
+    },
+    {
+      "name": "Marketing",
+      "skills": [
+        {
+          "name": "Digital Marketing",
+          "description": "The skill of promoting products or services using digital channels like social media, email, and search engines."
+        },
+        {
+          "name": "Market Research",
+          "description": "The skill of gathering and analyzing information about a market, including competitors and consumer preferences."
+        }
+      ]
+    },
+    {
+      "name": "Data Science",
+      "skills": [
+        {
+          "name": "Data Science",
+          "description": "The skill of analyzing and interpreting complex data sets to inform business decision-making."
+        },
+        {
+          "name": "Machine Learning",
+          "description": "The skill of developing algorithms that enable computers to learn patterns and make predictions from data."
+        }
+      ]
+    }
+  ]
+}
