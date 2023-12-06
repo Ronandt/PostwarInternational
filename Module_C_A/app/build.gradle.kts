@@ -68,7 +68,7 @@ dependencies {
     implementation("androidx.media3:media3-exoplayer:1.2.0")
     implementation("androidx.media3:media3-exoplayer-dash:1.2.0")
     implementation("androidx.media3:media3-ui:1.2.0")
-`
+
     implementation("androidx.navigation:navigation-compose:2.7.0")
     implementation("androidx.room:room-ktx:2.6.0")
     var camerax_version = "1.2.0"
