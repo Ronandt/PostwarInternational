@@ -1,0 +1,22 @@
+{
+  "news": [
+    {
+      "title": "New Breakthrough in Quantum Computing",
+      "skill_name": "Quantum Computing",
+      "datetime": "12:15 December 9, 2023",
+      "description": "Researchers have achieved a significant breakthrough in the field of quantum computing. The new development brings us one step closer to building practical and powerful quantum computers, with the potential to solve complex problems that were previously unsolvable by classical computers."
+    },
+    {
+      "title": "Global Summit Addresses Climate Change Crisis",
+      "skill_name": "Environmental Science",
+      "datetime": "14:30 December 10, 2023",
+      "description": "World leaders and scientists gather at a global summit to address the escalating climate change crisis. Discussions focus on collaborative efforts, policy changes, and technological innovations needed to mitigate the impact of climate change and transition to a sustainable future."
+    },
+    {
+      "title": "Breakthrough in Cancer Treatment Discovered",
+      "skill_name": "Medical Research",
+      "datetime": "11:00 December 11, 2023",
+      "description": "A groundbreaking discovery in cancer treatment offers new hope for patients. Researchers have identified a novel approach that targets cancer cells with unprecedented precision, potentially revolutionizing how we combat various forms of cancer and improving patient outcomes."
+    }
+  ]
+}

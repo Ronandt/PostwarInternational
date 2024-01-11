@@ -10,6 +10,13 @@ data class Category(
     val trades: List<String>
 )
 
+data class News(
+    val title: String,
+    val skillName: String,
+    val datetime: String,
+    val description: String
+)
+
 class JsonRetriever(private val context: Context) {
      fun retrieve(): MutableList<Category> {
          var categories: MutableList<Category> = mutableListOf()
@@ -25,4 +32,15 @@ class JsonRetriever(private val context: Context) {
          }
          return categories
      }
+
+    fun retrieveNews() : MutableList<News> {
+        var news: MutableList<News> = mutableListOf()
+        val jsonObject = JSONObject(context.resources.openRawResource(R.raw.news).bufferedReader().readText())
+        val jsonArr = jsonObject.getJSONArray("news")
+        for(x in 0 until jsonArr.length()) {
+            val o = jsonArr.getJSONObject(x)
+            news.add(News(o.getString("title"), o.getString("skill_name"), o.getString("datetime"), o.getString("description")))
+        }
+        return news
+    }
 }
