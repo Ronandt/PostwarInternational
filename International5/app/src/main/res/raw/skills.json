@@ -1,0 +1,120 @@
+{
+  "skillCategories": [
+    {
+      "categoryName": "Programming",
+      "skills": [
+        {
+          "name": "Java",
+          "description": "Object-oriented programming language for building enterprise applications."
+        },
+        {
+          "name": "Python",
+          "description": "Versatile programming language known for its readability and ease of use."
+        },
+        {
+          "name": "JavaScript",
+          "description": "Client-side scripting language for building interactive web pages."
+        },
+        {
+          "name": "C++",
+          "description": "General-purpose programming language with a focus on performance and efficiency."
+        },
+        {
+          "name": "Ruby",
+          "description": "Dynamic, reflective, and object-oriented programming language."
+        },
+        {
+          "name": "SQL",
+          "description": "Structured Query Language for managing and manipulating relational databases."
+        }
+      ]
+    },
+    {
+      "categoryName": "Design",
+      "skills": [
+        {
+          "name": "Graphic Design",
+          "description": "Creating visual content using design software and tools."
+        },
+        {
+          "name": "UI/UX Design",
+          "description": "Crafting user interfaces and experiences for digital products."
+        },
+        {
+          "name": "Illustration",
+          "description": "Creating drawings or images for various purposes."
+        },
+        {
+          "name": "Motion Graphics",
+          "description": "Animation and visual effects for multimedia projects."
+        },
+        {
+          "name": "Print Design",
+          "description": "Designing materials for print, such as brochures and posters."
+        },
+        {
+          "name": "Logo Design",
+          "description": "Creating unique and recognizable logos for brands and businesses."
+        }
+      ]
+    },
+    {
+      "categoryName": "Data Analysis",
+      "skills": [
+        {
+          "name": "Data Visualization",
+          "description": "Representing data graphically to aid in understanding and analysis."
+        },
+        {
+          "name": "Statistical Analysis",
+          "description": "Applying statistical methods to interpret data and draw conclusions."
+        },
+        {
+          "name": "Machine Learning",
+          "description": "Developing algorithms that enable computers to learn patterns from data."
+        },
+        {
+          "name": "Big Data Analytics",
+          "description": "Analyzing large and complex datasets to extract valuable insights."
+        },
+        {
+          "name": "Data Mining",
+          "description": "Discovering patterns and information from large datasets."
+        },
+        {
+          "name": "Predictive Analytics",
+          "description": "Using data to predict future trends or outcomes."
+        }
+      ]
+    },
+    {
+      "categoryName": "Communication",
+      "skills": [
+        {
+          "name": "Written Communication",
+          "description": "Conveying information effectively through written documents."
+        },
+        {
+          "name": "Public Speaking",
+          "description": "Art of delivering speeches or presentations to a live audience."
+        },
+        {
+          "name": "Digital Communication",
+          "description": "Using digital channels for effective communication."
+        },
+        {
+          "name": "Interpersonal Communication",
+          "description": "Effective communication between individuals or groups."
+        },
+        {
+          "name": "Negotiation",
+          "description": "Reaching agreements through discussion and compromise."
+        },
+        {
+          "name": "Visual Communication",
+          "description": "Conveying information through visual elements and design."
+        }
+      ]
+    }
+  ]
+}

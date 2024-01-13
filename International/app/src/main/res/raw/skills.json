@@ -1,0 +1,26 @@
+ [
+{
+"name": "Cloud Computing",
+"description": "Cloud computing is a technology that allows users to access and use computing resources (such as servers, storage, and databases) over the internet. It provides flexibility, scalability, and cost-effectiveness for businesses and individuals."
+},
+{
+"name": "Web Development",
+"description": "Web development involves designing and creating websites or web applications. It encompasses various technologies and frameworks to build user-friendly and interactive online experiences, ranging from front-end development (client-side) to back-end development (server-side)."
+},
+{
+"name": "Data Science",
+"description": "Data science is a multidisciplinary field that uses scientific methods, processes, algorithms, and systems to extract insights and knowledge from structured and unstructured data. It involves statistics, machine learning, data analysis, and visualization to make informed decisions."
+},
+{
+"name": "Cybersecurity",
+"description": "Cybersecurity focuses on protecting computer systems, networks, and data from unauthorized access, attacks, and damage. It includes practices such as encryption, firewalls, antivirus software, and ethical hacking to ensure the confidentiality and integrity of information."
+},
+{
+"name": "Mobile App Development",
+"description": "Mobile app development involves creating applications specifically for mobile devices such as smartphones and tablets. It includes both Android and iOS app development, utilizing programming languages like Java, Swift, and frameworks like React Native or Flutter."
+},
+{
+"name": "Artificial Intelligence",
+"description": "Artificial Intelligence (AI) is a branch of computer science that aims to create machines capable of intelligent behavior. It includes tasks such as machine learning, natural language processing, and computer vision to enable machines to perform cognitive functions."
+}
+]

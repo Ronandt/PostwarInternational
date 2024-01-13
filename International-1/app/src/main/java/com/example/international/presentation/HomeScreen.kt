@@ -50,7 +50,7 @@ fun HomeScreen(navController: NavController) {
             delay(3000)
 
             println("Before:" +pagerState.currentPage)
-            pagerState.animateScrollToPage(if((pagerState.currentPage+ 1) == 3) 0 else pagerState.currentPage+ 1)
+            pagerState.animateScrollToPage((pagerState.currentPage+ 1) %3)
             println("After:" +pagerState.currentPage)
         }
     }
