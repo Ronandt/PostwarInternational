@@ -1,0 +1,50 @@
+{
+  "tradeCategories": [
+    {
+      "category": "Information and Communication Technology",
+      "subcategories": [
+        {
+          "subcategory": "Information Network Cabling"
+        },
+        {
+          "subcategory": "Mobile Application Development"
+        },
+        {
+          "subcategory": "Database Management"
+        }
+
+      ]
+    },
+    {
+      "category": "Healthcare",
+      "subcategories": [
+        {
+          "subcategory": "Medical Imaging"
+        },
+        {
+          "subcategory": "Telemedicine Solutions"
+        },
+        {
+          "subcategory": "Health Information Systems"
+        }
+
+      ]
+    },
+    {
+      "category": "Construction and Engineering",
+      "subcategories": [
+        {
+          "subcategory": "Civil Engineering"
+        },
+        {
+          "subcategory": "Architectural Design"
+        },
+        {
+          "subcategory": "Project Management"
+        }
+
+      ]
+    }
+
+  ]
+}

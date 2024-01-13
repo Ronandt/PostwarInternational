@@ -1,0 +1,34 @@
+{
+  "worldSkillsEvents": [
+    {
+      "year": 2022,
+      "eventName": "WorldSkills 2022 - Japan",
+      "competitorsParticipated": 1000
+    },
+    {
+      "year": 2021,
+      "eventName": "WorldSkills 2021 - Germany",
+      "competitorsParticipated": 900
+    },
+    {
+      "year": 2020,
+      "eventName": "WorldSkills 2020 - Brazil",
+      "competitorsParticipated": 800
+    },
+    {
+      "year": 2019,
+      "eventName": "WorldSkills 2019 - Russia",
+      "competitorsParticipated": 750
+    },
+    {
+      "year": 2018,
+      "eventName": "WorldSkills 2018 - United Arab Emirates",
+      "competitorsParticipated": 700
+    },
+    {
+      "year": 2017,
+      "eventName": "WorldSkills 2017 - Abu Dhabi",
+      "competitorsParticipated": 650
+    }
+  ]
+}
