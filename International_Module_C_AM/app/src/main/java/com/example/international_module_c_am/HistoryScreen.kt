@@ -29,6 +29,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import coil.compose.AsyncImage
 import com.example.international_module_c_am.ui.theme.DarkBlue
 
 @Composable
@@ -64,10 +65,10 @@ Column(modifier = Modifier
                     } + " -" + it1.endDate, fontWeight = FontWeight.SemiBold, fontSize = 20.sp  ) }
                     history?.get(it)?.let { it1 -> Text(text = it1.title, fontWeight = FontWeight.Bold, fontSize = 24.sp, color = DarkBlue) }
                     Row(horizontalArrangement = Arrangement.spacedBy(10.dp), modifier = Modifier.fillMaxWidth()){
-                        
-                        Image(painter = painterResource(R.drawable.wslyon),modifier = Modifier
+                        AsyncImage(model = history?.get(it)?.image, contentDescription = "Worldskills",modifier = Modifier
                             .size(100.dp)
-                            .padding(top = 30.dp), contentDescription = "Worldskills Lyon" )
+                            .padding(top = 30.dp))
+
                         history?.get(it)?.let { it1 -> Text(text = it1.description) }
                         
                     }

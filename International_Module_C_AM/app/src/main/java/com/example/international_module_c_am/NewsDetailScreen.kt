@@ -34,6 +34,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import coil.compose.AsyncImage
+import coil.compose.AsyncImagePainter.State.Empty.painter
 import com.example.international_module_c_am.ui.theme.DarkBlue
 
 @Composable
@@ -64,12 +66,13 @@ fun NewsDetailScreen(navController: NavController, toInt: Int) {
         Text(text = "${items?.title}", color = DarkBlue, fontWeight = FontWeight.Bold, fontSize = 20.sp)
         Spacer(modifier = Modifier.height(10.dp))
         Text(text = "${items?.summary}", fontWeight = FontWeight.SemiBold, fontSize = 16.sp   )
-        Image(painter = painterResource(R.drawable.skills), contentDescription ="Skills", modifier = Modifier
-            .fillMaxWidth()
-            .padding(vertical = 10.dp)
-            .clip(
-                RoundedCornerShape(20.dp)
-            ), contentScale = ContentScale.Crop)
+        AsyncImage(items?.image,  contentDescription ="Skills", modifier = Modifier
+        .fillMaxWidth()
+        .padding(vertical = 10.dp)
+        .clip(
+            RoundedCornerShape(20.dp)
+        ), contentScale = ContentScale.Crop)
+
 
         items?.description?.let { Text(fontSize = 16.sp,text = it) }
         Spacer(modifier = Modifier.weight(1f))

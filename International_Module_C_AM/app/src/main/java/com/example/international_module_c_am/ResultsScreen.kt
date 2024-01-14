@@ -33,6 +33,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import coil.compose.AsyncImage
 import com.example.international_module_c_am.ui.theme.DarkBlue
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -72,10 +73,13 @@ fun ResultsScreen(navController: NavController) {
                     }) {
                         Row(horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier.fillMaxWidth()){
                             Row {
-                                Image(painter = painterResource(R.drawable.korea    ), contentDescription = "Logo", modifier = Modifier
+                                AsyncImage(model = results[b].countryImage , contentDescription = "", modifier = Modifier
 
 
-                                    .width(80.dp).padding(10.dp).align(Alignment.CenterVertically), contentScale = ContentScale.Crop, )
+                                    .width(80.dp)
+                                    .padding(10.dp)
+                                    .align(Alignment.CenterVertically), contentScale = ContentScale.Crop, )
+
                                 Column(modifier = Modifier
                                     .padding(vertical = 14.dp)
                                     .fillMaxHeight(), verticalArrangement = Arrangement.SpaceBetween, ) {
@@ -85,7 +89,9 @@ fun ResultsScreen(navController: NavController) {
                             }
 
 
-                            Row(horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterHorizontally), verticalAlignment = Alignment.CenterVertically, modifier = Modifier.offset(x = -13.dp).align(Alignment.CenterVertically)) {
+                            Row(horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterHorizontally), verticalAlignment = Alignment.CenterVertically, modifier = Modifier
+                                .offset(x = -13.dp)
+                                .align(Alignment.CenterVertically)) {
                                 repeat(4) {
                                     if(it == 0) {
                                         Text(text = results[b].gold.size.toString(), color = Color.Blue  )

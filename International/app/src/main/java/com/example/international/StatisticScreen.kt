@@ -16,6 +16,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -35,8 +36,11 @@ import kotlinx.coroutines.delay
 @Composable
 fun StatisticScreen(navController: NavController) {
     val context = LocalContext.current
-    var statistic = remember    {JsonRetriever(context).statistic()}
 
+    var statistic = remember { mutableStateListOf<StatisticsItem>()}
+    LaunchedEffect(Unit) {
+        WorldSkillsAPI().getStatistics()?.let { statistic.addAll(it) }
+    }
     Column(modifier = Modifier
         .fillMaxWidth()
         .padding(vertical = 20.dp)
@@ -54,10 +58,10 @@ fun StatisticScreen(navController: NavController) {
                         var competitors by remember {mutableStateOf(0)}
                         var calc =  400.dp.div(1300)
                         LaunchedEffect(Unit) {
-                            delay(1500L)
-                            currentSize = (calc * statistic[it].competitors)
-                            (1..statistic[it].competitors)  .forEach {
-                                delay(1L)
+                            delay(1100L)
+                            currentSize = (calc * statistic[it].numberOfCompetitors)
+                            (1..statistic[it].numberOfCompetitors)  .forEach {
+                                delay(0L)
                                 competitors += 1
                             }
 
@@ -82,7 +86,7 @@ fun StatisticScreen(navController: NavController) {
 
                         }
 
-                        Text(text =  statistic[it].event, color = Color.White, modifier = Modifier.width(100.dp), textAlign = TextAlign.Center)
+                        Text(text =  statistic[it].competitionName, color = Color.White, modifier = Modifier.width(100.dp), textAlign = TextAlign.Center)
                     }
                 }
 

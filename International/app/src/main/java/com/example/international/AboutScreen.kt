@@ -15,7 +15,10 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -29,8 +32,14 @@ import androidx.navigation.NavController
 
 @Composable
 fun AboutScreen(navController: NavController) {
+    val scope = rememberCoroutineScope()
     val context = LocalContext.current
-    var about = remember {JsonRetriever(context).about()}
+   // var about = remember {JsonRetriever(context).about()}
+    var about = remember { mutableStateListOf<AboutItem>()}
+    LaunchedEffect(Unit) {
+        WorldSkillsAPI().getAbout()?.let { about.addAll(it) }
+    }
+
     Column(modifier = Modifier.fillMaxWidth()) {
         Spacer(modifier = Modifier.height(30.dp))
         Row(modifier = Modifier
@@ -44,7 +53,7 @@ fun AboutScreen(navController: NavController) {
                     Spacer(modifier = Modifier
                         .matchParentSize()
                         .background(Color(0xAa255F86)))
-                    about?.get(0)?.name?.let {
+                    about?.getOrNull(0)?.title?.let {
                         Text(
                             text = it,
                             fontWeight = FontWeight.Black,
@@ -60,7 +69,7 @@ fun AboutScreen(navController: NavController) {
                     Spacer(modifier = Modifier
                         .matchParentSize()
                         .background(Color(0xAA422586)))
-                    about?.get(1)?.name?.let {
+                    about?.getOrNull(1)?.title?.let {
                         Text(
                             text = it,
                             fontWeight = FontWeight.Black,
@@ -78,7 +87,7 @@ fun AboutScreen(navController: NavController) {
                     Spacer(modifier = Modifier
                         .matchParentSize()
                         .background(Color(0xAA862525)))
-                    about?.get(2)?.name?.let {
+                    about?.getOrNull(2)?.title?.let {
                         Text(
                             text = it,
                             fontWeight = FontWeight.Black,

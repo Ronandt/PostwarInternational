@@ -32,6 +32,8 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import coil.compose.AsyncImage
+import coil.compose.AsyncImagePainter.State.Empty.painter
 import com.example.international_module_c_am.ui.theme.DarkBlue
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -55,12 +57,13 @@ fun NewsScreen(navController: NavController) {
                     .fillMaxWidth()
                     .height(100.dp), onClick = {navController.navigate("newsDetail/${it}")}) {
                     Row {
-                        Image(painter = painterResource(R.drawable.skills), contentDescription = "Logo", modifier = Modifier
+                        AsyncImage(news?.get(it)?.image, contentDescription = "Logo", modifier = Modifier
                             .clip(
                                 RoundedCornerShape(20.dp, 20.dp, 0.dp, 0.dp)
                             )
                             .height(120.dp)
                             .width(120.dp), contentScale = ContentScale.Crop)
+
                         Column(modifier = Modifier
                             .padding(6.dp)
                             .fillMaxHeight(), verticalArrangement = Arrangement.SpaceBetween, ) {

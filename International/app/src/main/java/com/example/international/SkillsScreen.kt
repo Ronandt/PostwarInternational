@@ -25,6 +25,8 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
@@ -39,16 +41,19 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import coil.compose.AsyncImage
 import com.example.international.ui.theme.HotPink
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun SkillsScreen(navController: NavController) {
+
     val scope = rememberCoroutineScope()
     val context = LocalContext.current
-    var skills = remember {
-        JsonRetriever(context).skill()
+    var skills = remember {mutableStateListOf<SkillsItem>()}
+    LaunchedEffect(Unit){
+        WorldSkillsAPI().getSkills()?.let { skills.addAll(it) }
     }
     var imageList = listOf(R.drawable.ws01, R.drawable.ws02, R.drawable.ws03,R.drawable.ws01, R.drawable.ws02, R.drawable.ws03)
     val pagerState = rememberPagerState(
@@ -58,12 +63,14 @@ fun SkillsScreen(navController: NavController) {
         skills?.size!!
     }
 
+
 Column(modifier = Modifier.fillMaxWidth()) {
     HorizontalPager(state = pagerState, beyondBoundsPageCount = 1, modifier = Modifier
         .size(800.dp, 600.dp)
         .offset(x = 100.dp)) {
         Box(modifier = Modifier.size(800.dp, 600.dp)) {
-            Image(painterResource(imageList[(0 until 5).random()]), contentDescription = null, modifier = Modifier.matchParentSize(), contentScale = ContentScale.Crop)
+
+            AsyncImage(skills?.get(it)?.image, contentDescription = null, modifier = Modifier.matchParentSize(), contentScale = ContentScale.Crop)
             Column(modifier = Modifier
                 .align(Alignment.BottomEnd)
                 .background(HotPink)

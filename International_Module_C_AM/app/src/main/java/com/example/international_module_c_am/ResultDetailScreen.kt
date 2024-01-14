@@ -39,6 +39,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import coil.compose.AsyncImage
+import coil.compose.AsyncImagePainter.State.Empty.painter
 import com.example.international_module_c_am.ui.theme.DarkBlue
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -77,7 +79,8 @@ Column(modifier = Modifier.fillMaxWidth()) {
         .height(180.dp)
         .background(Color.LightGray)
         .padding(vertical = 20.dp), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.SpaceAround) {
-        Image(painter = painterResource(R.drawable.korea), contentDescription = "Korea", modifier = Modifier.size(130.dp, 80.dp), contentScale = ContentScale.Crop)
+        AsyncImage(model = item?.countryImage , contentDescription = "", modifier = Modifier.size(130.dp, 80.dp), contentScale = ContentScale.Crop)
+
         item?.country?.let { Text(text = it, fontWeight = FontWeight.Bold, color = DarkBlue, fontSize = 20.sp   ) }
 
 
@@ -101,7 +104,8 @@ Column(modifier = Modifier.fillMaxWidth()) {
                             .size(200.dp, 260.dp)
                             .padding(10.dp)) {
                             Column(modifier = Modifier.padding(top = 6.dp,).padding(horizontal = 10.dp)) {
-                                Image(painter = painterResource(R.drawable.theodore), contentDescription = "Theordore", modifier = Modifier.clip(
+
+                                AsyncImage(item?.gold?.get(it)?.avatar, contentDescription = "Theordore", modifier = Modifier.clip(
                                     RoundedCornerShape(20.dp))
                                     .size(170.dp)
                                     .clip(
@@ -136,7 +140,7 @@ Column(modifier = Modifier.fillMaxWidth()) {
                             .size(200.dp, 260.dp)
                             .padding(10.dp)) {
                             Column(modifier = Modifier.padding(top = 6.dp,).padding(horizontal = 10.dp)) {
-                                Image(painter = painterResource(R.drawable.theodore), contentDescription = "Theordore", modifier = Modifier.clip(
+                                AsyncImage(item?.silver?.get(it)?.avatar, contentDescription = "Theordore", modifier = Modifier.clip(
                                     RoundedCornerShape(20.dp))
                                     .size(170.dp)
                                     .clip(
@@ -173,7 +177,7 @@ Column(modifier = Modifier.fillMaxWidth()) {
                                 .size(200.dp, 260.dp)
                                 .padding(10.dp)) {
                                 Column(modifier = Modifier.padding(top = 6.dp,).padding(horizontal = 10.dp)) {
-                                    Image(painter = painterResource(R.drawable.theodore), contentDescription = "Theordore", modifier = Modifier.clip(
+                                    AsyncImage(item?.bronze?.get(it)?.avatar, contentDescription = "Theordore", modifier = Modifier.clip(
                                         RoundedCornerShape(20.dp))
                                         .size(170.dp)
                                         .clip(
