@@ -1,0 +1,197 @@
+[
+  {
+    "category": "IT",
+    "skills": [
+      {
+        "name": "Information Network Cabling",
+        "newsItems": [
+          {
+            "newsTitle": "New Fiber Optic Installation Project",
+            "skillName": "Fiber Optic Installation",
+            "newsDatetime": 1610694600
+          },
+          {
+            "newsTitle": "Advanced Networking Seminar",
+            "skillName": "Network Design",
+            "newsDatetime": 1644511500
+          },
+          {
+            "newsTitle": "Certification Achievement: Certified Cabling Technician",
+            "skillName": "Cabling Installation",
+            "newsDatetime": 1679608800
+          }
+        ]
+      },
+      {
+        "name": "Data Center Management",
+        "newsItems": [
+          {
+            "newsTitle": "Certification Achievement: Data Center Professional",
+            "skillName": "Data Center Certification",
+            "newsDatetime": 1679608800
+          },
+          {
+            "newsTitle": "Completed Server Rack Optimization",
+            "skillName": "Server Rack Management",
+            "newsDatetime": 1718742600
+          },
+          {
+            "newsTitle": "Upgraded Cooling System for Data Center",
+            "skillName": "Cooling System Upgrade",
+            "newsDatetime": 1730715100
+          }
+        ]
+      },
+      {
+        "name": "Network Security",
+        "newsItems": [
+          {
+            "newsTitle": "Implemented Advanced Firewall Configuration",
+            "skillName": "Firewall Configuration",
+            "newsDatetime": 1678788900
+          },
+          {
+            "newsTitle": "Security Audit for Corporate Network",
+            "skillName": "Security Audit",
+            "newsDatetime": 1626739800
+          },
+          {
+            "newsTitle": "Received Recognition for Cybersecurity Best Practices",
+            "skillName": "Cybersecurity Best Practices",
+            "newsDatetime": 1661796000
+          }
+        ]
+      },
+      {
+        "name": "Wireless Networking",
+        "newsItems": [
+          {
+            "newsTitle": "Deployed High-Capacity Wi-Fi in Campus",
+            "skillName": "Wi-Fi Deployment",
+            "newsDatetime": 1660633200
+          },
+          {
+            "newsTitle": "Optimized Wireless Network Performance",
+            "skillName": "Network Optimization",
+            "newsDatetime": 1662162600
+          },
+          {
+            "newsTitle": "Wireless Security Workshop Conducted",
+            "skillName": "Wireless Security",
+            "newsDatetime": 1662717600
+          }
+        ]
+      },
+      {
+        "name": "Cloud Computing",
+        "newsItems": [
+          {
+            "newsTitle": "Migration to Cloud Infrastructure Completed",
+            "skillName": "Cloud Migration",
+            "newsDatetime": 1607162400
+          },
+          {
+            "newsTitle": "Certification: Cloud Solutions Architect",
+            "skillName": "Cloud Solutions Architecture",
+            "newsDatetime": 1643576700
+          },
+          {
+            "newsTitle": "Implemented Multi-Cloud Strategy",
+            "skillName": "Multi-Cloud Strategy",
+            "newsDatetime": 1641833400
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "category": "Engineering",
+    "skills": [
+      {
+        "name": "Structural Engineering",
+        "newsItems": [
+          {
+            "newsTitle": "Completed Bridge Design Project",
+            "skillName": "Bridge Design",
+            "newsDatetime": 1753059200
+          },
+          {
+            "newsTitle": "Seismic Retrofitting Certification",
+            "skillName": "Seismic Retrofitting",
+            "newsDatetime": 1780022400
+          },
+          {
+            "newsTitle": "Innovative Sustainable Building Techniques",
+            "skillName": "Sustainable Building",
+            "newsDatetime": 1809753600
+          }
+        ]
+      },
+      {
+        "name": "Electrical Engineering",
+        "newsItems": [
+          {
+            "newsTitle": "Developed Energy-Efficient Circuit",
+            "skillName": "Circuit Design",
+            "newsDatetime": 1727366400
+          },
+          {
+            "newsTitle": "Solar Power Integration",
+            "skillName": "Solar Power",
+            "newsDatetime": 1762700800
+          },
+          {
+            "newsTitle": "Advanced Control Systems Implementation",
+            "skillName": "Control Systems",
+            "newsDatetime": 1796012800
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "category": "Healthcare",
+    "skills": [
+      {
+        "name": "Medical Research",
+        "newsItems": [
+          {
+            "newsTitle": "Breakthrough in Cancer Treatment",
+            "skillName": "Cancer Research",
+            "newsDatetime": 1739459200
+          },
+          {
+            "newsTitle": "Published Study on Infectious Diseases",
+            "skillName": "Infectious Diseases",
+            "newsDatetime": 1775577600
+          },
+          {
+            "newsTitle": "Clinical Trials Success for New Drug",
+            "skillName": "Clinical Trials",
+            "newsDatetime": 1817193600
+          }
+        ]
+      },
+      {
+        "name": "Health Informatics",
+        "newsItems": [
+          {
+            "newsTitle": "Implementation of Electronic Health Records System",
+            "skillName": "EHR Implementation",
+            "newsDatetime": 1749043200
+          },
+          {
+            "newsTitle": "Data Analytics for Public Health",
+            "skillName": "Public Health Analytics",
+            "newsDatetime": 1787203200
+          },
+          {
+            "newsTitle": "Telemedicine Platform Development",
+            "skillName": "Telemedicine",
+            "newsDatetime": 1820147200
+          }
+        ]
+      }
+    ]
+  }
+]

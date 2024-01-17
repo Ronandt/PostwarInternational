@@ -1,0 +1,26 @@
+[
+  {
+    "event": "WorldSkills Leipzig 2013",
+    "competitors": 600
+  },
+  {
+    "event": "WorldSkills São Paulo 2015",
+    "competitors": 700
+  },
+  {
+    "event": "WorldSkills Abu Dhabi 2017",
+    "competitors": 800
+  },
+  {
+    "event": "WorldSkills Kazan 2019",
+    "competitors": 900
+  },
+  {
+    "event": "WorldSkills Shanghai 2021",
+    "competitors": 1000
+  },
+  {
+    "event": "WorldSkills Brisbane 2023",
+    "competitors": 1100
+  }
+]

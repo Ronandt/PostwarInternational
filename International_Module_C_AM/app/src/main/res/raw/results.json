@@ -1,0 +1,88 @@
+[
+  {
+    "country": "France",
+    "position": 1,
+    "medalists": [
+      {"name": "John Doe", "trade": "Skill A", "medal": "Gold"},
+      {"name": "Jane Smith", "trade": "Skill B", "medal": "Gold"},
+      {"name": "Bob Johnson", "trade": "Skill C", "medal": "Gold"},
+      {"name": "Alice Williams", "trade": "Skill D", "medal": "Silver"},
+      {"name": "Charlie Brown", "trade": "Skill E", "medal": "Silver"},
+      {"name": "Eva Davis", "trade": "Skill F", "medal": "Bronze"},
+      {"name": "Frank White", "trade": "Skill G", "medal": "Bronze"}
+    ]
+  },
+  {
+    "country": "Mexico",
+    "position": 2,
+    "medalists": [
+      {"name": "Maria Rodriguez", "trade": "Skill X", "medal": "Gold"},
+      {"name": "Juan Martinez", "trade": "Skill Y", "medal": "Gold"},
+      {"name": "Sofia Hernandez", "trade": "Skill Z", "medal": "Silver"},
+      {"name": "Carlos Ramirez", "trade": "Skill W", "medal": "Silver"},
+      {"name": "Luisa Gomez", "trade": "Skill V", "medal": "Bronze"},
+      {"name": "Miguel Chavez", "trade": "Skill U", "medal": "Bronze"}
+    ]
+  },
+  {
+    "country": "United Arab Emirates",
+    "position": 3,
+    "medalists": [
+      {"name": "Ahmed Al-Farsi", "trade": "Skill M", "medal": "Gold"},
+      {"name": "Fatima Khalid", "trade": "Skill N", "medal": "Gold"},
+      {"name": "Omar Abdullah", "trade": "Skill O", "medal": "Silver"},
+      {"name": "Aisha Al-Mansoori", "trade": "Skill P", "medal": "Silver"},
+      {"name": "Khalid Ahmed", "trade": "Skill Q", "medal": "Bronze"},
+      {"name": "Layla Hassan", "trade": "Skill R", "medal": "Bronze"}
+    ]
+  },
+  {
+    "country": "Japan",
+    "position": 4,
+    "medalists": [
+      {"name": "Yuki Takahashi", "trade": "Skill J", "medal": "Gold"},
+      {"name": "Hiroshi Suzuki", "trade": "Skill K", "medal": "Gold"},
+      {"name": "Mai Tanaka", "trade": "Skill L", "medal": "Gold"},
+      {"name": "Kenji Sato", "trade": "Skill S", "medal": "Silver"},
+      {"name": "Aya Nakamura", "trade": "Skill T", "medal": "Silver"},
+      {"name": "Takashi Yamada", "trade": "Skill U", "medal": "Bronze"},
+      {"name": "Emi Ito", "trade": "Skill V", "medal": "Bronze"}
+    ]
+  },
+  {
+    "country": "Australia",
+    "position": 5,
+    "medalists": [
+      {"name": "Emily Walker", "trade": "Skill G", "medal": "Gold"},
+      {"name": "James Turner", "trade": "Skill H", "medal": "Gold"},
+      {"name": "Sophie Evans", "trade": "Skill I", "medal": "Silver"},
+      {"name": "Daniel Miller", "trade": "Skill J", "medal": "Silver"},
+      {"name": "Olivia Harris", "trade": "Skill K", "medal": "Bronze"},
+      {"name": "Benjamin Lee", "trade": "Skill L", "medal": "Bronze"}
+    ]
+  },
+  {
+    "country": "Germany",
+    "position": 6,
+    "medalists": [
+      {"name": "Anna Schmidt", "trade": "Skill R", "medal": "Gold"},
+      {"name": "Max Fischer", "trade": "Skill S", "medal": "Gold"},
+      {"name": "Sophie Weber", "trade": "Skill T", "medal": "Silver"},
+      {"name": "Felix Braun", "trade": "Skill U", "medal": "Silver"},
+      {"name": "Emma Wagner", "trade": "Skill V", "medal": "Bronze"},
+      {"name": "Lukas Keller", "trade": "Skill W", "medal": "Bronze"}
+    ]
+  },
+  {
+    "country": "South Africa",
+    "position": 7,
+    "medalists": [
+      {"name": "Thabo Molefe", "trade": "Skill E", "medal": "Gold"},
+      {"name": "Lerato Kgomo", "trade": "Skill F", "medal": "Gold"},
+      {"name": "Sipho Ndlovu", "trade": "Skill G", "medal": "Silver"},
+      {"name": "Nomvula Dlamini", "trade": "Skill H", "medal": "Silver"},
+      {"name": "Bongani Nkosi", "trade": "Skill I", "medal": "Bronze"},
+      {"name": "Thandiwe Ngubane", "trade": "Skill J", "medal": "Bronze"}
+    ]
+  }
+]
