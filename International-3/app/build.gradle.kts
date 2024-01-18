@@ -1,9 +1,12 @@
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
-}
 
+}
+group = "example.aws"
+version = "1.0-SNAPSHOT"
 android {
     namespace = "com.example.international_a_am"
     compileSdk = 34
@@ -50,8 +53,11 @@ android {
     }
 }
 
-dependencies {
 
+dependencies {
+   // implementation("com.amazonaws:aws-android-sdk-s3:2.0.0")
+    implementation("aws.sdk.kotlin:s3:1.0.37")
+    testImplementation(kotlin("test"))
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
     implementation("androidx.activity:activity-compose:1.8.1")
@@ -83,4 +89,7 @@ dependencies {
     implementation("androidx.room:room-runtime:$room_version")
     annotationProcessor("androidx.room:room-compiler:$room_version")
     kapt("androidx.room:room-compiler:$room_version")
+}
+tasks.withType<Test> {
+    useJUnitPlatform()
 }

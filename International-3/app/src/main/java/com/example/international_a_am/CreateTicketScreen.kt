@@ -31,8 +31,10 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.international_a_am.data.Database
-import com.example.international_a_am.data.Ticket
+import com.example.international_a_am.data.TicketItem
+import com.example.international_a_am.data.WorldSkillsAPI
 import kotlinx.coroutines.launch
+import java.util.UUID
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -74,7 +76,9 @@ fun CreateTicketScreen(navController: NavController) {
             scope.launch {
                 var number = (1..10).random()
                 var randomLetter = listOf("a", "b", "c")[(0 until 3).random()]
-                db?.ticketDao()?.insertAll(listOf(Ticket(selection, name, System.currentTimeMillis(), "$number$randomLetter Row$randomLetter Column$randomLetter", currentImage.toString())))
+                WorldSkillsAPI().createTicket(TicketItem(UUID.randomUUID().toString(), imageLink = "", ticketType = selection, name = name, time =  "", seat = "$number$randomLetter Row$randomLetter Column$randomLetter"))
+               // db?.ticketDao()?.insertAll(listOf(Ticket(selection, name, System.currentTimeMillis(), "$number$randomLetter Row$randomLetter Column$randomLetter", currentImage.toString())))
+
                 Toast.makeText(context, "Saved successfully", Toast.LENGTH_LONG).show()
                 navController.navigate("ticketsList")
             }
