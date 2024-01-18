@@ -22,18 +22,22 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.international_a_am.data.Database
-import com.example.international_a_am.data.Ticket
+import com.example.international_a_am.data.TicketItem
+import com.example.international_a_am.data.WorldSkillsAPI
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TicketListScreen(navController: NavController) {
     val context = LocalContext.current
-    var openingCeremony = remember { mutableStateListOf<Ticket>()}
-    var closingCeremony = remember {mutableStateListOf<Ticket>()}
+
+    var openingCeremony = remember { mutableStateListOf<TicketItem>()}
+    var closingCeremony = remember {mutableStateListOf<TicketItem>()}
     LaunchedEffect(Unit) {
+        val tickets = WorldSkillsAPI().getTickets()
         var db = Database.getDb(context)
-        db?.ticketDao()?.selectAll("Opening Ceremony")?.let { openingCeremony.addAll(it) }
-        db?.ticketDao()?.selectAll("Closing Ceremony")?.let { closingCeremony.addAll(it) }
+        tickets?.filter { it.ticketType == "Opening Ceremony"}?.let { openingCeremony.addAll(it) }
+        tickets?.filter {it.ticketType == "Closing Ceremony"}?.let { closingCeremony.addAll(it) }
+
 
     }
 Column(modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
@@ -53,7 +57,7 @@ Column(modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.Center
 
         items(openingCeremony.size) {
             Card(modifier = Modifier.fillMaxWidth().height(100.dp), onClick = {navController.navigate("ticketDetails/${openingCeremony[it].id}")}) {
-                Text(text = openingCeremony[it].audienceName, fontSize = 20.sp)
+                Text(text = openingCeremony[it].name, fontSize = 20.sp)
                 Text(text = openingCeremony[it].seat)
             }
         }
@@ -64,7 +68,7 @@ Column(modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.Center
 
         items(closingCeremony.size){
             Card(modifier = Modifier.fillMaxWidth().height(100.dp), onClick = {navController.navigate("ticketDetails/${closingCeremony[it].id}")}){
-                Text(text = closingCeremony[it].audienceName, fontSize = 20.sp)
+                Text(text = closingCeremony[it].name, fontSize = 20.sp)
                 Text(text = closingCeremony[it].seat)
             }
         }

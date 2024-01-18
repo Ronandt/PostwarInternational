@@ -24,8 +24,8 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.example.international_a_am.data.Event
-import com.example.international_a_am.data.JsonRetriever
+import com.example.international_a_am.data.EventItem
+import com.example.international_a_am.data.WorldSkillsAPI
 
 enum class EventSelection {
     All,
@@ -35,10 +35,11 @@ enum class EventSelection {
 @Composable
 fun EventsListScreen(navController: NavController) {
     val context = LocalContext.current
-    var events = remember {mutableStateListOf<Event>()}
+    var events = remember {mutableStateListOf<EventItem>()}
     LaunchedEffect(Unit) {
-      var jsonR = JsonRetriever(context)
-        jsonR.retrieveEvents()?.let { events.addAll(it) }
+        WorldSkillsAPI().getEvents()?.let { events.addAll(it) }
+
+
     }
     var selectedFilter by remember {mutableStateOf(EventSelection.All)}
     Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxSize()) {
