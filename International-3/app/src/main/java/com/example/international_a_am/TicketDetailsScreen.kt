@@ -1,6 +1,5 @@
 package com.example.international_a_am
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -12,26 +11,31 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import coil.compose.AsyncImage
 import com.example.international_a_am.data.Database
-import com.example.international_a_am.data.Ticket
+import com.example.international_a_am.data.TicketItem
+import com.example.international_a_am.data.WorldSkillsAPI
 
 @Composable
-fun TicketDetailsScreen(navController: NavController, id: Int) {
+fun TicketDetailsScreen(navController: NavController, id: String) {
     val context = LocalContext.current
-    var ticket by remember {mutableStateOf<Ticket?>(null)}
+    var ticket by remember {mutableStateOf<TicketItem?>(null)}
+    var tickets = remember {mutableStateListOf<TicketItem>()}
     LaunchedEffect(key1 = Unit ) {
         val db = Database.getDb(context)
-        ticket = db?.ticketDao()?.select(id)
+        WorldSkillsAPI().getTickets()?.let { tickets.addAll(it) }
+        ticket = tickets.filter { t-> t.id == id }.get(0)
 
     }
 Column(modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
@@ -39,9 +43,10 @@ Text("Ticket Details", fontSize = 30.sp)
 Spacer(modifier = Modifier.height(20.dp))
 Card(modifier = Modifier.fillMaxWidth()) {
     Column(modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally){
-        Image(painter = painterResource(R.drawable.ic_launcher_background), contentDescription = "background")
+        AsyncImage(model = ticket?.imageLink, contentDescription = "", modifier = Modifier.height(200.dp).fillMaxWidth(), contentScale = ContentScale.Crop)
+
         Text(text = "Ticket type: ${ticket?.ticketType}")
-        Text(text = "Audience's name: ${ticket?.audienceName}")
+        Text(text = "Audience's name: ${ticket?.name}")
         Text(text = "Time: ${ticket?.time}")
         Text(text = "Seat: ${ticket?.seat}")
     }

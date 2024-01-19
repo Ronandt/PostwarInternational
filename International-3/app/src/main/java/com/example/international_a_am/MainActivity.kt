@@ -75,7 +75,7 @@ class MainActivity : ComponentActivity() {
                                     CreateTicketScreen(navController = navController)
                                 }
                                 composable("ticketDetails/{id}") {
-                                    it.arguments?.getString("id")?.toInt()
+                                    it.arguments?.getString("id")
                                         ?.let { it1 -> TicketDetailsScreen(navController = navController, id = it1) }
                                 }
                             }

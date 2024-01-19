@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -30,10 +31,16 @@ import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import aws.smithy.kotlin.runtime.content.ByteStream
 import com.example.international_a_am.data.Database
+import com.example.international_a_am.data.S3Bucket
 import com.example.international_a_am.data.TicketItem
 import com.example.international_a_am.data.WorldSkillsAPI
 import kotlinx.coroutines.launch
+import java.time.Instant
+import java.time.LocalDateTime
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
 import java.util.UUID
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -69,14 +76,28 @@ fun CreateTicketScreen(navController: NavController) {
             Text(text = "Choose one picture")
         }
         if(currentImage != null) {
-            Image(BitmapFactory.decodeStream(context.contentResolver.openInputStream(currentImage!!)).asImageBitmap(), contentDescription = "Preview image")
+            Image(BitmapFactory.decodeStream(context.contentResolver.openInputStream(currentImage!!)).asImageBitmap(), contentDescription = "Preview image", modifier = Modifier.size(300.dp    ))
         }
         Spacer(modifier = Modifier.weight(1f))
         Button(onClick = {
             scope.launch {
                 var number = (1..10).random()
                 var randomLetter = listOf("a", "b", "c")[(0 until 3).random()]
-                WorldSkillsAPI().createTicket(TicketItem(UUID.randomUUID().toString(), imageLink = "", ticketType = selection, name = name, time =  "", seat = "$number$randomLetter Row$randomLetter Column$randomLetter"))
+                val currentTimeMillis = System.currentTimeMillis()
+
+                val instant = Instant.ofEpochMilli(currentTimeMillis)
+                val dateTime = LocalDateTime.ofInstant(instant, ZoneId.systemDefault())
+
+                val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
+                val formattedDateTime = dateTime.format(formatter)
+                val imageLink = currentImage?.let {
+                    context.contentResolver.openInputStream(
+                        it
+                    )?.readBytes()?.let { it1 -> ByteStream.fromBytes(it1) }
+
+                }?.let { S3Bucket().upload(byteStream = it) }
+                imageLink?.let { TicketItem(UUID.randomUUID().toString(), imageLink = it, ticketType = selection, name = name, time = formattedDateTime, seat = "$number$randomLetter Row$randomLetter Column$randomLetter") }
+                    ?.let { WorldSkillsAPI().createTicket(it) }
                // db?.ticketDao()?.insertAll(listOf(Ticket(selection, name, System.currentTimeMillis(), "$number$randomLetter Row$randomLetter Column$randomLetter", currentImage.toString())))
 
                 Toast.makeText(context, "Saved successfully", Toast.LENGTH_LONG).show()

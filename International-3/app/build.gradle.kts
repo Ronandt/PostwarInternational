@@ -75,6 +75,7 @@ dependencies {
     implementation("androidx.compose.material:material:1.5.4")
     implementation("androidx.navigation:navigation-compose:2.7.0")
     implementation("androidx.room:room-ktx:2.6.0")
+    implementation("io.coil-kt:coil-compose:2.5.0")
     var camerax_version = "1.2.0"
     // The following line is optional, as the core library is included indirectly by camera-camera2
     implementation("androidx.camera:camera-core:${camerax_version}")

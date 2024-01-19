@@ -37,7 +37,7 @@ class WorldSkillsAPI {
     suspend fun createTicket(ticketItem: TicketItem) {
         val jsonAdapter = moshi.adapter<TicketItem>()
         val json: JSONObject = JSONObject(jsonAdapter.toJson(ticketItem))
-        postRequest("/createTickets", json)
+        postRequest("/createTicket", json)
 
 
     }
