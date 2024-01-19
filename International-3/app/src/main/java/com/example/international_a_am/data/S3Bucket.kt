@@ -12,7 +12,7 @@ import java.util.UUID
 
 class Provider(): CredentialsProvider {
     override suspend fun resolve(attributes: Attributes): Credentials {
-       return Credentials.invoke("AKIAS7JH7M4XUBEDOJ5V", secretAccessKey = "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")
+       return Credentials.invoke("AKIAS7JH7M4X3FDJ2XOQ", secretAccessKey = "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")
     }
 
 }
