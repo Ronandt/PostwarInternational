@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.window.SplashScreen
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.AnimatedContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -27,6 +28,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -129,21 +131,56 @@ class MainActivity : ComponentActivity() {
 
                         }
 
+                        var observer = remember { InternetResolver(context = applicationContext)}
+
+                        var hasInternet = observer.observe().collectAsState(initial = false)
                         NavHost(navController = navController, startDestination = "splash") {
                             composable("splash") {
+
                                 SplashScreen(navController)
                             }
                             composable("about") {
-                                AboutScreen(navController)
+                                AnimatedContent(hasInternet.value) {
+                                    if (it) {
+                                        AboutScreen(navController)
+                                    } else {
+                                        NoInternetScreen()
+                                    }
+
+
+                                }
                             }
                             composable("statistic") {
-                                StatisticScreen(navController)
+                                AnimatedContent(hasInternet.value) {
+                                    if (it) {
+                                        StatisticScreen(navController)
+                                    } else {
+                                        NoInternetScreen()
+                                    }
+
+
+                                }
                             }
                             composable("photos") {
-                                PhotosScreen(navController)
-                            }
+
+                                AnimatedContent(hasInternet.value){
+                                    if(it) {
+                                      PhotosScreen(navController)
+                                    } else {
+                                        NoInternetScreen()
+                                    }
+
+                                }}
                             composable("skills") {
-                                SkillsScreen(navController)
+                                AnimatedContent(hasInternet.value){
+                                    if(it) {
+                                        SkillsScreen(navController)
+                                    } else {
+                                        NoInternetScreen()
+                                    }
+                                }
+
+
                             }
                         }
                     }
