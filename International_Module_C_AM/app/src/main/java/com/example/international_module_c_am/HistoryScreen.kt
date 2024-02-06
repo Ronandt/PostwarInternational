@@ -26,7 +26,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -38,6 +40,7 @@ import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.example.international_module_c_am.ui.theme.CardGray
 import com.example.international_module_c_am.ui.theme.DarkBlue
+import kotlinx.coroutines.delay
 
 @Composable
 fun HistoryScreen(navController: NavController, function: (Boolean) -> Unit) {
@@ -46,7 +49,7 @@ fun HistoryScreen(navController: NavController, function: (Boolean) -> Unit) {
     LaunchedEffect(Unit) {
         WorldSkillsAPI().getHistory()?.let { history.addAll(it) }
     }
-    val sharedPref = context.getSharedPreferences("settings", Context.MODE_PRIVATE).getBoolean("darkMode", false)
+    var sharedPref by remember {mutableStateOf( context.getSharedPreferences("settings", Context.MODE_PRIVATE).getBoolean("darkMode", false))}
     val text1ColorAsState by animateColorAsState(targetValue = if(sharedPref) Color.White else DarkBlue)
     val text2ColorAsState by animateColorAsState(targetValue = if(sharedPref) Color.LightGray else Color.DarkGray)
     val cardBackgroundAsState by animateColorAsState(targetValue =if (sharedPref) CardGray else Color.White )
@@ -56,6 +59,12 @@ fun HistoryScreen(navController: NavController, function: (Boolean) -> Unit) {
         function(state.firstVisibleItemIndex > 0)
         println(state.firstVisibleItemIndex > 0)
 
+    }
+    LaunchedEffect(key1 = Unit ) {
+        while(true) {
+            delay(500)
+            sharedPref = context.getSharedPreferences("settings", Context.MODE_PRIVATE).getBoolean("darkMode", false)
+        }
     }
 
     Column(modifier = Modifier

@@ -51,7 +51,7 @@ import com.example.international_module_c_am.ui.theme.DarkGray
 @Composable
 fun NewsScreen(navController: NavController, reductionCallback: (Boolean) -> Unit) {
 
-    //oops i forgot to unpause
+
     val context = LocalContext.current
     val sharedPref = context.getSharedPreferences("settings", Context.MODE_PRIVATE).getBoolean("darkMode", false)
     var reduce by remember {mutableStateOf(false)}

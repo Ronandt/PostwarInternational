@@ -42,6 +42,7 @@ import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -163,45 +164,52 @@ fun HomeScreen(navController: NavController) {
 
         }
         Spacer(modifier = Modifier.height(20.dp))
+        val internetObserver = InternetObserver(context).observe().collectAsState(initial = false)
         HorizontalPager(state = pagerState) { it ->
-            when(it) {
-                0 -> {
-                    NewsScreen(navController = navController) { b->
-                        if (b) {
-                            logoSize = 100.dp
-                            backgroundSize = 180.dp
-                        } else {
-                            logoSize = 280.dp
-                            backgroundSize = 360.dp
-                        }
+            if(!internetObserver.value  ) {
+                NoInternetScreen()
+            } else {
+                when(it) {
 
+                    0 -> {
+                        NewsScreen(navController = navController) { b->
+                            if (b) {
+                                logoSize = 100.dp
+                                backgroundSize = 180.dp
+                            } else {
+                                logoSize = 280.dp
+                                backgroundSize = 360.dp
+                            }
+
+                        }
                     }
-                }
-                1 -> {
-                    ResultsScreen(navController = navController){ b: Boolean->
-                        if (b) {
-                            logoSize = 100.dp
-                            backgroundSize = 180.dp
-                        } else {
-                            logoSize = 280.dp
-                            backgroundSize = 360.dp
-                        }
+                    1 -> {
+                        ResultsScreen(navController = navController){ b: Boolean->
+                            if (b) {
+                                logoSize = 100.dp
+                                backgroundSize = 180.dp
+                            } else {
+                                logoSize = 280.dp
+                                backgroundSize = 360.dp
+                            }
 
+                        }
                     }
-                }
-                2 -> {
-                    HistoryScreen(navController = navController){ b: Boolean->
-                        if (b) {
-                            logoSize = 100.dp
-                            backgroundSize = 180.dp
-                        } else {
-                            logoSize = 280.dp
-                            backgroundSize = 360.dp
-                        }
+                    2 -> {
+                        HistoryScreen(navController = navController){ b: Boolean->
+                            if (b) {
+                                logoSize = 100.dp
+                                backgroundSize = 180.dp
+                            } else {
+                                logoSize = 280.dp
+                                backgroundSize = 360.dp
+                            }
 
+                        }
                     }
                 }
             }
+
         }
         if(openSheet) {
             ModalBottomSheet(onDismissRequest = {
@@ -279,7 +287,8 @@ fun RippleLoadingAnimation(
 
 // outer circle
     Box(
-        modifier = Modifier.offset(y = 10.dp)
+        modifier = Modifier
+            .offset(y = 10.dp)
             .size(size = 1200.dp)
             .background(color = Color.Transparent)
     ) {
