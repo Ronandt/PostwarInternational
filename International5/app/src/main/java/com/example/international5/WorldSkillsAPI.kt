@@ -97,7 +97,7 @@ data class Category(
 @JsonClass(generateAdapter = true)
 data class Trade(
     val skillName: String,
-    val imageLink: String,
+    val imageLink: String?,
     val text: String,
 )
 

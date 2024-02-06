@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
@@ -95,7 +96,12 @@ Column(modifier = Modifier
         .height(180.dp)
         .background(cardBackgroundAsState)
         .padding(vertical = 20.dp), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.SpaceAround) {
-        AsyncImage(model = item?.countryImage , contentDescription = "", modifier = Modifier.size(130.dp, 80.dp), contentScale = ContentScale.Crop)
+        if(item?.countryImage != null) {
+            Image(LoaderImage(item?.countryImage!!) , contentDescription = "", modifier = Modifier.requiredSize(130.dp, 80.dp), contentScale = ContentScale.Crop)
+        }else {
+            Image(LoaderImage("") , contentDescription = "", modifier = Modifier.requiredSize(130.dp, 80.dp), contentScale = ContentScale.Crop)
+        }
+
 
         item?.country?.let { Text(text = it, fontWeight = FontWeight.Bold, color = text1ColorAsState, fontSize = 20.sp   ) }
 
@@ -123,7 +129,7 @@ Column(modifier = Modifier
                                 .padding(top = 6.dp,)
                                 .padding(horizontal = 10.dp)) {
 
-                                AsyncImage(item?.gold?.get(it)?.avatar, contentDescription = "Theordore", modifier = Modifier
+                               Image(LoaderImage(item?.gold?.get(it)?.avatar!!), contentDescription = "Theordore", modifier = Modifier
                                     .clip(
                                         RoundedCornerShape(20.dp)
                                     )
@@ -164,7 +170,7 @@ Column(modifier = Modifier
                             Column(modifier = Modifier
                                 .padding(top = 6.dp,)
                                 .padding(horizontal = 10.dp)) {
-                                AsyncImage(item?.silver?.get(it)?.avatar, contentDescription = "Theordore", modifier = Modifier
+                                Image(LoaderImage(item?.silver?.get(it)?.avatar!!), contentDescription = "Theordore", modifier = Modifier
                                     .clip(
                                         RoundedCornerShape(20.dp)
                                     )
@@ -207,7 +213,8 @@ Column(modifier = Modifier
                                 Column(modifier = Modifier
                                     .padding(top = 6.dp,)
                                     .padding(horizontal = 10.dp)) {
-                                    AsyncImage(item?.bronze?.get(it)?.avatar, contentDescription = "Theordore", modifier = Modifier
+
+                                    Image(LoaderImage(item?.bronze?.get(it)?.avatar!!), contentDescription = "Theordore", modifier = Modifier
                                         .clip(
                                             RoundedCornerShape(20.dp)
                                         )

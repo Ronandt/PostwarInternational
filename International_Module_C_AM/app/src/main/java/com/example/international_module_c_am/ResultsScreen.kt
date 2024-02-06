@@ -93,7 +93,8 @@ fun ResultsScreen(navController: NavController, param: (Boolean) -> Unit) {
                     },colors = CardDefaults.cardColors(cardBackgroundAsState)) {
                         Row(horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier.fillMaxWidth()){
                             Row {
-                                AsyncImage(model = results[b].countryImage , contentDescription = "", modifier = Modifier
+
+                               Image(LoaderImage(results[b].countryImage) , contentDescription = "", modifier = Modifier
 
 
                                     .width(100.dp)

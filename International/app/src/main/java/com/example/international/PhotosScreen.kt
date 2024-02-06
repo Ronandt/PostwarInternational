@@ -48,6 +48,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.key.Key.Companion.Ro
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.IntOffset
@@ -56,6 +57,8 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
+import coil.compose.rememberAsyncImagePainter
+import coil.request.ImageRequest
 import com.example.international.ui.theme.HotPink
 
 @OptIn(ExperimentalMaterialApi::class)
@@ -82,7 +85,8 @@ fun PhotosScreen(navController: NavController) {
     Spacer(modifier = Modifier.height(10.dp))
 Row(modifier = Modifier
     .fillMaxWidth()
-    .padding(end = 20.dp, top = 20.dp) .swipeable(
+    .padding(end = 20.dp, top = 20.dp)
+    .swipeable(
         state = swipe,
         anchors = mapOf(-10000f to -1, 0f to 0, 10000f to 1),
         reverseDirection = true,
@@ -95,41 +99,51 @@ Row(modifier = Modifier
     Column(modifier = Modifier.padding(end = 10.dp)) {
         LazyVerticalGrid(columns = GridCells.Fixed(2), horizontalArrangement = Arrangement.spacedBy(10.dp), verticalArrangement = Arrangement.spacedBy(10.dp), modifier = Modifier.width(480.dp)) {
             items(4) {
-                AsyncImage(listThing[it], contentDescription = "", modifier = Modifier
+
+                val imagePainter = rememberAsyncImagePainter(model = ImageRequest.Builder(LocalContext.current).data(listThing[it]).crossfade(true).placeholder(R.drawable.morecomplexpreloader).build(), contentScale = ContentScale.Crop)
+
+
+                Image(imagePainter, contentDescription = "", modifier = Modifier
                     .size(230.dp)
                     .clickable {
-                        dialog =listThing[it]
+                        dialog = listThing[it]
                     }, contentScale = ContentScale.Crop, )
             }
 
 
         }
         Spacer(modifier = Modifier.height(10.dp))
-        AsyncImage("https://d3izhzxqbknro4.cloudfront.net/network_administration.jpg", contentDescription = "", modifier = Modifier
-            .width(480.dp)
-            .height(230.dp)
-            .clickable {
-                dialog = "https://d3izhzxqbknro4.cloudfront.net/network_administration.jpg"
-            }, contentScale = ContentScale.Crop)
+
+
+        Image(
+            LoaderImage(imageLink = "https://d3izhzxqbknro4.cloudfront.net/network_administration.jpg"), contentDescription = "", modifier = Modifier
+                .width(480.dp)
+                .height(230.dp)
+                .clickable {
+                    dialog = "https://d3izhzxqbknro4.cloudfront.net/network_administration.jpg"
+                }, contentScale = ContentScale.Crop)
     }
     Column() {
-        AsyncImage("https://d3izhzxqbknro4.cloudfront.net/music_composition.jpg", contentDescription = "", modifier = Modifier
-            .size(474.dp)
-            .clickable {
-                dialog = "https://d3izhzxqbknro4.cloudfront.net/music_composition.jpg"
-            }, contentScale = ContentScale.Crop)
+        Image(
+            LoaderImage(imageLink = "https://d3izhzxqbknro4.cloudfront.net/music_composition.jpg"), contentDescription = "", modifier = Modifier
+                .size(474.dp)
+                .clickable {
+                    dialog = "https://d3izhzxqbknro4.cloudfront.net/music_composition.jpg"
+                }, contentScale = ContentScale.Crop)
         Spacer(modifier = Modifier.height(10.dp))
         Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-            AsyncImage("https://d3izhzxqbknro4.cloudfront.net/film_production.jpg", contentDescription ="", contentScale = ContentScale.Crop    , modifier = Modifier
-                .size(230.dp)
-                .clickable {
-                    dialog = "https://d3izhzxqbknro4.cloudfront.net/film_production.jpg"
-                })
-            AsyncImage("https://d3izhzxqbknro4.cloudfront.net/nursing.jpg", contentDescription ="" , contentScale = ContentScale.Crop , modifier = Modifier
-                .size(230.dp)
-                .clickable {
-                    dialog ="https://d3izhzxqbknro4.cloudfront.net/nursing.jpg"
-                })
+            Image(
+                LoaderImage(imageLink = "https://d3izhzxqbknro4.cloudfront.net/film_production.jpg"), contentDescription ="", contentScale = ContentScale.Crop    , modifier = Modifier
+                    .size(230.dp)
+                    .clickable {
+                        dialog = "https://d3izhzxqbknro4.cloudfront.net/film_production.jpg"
+                    })
+            Image(
+                LoaderImage(imageLink =  "https://d3izhzxqbknro4.cloudfront.net/nursing.jpg"), contentDescription ="" , contentScale = ContentScale.Crop , modifier = Modifier
+                    .size(230.dp)
+                    .clickable {
+                        dialog = "https://d3izhzxqbknro4.cloudfront.net/nursing.jpg"
+                    })
         }
     }
 
@@ -140,8 +154,13 @@ Row(modifier = Modifier
                 Box( contentAlignment = Alignment.Center) {
 
                     if(dialog != "") {
+
                         AsyncImage( dialog, contentDescription ="Image", contentScale = ContentScale.Crop)
-                        IconButton(onClick = { dialog = ""}, Modifier.align(Alignment.TopEnd).padding(10.dp).background(Color.White, CircleShape)) {
+                        IconButton(onClick = { dialog = ""},
+                            Modifier
+                                .align(Alignment.TopEnd)
+                                .padding(10.dp)
+                                .background(Color.White, CircleShape)) {
                             Icon(imageVector = Icons.Default.Close, contentDescription = "Close", tint = HotPink)
                         }
                     }

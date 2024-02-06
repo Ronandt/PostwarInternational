@@ -6,6 +6,7 @@ import android.os.Build
 import android.os.Environment
 import android.os.StrictMode
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.combinedClickable
@@ -92,8 +93,8 @@ fun PhotosScreen(navController: NavController) {
                             )
                            ) {
 
-                            AsyncImage(
-                                photos[it + (currentPage * 6)].imageLink, modifier = Modifier
+                           Image(
+                                LoaderImage(photos[it + (currentPage * 6)].imageLink), modifier = Modifier
                                     .matchParentSize()
                                   , contentDescription = "", contentScale = ContentScale.Crop)
                             Column(modifier = Modifier
@@ -152,11 +153,11 @@ fun PhotosScreen(navController: NavController) {
                             }
                             Dialog(onDismissRequest = { dialog = false }) {
                                 Column {
-                                    AsyncImage(
-                                        photos[it + (maxOf(0, (currentPage-1)) * 6)].imageLink, contentDescription = "Stuff", modifier = Modifier
-                                            .graphicsLayer(scaleX = scale, scaleY = scale)
-                                            .transformable(state = transformState)
-                                            .size(500.dp))
+                                   Image(
+                                        LoaderImage(photos[it + (maxOf(0, (currentPage)) * 6)].imageLink), contentDescription = "Stuff", modifier = Modifier
+                                           .graphicsLayer(scaleX = scale, scaleY = scale)
+                                           .transformable(state = transformState)
+                                           .size(500.dp))
 
                                 }
 
@@ -165,7 +166,7 @@ fun PhotosScreen(navController: NavController) {
                     }}
                 }
                 Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally)) {
-                    generatePagination(maxOf(1, currentPage), totalPages = Math.ceil((photos?.size?.div(6.0)!!)).toInt()).forEach {
+                    generatePagination(maxOf(1, currentPage), totalPages = (photos?.size?.div(6.0)!!).toInt()).forEach {
                         if(it == -1) {
                             Text(text = "...", fontSize = 24.sp, modifier = Modifier.padding(10.dp))
                         } else {
@@ -197,7 +198,7 @@ fun PhotosScreen(navController: NavController) {
                                 }, onClick = { dialog = true })
                                ) {
 
-                                AsyncImage(photos.get(it + (currentPage * 6)).imageLink, modifier = Modifier
+                               Image(LoaderImage(photos.get(it + (currentPage * 6)).imageLink), modifier = Modifier
                                     .matchParentSize(), contentDescription = "", contentScale = ContentScale.Crop)
                                 Column(modifier = Modifier
                                     .align(Alignment.BottomEnd)
@@ -252,10 +253,12 @@ fun PhotosScreen(navController: NavController) {
                                 }
                                 Dialog(onDismissRequest = { dialog = false }) {
                                     Column {
-                                        AsyncImage(photos.get(it + (currentPage-1 * 6)).imageLink, contentDescription = "Stuff", modifier = Modifier
-                                            .graphicsLayer(scaleX = scale, scaleY = scale)
-                                            .transformable(state = transformState)
-                                            .size(500.dp))
+
+                                      Image(
+                                            LoaderImage(imageLink = photos.get(it -1+ (currentPage * 6)).imageLink,), contentDescription = "Stuff", modifier = Modifier
+                                                .graphicsLayer(scaleX = scale, scaleY = scale)
+                                                .transformable(state = transformState)
+                                                .size(500.dp))
 
                                     }
 
@@ -266,14 +269,19 @@ fun PhotosScreen(navController: NavController) {
                     }
                 }
                 Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally)) {
-                    generatePagination(currentPage+ 1, totalPages = Math.ceil((photos?.size?.div(6.0)!!)).toInt()).forEach {
-                        Text(text = (it + 1).toString(), fontSize = 24.sp, fontWeight = if(it == currentPage) FontWeight.Bold else FontWeight.Normal,modifier = Modifier
-                            .clickable {
-                                currentPage = it - 1
-                            }
-                            .padding(10.dp))
-                    }
+                    generatePagination(maxOf(1, currentPage), totalPages = (photos?.size?.div(6.0)!!).toInt()).forEach {
+                        if(it == -1) {
+                            Text(text = "...", fontSize = 24.sp, modifier = Modifier.padding(10.dp))
+                        } else {
+                            Text(text = (it).toString(), fontSize = 24.sp, fontWeight = if(it == currentPage) FontWeight.Bold else FontWeight.Normal,modifier = Modifier
+                                .clickable {
 
+                                    currentPage = it
+                                }
+                                .padding(10.dp))
+                        }
+
+                    }
                 }
             }
         }

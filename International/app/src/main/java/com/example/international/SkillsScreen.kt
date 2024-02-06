@@ -53,6 +53,7 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import coil.ImageLoader
 import coil.compose.AsyncImage
 import com.example.international.ui.theme.HotPink
 import kotlinx.coroutines.launch
@@ -112,7 +113,9 @@ Column(modifier = Modifier.fillMaxWidth() .padding(end = 20.dp, top = 20.dp) .sw
 
             }) {
             val animateFloatAsStates by animateFloatAsState(targetValue = if (it == pagerState.currentPage) 1f else 0.5f)
-            AsyncImage(skills?.get(it)?.image, contentDescription = null, modifier = Modifier
+
+            Image(
+                LoaderImage(skills?.get(it)?.image!!), contentDescription = null, modifier = Modifier
                 .matchParentSize()
                 .alpha(animateFloatAsStates), contentScale = ContentScale.Crop)
             Column(modifier = Modifier

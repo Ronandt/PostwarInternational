@@ -2,6 +2,7 @@ package com.example.international_module_c_am
 
 import android.content.Context
 import androidx.compose.animation.animateColorAsState
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -91,7 +92,8 @@ fun HistoryScreen(navController: NavController, function: (Boolean) -> Unit) {
                     } + " -" + it1.endDate, fontWeight = FontWeight.SemiBold, fontSize = 20.sp, color = text2ColorAsState) }
                     history?.get(it)?.let { it1 -> Text(text = it1.title, fontWeight = FontWeight.Bold, fontSize = 24.sp, color = text1ColorAsState) }
                     Row(horizontalArrangement = Arrangement.spacedBy(10.dp), modifier = Modifier.fillMaxWidth()){
-                        AsyncImage(model = history?.get(it)?.image, contentDescription = "Worldskills",modifier = Modifier
+
+                        Image(LoaderImage(history?.get(it)?.image!!), contentDescription = "Worldskills",modifier = Modifier
                             .size(100.dp)
                             .padding(top = 30.dp))
 

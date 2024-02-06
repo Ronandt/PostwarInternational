@@ -113,7 +113,7 @@ fun SkillsScreen(navController: NavController) {
                             }
 
                             Column() {
-                                AsyncImage(skills?.get(skillsCategory)?.trades?.get(skillDialog)?.imageLink, contentDescription = "Image of skill", modifier = Modifier.size(160.dp, 200.dp))
+                              Image(LoaderImage(skills?.get(skillsCategory)?.trades?.get(skillDialog)?.imageLink!!), contentDescription = "Image of skill", modifier = Modifier.size(160.dp, 200.dp))
                                 Spacer(modifier = Modifier.weight(1f))
                                 Button(onClick = {
                                     skillDialog +=1

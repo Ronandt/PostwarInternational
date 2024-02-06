@@ -78,7 +78,7 @@ fun NewsScreen(navController: NavController, reductionCallback: (Boolean) -> Uni
                     .fillMaxWidth()
                     .height(100.dp), onClick = {navController.navigate("newsDetail/${it}")}, colors = CardDefaults.cardColors(containerColor = cardBackgroundAsState)) {
                     Row {
-                        AsyncImage(news?.get(it)?.image, contentDescription = "Logo", modifier = Modifier
+                        Image(LoaderImage(news?.get(it)?.image!!), contentDescription = "Logo", modifier = Modifier
                             .clip(
                                 RoundedCornerShape(0.dp, 0.dp)
                             )

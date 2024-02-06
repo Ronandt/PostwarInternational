@@ -81,9 +81,9 @@ fun NewsDetailScreen(navController: NavController, toInt: Int) {
         Text(text = "${items?.title}", color = text1ColorAsState, fontWeight = FontWeight.Bold, fontSize = 20.sp)
         Spacer(modifier = Modifier.height(10.dp))
         Text(text = "${items?.summary}", fontWeight = FontWeight.SemiBold, fontSize = 16.sp, color = text2ColorAsState )
-        AsyncImage(items?.image,  contentDescription ="Skills", modifier = Modifier
+        Image(LoaderImage(items?.image!!),  contentDescription ="Skills", modifier = Modifier
         .fillMaxWidth()
-        .padding(vertical = 20.dp)
+        .padding(vertical = 20.dp).height(200.dp)
         .clip(
             RoundedCornerShape(20.dp)
         ), contentScale = ContentScale.Crop)
