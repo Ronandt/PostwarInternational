@@ -82,7 +82,7 @@ fun ResultDetailScreen(navController: NavController, toInt: Int) {
     val  background by animateColorAsState(targetValue = if(sharedPref) DarkGray else Color.White)
     var visible = InternetObserver(context).observe().collectAsState(initial = false)
     AnimatedContent(targetState = visible) {
-        if(it.value) {
+
             Column(modifier = Modifier
                 .fillMaxWidth()
                 .background(background)) {
@@ -96,121 +96,38 @@ fun ResultDetailScreen(navController: NavController, toInt: Int) {
                     }
                     Text(text = "Results", fontWeight = FontWeight.SemiBold, modifier = Modifier.offset(x = -10.dp), color = text2ColorAsState)
                 }
-                Column(modifier = Modifier
-                    .fillMaxWidth()
-                    .height(180.dp)
-                    .background(cardBackgroundAsState)
-                    .padding(vertical = 20.dp), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.SpaceAround) {
-                    if(item?.countryImage != null) {
-                        Image(LoaderImage(item?.countryImage!!) , contentDescription = "", modifier = Modifier.requiredSize(130.dp, 80.dp), contentScale = ContentScale.Crop)
-                    }else {
-                        Image(LoaderImage("") , contentDescription = "", modifier = Modifier.requiredSize(130.dp, 80.dp), contentScale = ContentScale.Crop)
+
+                if(it.value) {
+                    Column(modifier = Modifier
+                        .fillMaxWidth()
+                        .height(180.dp)
+                        .background(cardBackgroundAsState)
+                        .padding(vertical = 20.dp), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.SpaceAround) {
+                        if(item?.countryImage != null) {
+                            Image(LoaderImage(item?.countryImage!!) , contentDescription = "", modifier = Modifier.requiredSize(130.dp, 80.dp), contentScale = ContentScale.Crop)
+                        }else {
+                            Image(LoaderImage("") , contentDescription = "", modifier = Modifier.requiredSize(130.dp, 80.dp), contentScale = ContentScale.Crop)
+                        }
+
+
+                        item?.country?.let { Text(text = it, fontWeight = FontWeight.Bold, color = text1ColorAsState, fontSize = 20.sp   ) }
+
+
                     }
-
-
-                    item?.country?.let { Text(text = it, fontWeight = FontWeight.Bold, color = text1ColorAsState, fontSize = 20.sp   ) }
-
-
-                }
-                Column() {
-                    LazyColumn(verticalArrangement = Arrangement.Center) {
-                        item {
-                            Row(modifier= Modifier
-                                .fillMaxWidth()
-                                .padding(horizontal = 20.dp, vertical = 10.dp), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
-                                Image(painter = painterResource(R.drawable.gold_medal), contentDescription = "Gold medal", modifier = Modifier.size(35.dp))
-                                Text(text = "Gold Medals", fontWeight = FontWeight.SemiBold, fontSize = 18.sp, color = Gold )
-                            }
-
-                        }
-                        item {
-                            LazyRow {
-                                items(goldMedal?.size ?: 0) {
-
-                                    androidx.compose.material3.Card(modifier = Modifier
-                                        .size(200.dp, 260.dp)
-                                        .padding(10.dp), colors = CardDefaults.cardColors(cardBackgroundAsState)) {
-                                        Column(modifier = Modifier
-                                            .padding(top = 6.dp,)
-                                            .padding(horizontal = 10.dp)) {
-
-                                            Image(LoaderImage(item?.gold?.get(it)?.avatar!!), contentDescription = "Theordore", modifier = Modifier
-                                                .clip(
-                                                    RoundedCornerShape(20.dp)
-                                                )
-                                                .size(170.dp)
-                                                .clip(
-                                                    RoundedCornerShape(20.dp)
-                                                )
-                                                .align(Alignment.CenterHorizontally)
-                                                .offset(x = 0.dp), contentScale = ContentScale.Crop)
-                                            Spacer(modifier = Modifier.height(10.dp ))
-                                            goldMedal?.get(it)?.let { it1 -> Text(text = it1.competitorName, fontWeight = FontWeight.SemiBold, fontSize = 18.sp, modifier = Modifier.basicMarquee(), maxLines = 1, color = text2ColorAsState) }
-                                            goldMedal?.get(it)?.let { it1 -> Text(text = it1.skillName, modifier = Modifier.basicMarquee(), color = text2ColorAsState) }
-                                        }
-
-                                    }
+                    Column() {
+                        LazyColumn(verticalArrangement = Arrangement.Center) {
+                            item {
+                                Row(modifier= Modifier
+                                    .fillMaxWidth()
+                                    .padding(horizontal = 20.dp, vertical = 10.dp), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
+                                    Image(painter = painterResource(R.drawable.gold_medal), contentDescription = "Gold medal", modifier = Modifier.size(35.dp))
+                                    Text(text = "Gold Medals", fontWeight = FontWeight.SemiBold, fontSize = 18.sp, color = Gold )
                                 }
 
-
-
                             }
-                        }
-                        item {
-                            Row(modifier= Modifier
-                                .fillMaxWidth()
-                                .padding(horizontal = 20.dp, vertical = 10.dp), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
-                                Image(painter = painterResource(R.drawable.silver_medal), contentDescription = "Silver medal", modifier = Modifier.size(35.dp))
-                                Text(text = "Silver Medals", fontWeight = FontWeight.SemiBold, fontSize = 18.sp, color = Silver)
-                            }
-
-                        }
-                        item {
-                            LazyRow {
-                                items(goldMedal?.size ?: 0) {
-
-                                    androidx.compose.material3.Card(modifier = Modifier
-                                        .size(200.dp, 260.dp)
-                                        .padding(10.dp), colors = CardDefaults.cardColors(cardBackgroundAsState)) {
-                                        Column(modifier = Modifier
-                                            .padding(top = 6.dp,)
-                                            .padding(horizontal = 10.dp)) {
-                                            Image(LoaderImage(item?.silver?.get(it)?.avatar!!), contentDescription = "Theordore", modifier = Modifier
-                                                .clip(
-                                                    RoundedCornerShape(20.dp)
-                                                )
-                                                .size(170.dp)
-                                                .clip(
-                                                    RoundedCornerShape(20.dp)
-                                                )
-                                                .align(Alignment.CenterHorizontally)
-                                                .offset(x = 0.dp), contentScale = ContentScale.Crop)
-                                            Spacer(modifier = Modifier.height(10.dp ))
-                                            silverMedal?.get(it)?.let { it1 -> Text(text = it1.competitorName, fontWeight = FontWeight.SemiBold, fontSize = 18.sp, modifier = Modifier.basicMarquee(), maxLines = 1, color = text2ColorAsState) }
-                                            silverMedal?.get(it)?.let { it1 -> Text(text =  it1.skillName, modifier = Modifier.basicMarquee(), color = text2ColorAsState) }
-                                        }
-
-                                    }
-                                }
-                            }
-                        }
-
-
-
-                        item {
-                            Row(modifier= Modifier
-                                .fillMaxWidth()
-                                .padding(horizontal = 20.dp, vertical = 10.dp), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
-                                Image(painter = painterResource(R.drawable.bronze_medal), contentDescription = "Bronze medal", modifier = Modifier.size(35.dp))
-                                Text(text = "Bronze Medals", fontWeight = FontWeight.SemiBold, fontSize = 18.sp, color = Bronze)
-                            }
-
-                        }
-
-                        item {
-                            LazyRow {
-                                bronzeMedal?.size?.let {
-                                    items(it) {
+                            item {
+                                LazyRow {
+                                    items(goldMedal?.size ?: 0) {
 
                                         androidx.compose.material3.Card(modifier = Modifier
                                             .size(200.dp, 260.dp)
@@ -219,7 +136,7 @@ fun ResultDetailScreen(navController: NavController, toInt: Int) {
                                                 .padding(top = 6.dp,)
                                                 .padding(horizontal = 10.dp)) {
 
-                                                Image(LoaderImage(item?.bronze?.get(it)?.avatar!!), contentDescription = "Theordore", modifier = Modifier
+                                                Image(LoaderImage(item?.gold?.get(it)?.avatar!!), contentDescription = "Theordore", modifier = Modifier
                                                     .clip(
                                                         RoundedCornerShape(20.dp)
                                                     )
@@ -230,25 +147,114 @@ fun ResultDetailScreen(navController: NavController, toInt: Int) {
                                                     .align(Alignment.CenterHorizontally)
                                                     .offset(x = 0.dp), contentScale = ContentScale.Crop)
                                                 Spacer(modifier = Modifier.height(10.dp ))
-                                                Text(text = bronzeMedal!![it].competitorName, fontWeight = FontWeight.SemiBold, fontSize = 18.sp, modifier = Modifier.basicMarquee(), maxLines = 1, color = text2ColorAsState)
-                                                Text(text = bronzeMedal!![it].skillName, modifier = Modifier.basicMarquee(), color = text2ColorAsState)
+                                                goldMedal?.get(it)?.let { it1 -> Text(text = it1.competitorName, fontWeight = FontWeight.SemiBold, fontSize = 18.sp, modifier = Modifier.basicMarquee(), maxLines = 1, color = text2ColorAsState) }
+                                                goldMedal?.get(it)?.let { it1 -> Text(text = it1.skillName, modifier = Modifier.basicMarquee(), color = text2ColorAsState) }
+                                            }
+
+                                        }
+                                    }
+
+
+
+                                }
+                            }
+                            item {
+                                Row(modifier= Modifier
+                                    .fillMaxWidth()
+                                    .padding(horizontal = 20.dp, vertical = 10.dp), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
+                                    Image(painter = painterResource(R.drawable.silver_medal), contentDescription = "Silver medal", modifier = Modifier.size(35.dp))
+                                    Text(text = "Silver Medals", fontWeight = FontWeight.SemiBold, fontSize = 18.sp, color = Silver)
+                                }
+
+                            }
+                            item {
+                                LazyRow {
+                                    items(goldMedal?.size ?: 0) {
+
+                                        androidx.compose.material3.Card(modifier = Modifier
+                                            .size(200.dp, 260.dp)
+                                            .padding(10.dp), colors = CardDefaults.cardColors(cardBackgroundAsState)) {
+                                            Column(modifier = Modifier
+                                                .padding(top = 6.dp,)
+                                                .padding(horizontal = 10.dp)) {
+                                                Image(LoaderImage(item?.silver?.get(it)?.avatar!!), contentDescription = "Theordore", modifier = Modifier
+                                                    .clip(
+                                                        RoundedCornerShape(20.dp)
+                                                    )
+                                                    .size(170.dp)
+                                                    .clip(
+                                                        RoundedCornerShape(20.dp)
+                                                    )
+                                                    .align(Alignment.CenterHorizontally)
+                                                    .offset(x = 0.dp), contentScale = ContentScale.Crop)
+                                                Spacer(modifier = Modifier.height(10.dp ))
+                                                silverMedal?.get(it)?.let { it1 -> Text(text = it1.competitorName, fontWeight = FontWeight.SemiBold, fontSize = 18.sp, modifier = Modifier.basicMarquee(), maxLines = 1, color = text2ColorAsState) }
+                                                silverMedal?.get(it)?.let { it1 -> Text(text =  it1.skillName, modifier = Modifier.basicMarquee(), color = text2ColorAsState) }
                                             }
 
                                         }
                                     }
                                 }
+                            }
+
+
+
+                            item {
+                                Row(modifier= Modifier
+                                    .fillMaxWidth()
+                                    .padding(horizontal = 20.dp, vertical = 10.dp), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
+                                    Image(painter = painterResource(R.drawable.bronze_medal), contentDescription = "Bronze medal", modifier = Modifier.size(35.dp))
+                                    Text(text = "Bronze Medals", fontWeight = FontWeight.SemiBold, fontSize = 18.sp, color = Bronze)
+                                }
 
                             }
+
+                            item {
+                                LazyRow {
+                                    bronzeMedal?.size?.let {
+                                        items(it) {
+
+                                            androidx.compose.material3.Card(modifier = Modifier
+                                                .size(200.dp, 260.dp)
+                                                .padding(10.dp), colors = CardDefaults.cardColors(cardBackgroundAsState)) {
+                                                Column(modifier = Modifier
+                                                    .padding(top = 6.dp,)
+                                                    .padding(horizontal = 10.dp)) {
+
+                                                    Image(LoaderImage(item?.bronze?.get(it)?.avatar!!), contentDescription = "Theordore", modifier = Modifier
+                                                        .clip(
+                                                            RoundedCornerShape(20.dp)
+                                                        )
+                                                        .size(170.dp)
+                                                        .clip(
+                                                            RoundedCornerShape(20.dp)
+                                                        )
+                                                        .align(Alignment.CenterHorizontally)
+                                                        .offset(x = 0.dp), contentScale = ContentScale.Crop)
+                                                    Spacer(modifier = Modifier.height(10.dp ))
+                                                    Text(text = bronzeMedal!![it].competitorName, fontWeight = FontWeight.SemiBold, fontSize = 18.sp, modifier = Modifier.basicMarquee(), maxLines = 1, color = text2ColorAsState)
+                                                    Text(text = bronzeMedal!![it].skillName, modifier = Modifier.basicMarquee(), color = text2ColorAsState)
+                                                }
+
+                                            }
+                                        }
+                                    }
+
+                                }
+                            }
+
+
                         }
-
-
                     }
+                } else {
+                    Column(modifier = Modifier.size(600.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+                        NoInternetScreen()
+                    }
+
                 }
+
             }
-        }
-         else {
-             NoInternetScreen()
-        }
+
     }
 
 }

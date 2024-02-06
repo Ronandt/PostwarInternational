@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.RequiresApi
+import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedContentTransitionScope
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
@@ -18,6 +19,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -49,6 +51,7 @@ class MainActivity : ComponentActivity() {
 
             International_A_AMTheme {
                 Scaffold(bottomBar= {
+
                     if(currentNavigation?.route.toString() != "splash") {
                         NavigationBar {
                             navItems.forEach {current ->
@@ -56,6 +59,7 @@ class MainActivity : ComponentActivity() {
                                     ?.let { NavigationBarItem(selected = it, onClick = { navController.navigate(current)
                                                                                        println(current)
                                                                                        }, icon = {
+
                                         when(current) {
                                             "events" -> {
                                                 Icon(
@@ -84,7 +88,9 @@ class MainActivity : ComponentActivity() {
                         }
                     }
            }) {
-
+                    val observer = InternetObserver(context = applicationContext).observe().collectAsState(
+                        initial = false
+                    )
                     Column(modifier = Modifier.padding(it   )) {
                         NavHost(navController, startDestination = "splash") {
 
@@ -92,31 +98,74 @@ class MainActivity : ComponentActivity() {
                             composable("splash", enterTransition = {
                                 this.slideIntoContainer(towards = AnimatedContentTransitionScope.SlideDirection.Left)
                             }) {
+
                                 SplashScreen(navController = navController)
                             }
                             navigation("eventsList", route = "events") {
                                 composable("eventsList") {
-                                    EventsListScreen(navController = navController)
+                                    AnimatedContent(observer.value) {
+                                        if(it) {
+                                            EventsListScreen(navController = navController)
+                                        } else {
+                                            NoInternetScreen()
+                                        }
+                                    }
+
+
                                 }
-                                composable("eventDetails/{id}") {
-                                    it.arguments?.getString("id")?.toInt()
-                                        ?.let { it1 -> EventDetailsScreen(navController = navController, id = it1) }
+                                composable("eventDetails/{id}") { b->
+                                    AnimatedContent(observer.value) {
+                                        if(it) {
+                                            b.arguments?.getString("id")?.toInt()
+                                                ?.let { it1 -> EventDetailsScreen(navController = navController, id = it1) }
+                                        } else {
+                                            NoInternetScreen()
+                                        }
+                                    }
+
                                 }
                             }
                             navigation("ticketsList", route = "tickets") {
                                 composable("ticketsList") {
-                                    TicketListScreen(navController = navController)
+                                    AnimatedContent(observer.value) {
+                                        if(it) {
+                                            TicketListScreen(navController = navController)
+                                        } else {
+                                            NoInternetScreen()
+                                        }
+                                    }
+
                                 }
                                 composable("createTicket") {
-                                    CreateTicketScreen(navController = navController)
+                                    AnimatedContent(observer.value) {
+                                        if(it) {
+                                            CreateTicketScreen(navController = navController)
+                                        } else {
+                                            NoInternetScreen()
+                                        }
+                                    }
+
                                 }
                                 composable("ticketDetails/{id}") {
-                                    it.arguments?.getString("id")
-                                        ?.let { it1 -> TicketDetailsScreen(navController = navController, id = it1) }
+                                    AnimatedContent(observer.value) { b->
+                                        if(b) {
+                                            it.arguments?.getString("id")
+                                                ?.let { it1 -> TicketDetailsScreen(navController = navController, id = it1) }
+                                        } else {
+                                            NoInternetScreen()
+                                        }
+                                    }
+
                                 }
                             }
                             composable("records") {
-                                RecordsScreen(navController = navController)
+                                AnimatedContent(observer.value) { b->
+                                    if(b) {
+                                  RecordsScreen(navController = navController)
+                                    } else {
+                                        NoInternetScreen()
+                                    }
+                                }
                             }
                         }
                     }

@@ -113,7 +113,10 @@ fun NewsDetailScreen(navController: NavController, toInt: Int) {
             }
         }
          else {
-             NoInternetScreen()
+             Column(modifier = Modifier.size(400.dp)) {
+                 NoInternetScreen()
+             }
+
         }
     }
 

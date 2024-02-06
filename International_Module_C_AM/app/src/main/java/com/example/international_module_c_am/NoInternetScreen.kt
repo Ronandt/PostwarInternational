@@ -3,6 +3,7 @@ package com.example.international_module_c_am
 import android.content.Context
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -42,7 +43,7 @@ fun NoInternetScreen() {
     }
 
     AnimatedVisibility(confirmNoInternet) {
-        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+        Box(modifier = Modifier.fillMaxSize().background(Color.Transparent), contentAlignment = Alignment.Center) {
             Column(modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
                 Image(painter = painterResource(R.drawable.no_internet_2), contentDescription = "No internet")
                 Text(text = "No internet! Please check your connection", fontWeight = FontWeight.SemiBold, color = if(sharedPref) Color.White else DarkBlue)
