@@ -1,5 +1,6 @@
 package com.example.international
 
+import android.app.Activity
 import android.os.Bundle
 import android.window.SplashScreen
 import androidx.activity.ComponentActivity
@@ -21,14 +22,18 @@ import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.rememberSwipeableState
 import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.capitalize
 import androidx.compose.ui.text.font.FontWeight
@@ -41,6 +46,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.international.ui.theme.HotPink
 import com.example.international.ui.theme.InternationalTheme
+import kotlinx.coroutines.flow.collectLatest
 
 class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterialApi::class)
@@ -49,8 +55,22 @@ class MainActivity : ComponentActivity() {
         setContent {
             InternationalTheme {
                val navController = rememberNavController()
+                val view = LocalView.current
                 val navList = remember {listOf("about", "statistic", "photos", "skills")}
                 val currentDestination = navController.currentBackStackEntryAsState().value?.destination?.route
+                LaunchedEffect(key1 = Unit ) {
+                    navController.currentBackStackEntryFlow.collectLatest {
+                        val window = (view.context as Activity).window
+                        when(it.destination.route){
+                            "splash" ->{
+                                window.statusBarColor = HotPink.toArgb()
+                            } else -> {
+                            window.statusBarColor = Color.White.toArgb()
+                            }
+                        }
+
+                    }
+                }
                 Row(modifier = Modifier.fillMaxSize()) {
                     if(currentDestination != "splash") {
                         Column(modifier = Modifier
