@@ -1,5 +1,6 @@
 package com.example.international_a_am
 
+import android.content.pm.PackageManager
 import android.os.Build
 import android.provider.MediaStore
 import android.view.View
@@ -7,6 +8,7 @@ import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -32,8 +34,10 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
-import coil.compose.AsyncImage
+import coil.compose.rememberAsyncImagePainter
+import coil.request.ImageRequest
 import com.example.international_a_am.data.Database
 import com.example.international_a_am.data.ImageResult
 import com.example.international_a_am.data.TicketItem
@@ -50,9 +54,7 @@ fun TicketDetailsScreen(navController: NavController, id: String) {
         mutableStateOf<Rect?>(null)
     }
     var permissions = rememberLauncherForActivityResult(contract = ActivityResultContracts.RequestPermission() ) {
-        if(!it) {
-            Toast.makeText(context, "Note that we can't send you notifications", Toast.LENGTH_SHORT).show()
-        }
+
 
     }
     var ticket by remember {mutableStateOf<TicketItem?>(null)}
@@ -61,9 +63,23 @@ fun TicketDetailsScreen(navController: NavController, id: String) {
         val db = Database.getDb(context)
         WorldSkillsAPI().getTickets()?.let { tickets.addAll(it) }
         ticket = tickets.filter { t-> t.id == id }.get(0)
-        permissions.launch(android.Manifest.permission.POST_NOTIFICATIONS)
-        permissions.launch(android.Manifest.permission.READ_EXTERNAL_STORAGE)
-        permissions.launch(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        if (ContextCompat.checkSelfPermission(context, android.Manifest.permission.POST_NOTIFICATIONS) !=
+            PackageManager.PERMISSION_GRANTED
+        ) {
+            permissions.launch(android.Manifest.permission.POST_NOTIFICATIONS)
+        }
+
+        if (ContextCompat.checkSelfPermission(context, android.Manifest.permission.READ_EXTERNAL_STORAGE) !=
+            PackageManager.PERMISSION_GRANTED
+        ) {
+            permissions.launch(android.Manifest.permission.READ_EXTERNAL_STORAGE)
+        }
+
+        if (ContextCompat.checkSelfPermission(context, android.Manifest.permission.WRITE_EXTERNAL_STORAGE) !=
+            PackageManager.PERMISSION_GRANTED
+        ) {
+            permissions.launch(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        }
     }
 Column(modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
 Text("Ticket Details", fontSize = 30.sp)
@@ -74,9 +90,12 @@ Card(modifier = Modifier
         composableBounds = it.boundsInWindow()
     }) {
     Column(modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally){
-        AsyncImage(model = ticket?.imageLink, contentDescription = "", modifier = Modifier
-            .height(200.dp)
-            .fillMaxWidth(), contentScale = ContentScale.Crop)
+
+        val imagePainterTest = rememberAsyncImagePainter(model = ImageRequest.Builder(LocalContext.current).data(ticket?.imageLink).crossfade(true).placeholder(R.drawable.morecomplexpreloader).build(), contentScale = ContentScale.Crop)
+
+       Image(imagePainterTest, contentDescription = "", modifier = Modifier
+           .height(200.dp)
+           .fillMaxWidth(), contentScale = ContentScale.Crop)
 
         Text(text = "Ticket type: ${ticket?.ticketType}")
         Text(text = "Audience's name: ${ticket?.name}")

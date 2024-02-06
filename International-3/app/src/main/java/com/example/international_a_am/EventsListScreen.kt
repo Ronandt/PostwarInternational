@@ -1,5 +1,6 @@
 package com.example.international_a_am
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -24,7 +25,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import coil.compose.AsyncImage
+import coil.compose.rememberImagePainter
 import com.example.international_a_am.data.Database
 import com.example.international_a_am.data.EventItem
 import com.example.international_a_am.data.WorldSkillsAPI
@@ -67,7 +68,14 @@ fun EventsListScreen(navController: NavController) {
                     Row(modifier = Modifier.clickable {
                         navController.navigate("eventDetails/${events[it].id}")
                     }) {
-                        AsyncImage(model = events[it].image, contentDescription = "image", modifier = Modifier.size(100.dp), contentScale = ContentScale.Crop)
+                        val imagePainter = rememberImagePainter(
+                            data = events[it].image,
+                            builder = {
+                                // Specify the placeholder GIF resource (replace with your actual placeholder)
+                                placeholder(R.drawable.morecomplexpreloader)
+                            }
+                        )
+                        Image(painter = imagePainter, contentDescription = "image", modifier = Modifier.size(100.dp), contentScale = ContentScale.Crop)
                         Column(verticalArrangement = Arrangement.Center) {
                             Text(text = events[it].title)
                             Text(
