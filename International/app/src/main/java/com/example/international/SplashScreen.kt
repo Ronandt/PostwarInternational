@@ -98,7 +98,9 @@ Column(modifier = Modifier
     LaunchedEffect(swipe.currentValue, swipe.offset, swipe) {
         println(swipe.offset)
         if(swipe.currentValue == 1) {
-            navController.navigate("about")
+            navController.navigate("about") {
+                launchSingleTop = true
+            }
         }
     }
 

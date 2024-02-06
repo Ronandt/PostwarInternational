@@ -40,6 +40,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavOptions
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -86,7 +87,9 @@ class MainActivity : ComponentActivity() {
                                     .fillMaxWidth()
                                     .height(IntrinsicSize.Min)
                                     .clickable {
-                                        navController.navigate(it)
+                                        navController.navigate(it) {
+                                            launchSingleTop = true
+                                        }
                                     }) {
 
                                     Text(it.capitalize(), fontWeight = FontWeight.SemiBold, modifier = Modifier

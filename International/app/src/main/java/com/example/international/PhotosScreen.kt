@@ -67,10 +67,14 @@ fun PhotosScreen(navController: NavController) {
     LaunchedEffect(swipe.currentValue, swipe.offset, swipe) {
         println(swipe.offset)
         if(swipe.currentValue == 1) {
-            navController.navigate("skills")
+            navController.navigate("skills") {
+                launchSingleTop = true
+            }
         }
         if(swipe.currentValue == -1) {
-            navController.navigate("statistic")
+            navController.navigate("statistic") {
+                launchSingleTop = true
+            }
         }
     }
 

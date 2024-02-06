@@ -64,7 +64,9 @@ fun AboutScreen(navController: NavController) {
     LaunchedEffect(swipe.currentValue, swipe.offset, swipe) {
         println(swipe.offset)
         if(swipe.currentValue == 1) {
-            navController.navigate("statistic")
+            navController.navigate("statistic") {
+                launchSingleTop = true
+            }
         }
     }
     Column(modifier = Modifier.fillMaxWidth()

@@ -53,10 +53,14 @@ fun StatisticScreen(navController: NavController) {
     LaunchedEffect(swipe.currentValue, swipe.offset, swipe) {
         println(swipe.offset)
         if(swipe.currentValue == 1) {
-            navController.navigate("photos")
+            navController.navigate("photos") {
+                launchSingleTop = true
+            }
         }
         if(swipe.currentValue == -1) {
-            navController.navigate("about")
+            navController.navigate("about") {
+                launchSingleTop = true
+            }
         }
     }
     Column(modifier = Modifier
