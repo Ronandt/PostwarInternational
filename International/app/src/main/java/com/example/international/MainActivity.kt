@@ -17,6 +17,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.rememberSwipeableState
 import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -41,6 +43,7 @@ import com.example.international.ui.theme.HotPink
 import com.example.international.ui.theme.InternationalTheme
 
 class MainActivity : ComponentActivity() {
+    @OptIn(ExperimentalMaterialApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -86,15 +89,21 @@ class MainActivity : ComponentActivity() {
                     }
 
                     Column {
-                        Spacer(modifier = Modifier.height(20.dp))
+                        var swipeState = rememberSwipeableState(0)
+
+
                         if(currentDestination != "splash") {
-                            Text(text = currentDestination.toString().capitalize(), fontWeight = FontWeight.Black, fontSize = 26.sp)
-                            Spacer(modifier = Modifier.height(10.dp))
-                            Divider(
-                                color = HotPink,
-                                thickness = 5.dp,
-                                modifier = Modifier.width(16.dp)
-                            )
+                            if(currentDestination!= null) {
+                                Spacer(modifier = Modifier.height(20.dp))
+                                Text(text = currentDestination.toString().capitalize(), fontWeight = FontWeight.Black, fontSize = 26.sp)
+                                Spacer(modifier = Modifier.height(10.dp))
+                                Divider(
+                                    color = HotPink,
+                                    thickness = 5.dp,
+                                    modifier = Modifier.width(16.dp)
+                                )
+                            }
+
                         }
 
                         NavHost(navController = navController, startDestination = "splash") {

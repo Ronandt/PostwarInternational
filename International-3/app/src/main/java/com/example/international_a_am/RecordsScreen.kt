@@ -1,6 +1,5 @@
 package com.example.international_a_am
 
-import android.os.Environment
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.clickable
@@ -20,8 +19,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -29,8 +30,13 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import aws.sdk.kotlin.services.s3.model.Object
+import aws.smithy.kotlin.runtime.content.asByteStream
 import com.example.international_a_am.Recorder.Player
 import com.example.international_a_am.Recorder.Recorder
+import com.example.international_a_am.data.S3Bucket
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import java.io.File
 import java.util.UUID
 
@@ -44,17 +50,25 @@ fun RecordsScreen(navController: NavController) {
     val tempFile = File(context.cacheDir, "audiotemp.mp3")
     val recordedBefore by remember {mutableStateOf(false)}
     val recorder =  Recorder(context)
-    var recordingState by remember {mutableStateOf(RecordState.NotPlaying)}
+    val scope = rememberCoroutineScope()
+    var recordingState by remember {mutableStateOf(RecordState.NotPlaying
+    )}
+    var dialog by remember {mutableStateOf(false)}
+
     val player = Player(context)
     var eff = rememberLauncherForActivityResult(contract = ActivityResultContracts.RequestPermission()) {
 
     }
-    var files = remember {context.getExternalFilesDir(Environment.DIRECTORY_MUSIC)?.listFiles() }
+    var files = remember {mutableStateListOf<Object>()}
+    //var files = remember {context.getExternalFilesDir(Environment.DIRECTORY_MUSIC)?.listFiles() }
     var change by remember {mutableStateOf(false)}
-    LaunchedEffect(Unit) {
+    LaunchedEffect(change) {
         eff.launch(android.Manifest.permission.RECORD_AUDIO)
         eff.launch(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
         eff.launch(android.Manifest.permission.READ_EXTERNAL_STORAGE)
+        files.clear()
+        S3Bucket().listItems()?.filter { it.key?.contains("audio")!!}?.let { files.addAll(it) }
+
     }
 
 Column(modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
@@ -92,7 +106,15 @@ Column(modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.Cente
             Text(text = "Voice Play")
         }
         Button(onClick = {
-                         tempFile.copyTo(File(context.getExternalFilesDir(Environment.DIRECTORY_MUSIC), "${UUID.randomUUID()}-audio.mp3"))
+            scope.launch {
+                S3Bucket().upload(tempFile.asByteStream(), "audio-" + UUID.randomUUID().toString())
+                delay(2000)
+                change = !change
+            }
+
+            dialog = true
+
+
         }, modifier = Modifier.align(Alignment.End),  enabled = recordingState == RecordState.NotPlaying) {
             Text(text = "Submit")
         }
@@ -106,15 +128,26 @@ Column(modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.Cente
         }
         files?.size?.let {
             items(it) {
-                Row(modifier = Modifier.fillMaxWidth().clickable {
-                                                                 player.play(files[it])
-                }, horizontalArrangement = Arrangement.SpaceBetween) {
-                    Text(text = "Audio1", )
+                Row(modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable {
+                        scope.launch {
+                            files[it].key?.let { it1 -> S3Bucket().getItems(context = context ,keyN = it1) }
+                                ?.let { it2 -> player.play(it2) }
+
+                        }
+
+
+                    }, horizontalArrangement = Arrangement.SpaceBetween) {
+                    files[it].key?.let { it1 -> Text(text = it1) }
                     Icon(imageVector = Icons.Default.PlayArrow, contentDescription = "Play recording ")
                 }
             }
         }
 
+
+    }
+    if(dialog) {
 
     }
 }

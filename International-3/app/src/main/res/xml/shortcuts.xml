@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <shortcut
+        android:shortcutId="events"
+        android:enabled="true"
+        android:icon="@drawable/baseline_home_24"
+        android:shortcutShortLabel="@string/Events">
+        >
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.example.international_a_am"
+            android:targetClass="com.example.international_a_am.MainActivity"
+            android:data="events"
+          />
+
+        <categories android:name="android.shortcut.conversation" />
+        <capability-binding android:key="actions.intent.CREATE_MESSAGE" />
+    </shortcut>
+
+    <!-- Specify more shortcuts here. -->
+    <shortcut
+        android:shortcutId="tickets"
+        android:enabled="true"
+        android:icon="@drawable/baseline_post_add_24"
+        android:shortcutShortLabel="@string/Tickets"
+        >
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.example.international_a_am"
+            android:targetClass="com.example.international_a_am.MainActivity"
+            android:data="tickets"/>
+
+        <categories android:name="android.shortcut.conversation" />
+        <capability-binding android:key="actions.intent.CREATE_MESSAGE" />
+    </shortcut>
+    <shortcut
+        android:icon="@drawable/baseline_fiber_smart_record_24"
+        android:shortcutId="records"
+        android:enabled="true"
+        android:shortcutShortLabel="@string/Records"
+        >
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.example.international_a_am"
+            android:targetClass="com.example.international_a_am.MainActivity"
+            android:data="records"/>
+
+        <categories android:name="android.shortcut.conversation" />
+        <capability-binding android:key="actions.intent.CREATE_MESSAGE" />
+    </shortcut>
+
+
+</shortcuts>

@@ -56,8 +56,8 @@ interface EventDao {
     @Update
     suspend fun update(event: Event)
 
-    @Query("SELECT * FROM event WHERE id = :eventId")
-    suspend fun select(eventId: Int): Event
+    @Query("SELECT EXISTS (SELECT * FROM event WHERE id = :eventId)")
+    suspend fun select(eventId: Int): Boolean
 }
 
 object Database {

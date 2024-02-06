@@ -8,8 +8,11 @@ import androidx.compose.animation.scaleOut
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+
+
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -17,6 +20,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -24,12 +28,16 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.rememberSwipeableState
+import androidx.compose.material.swipeable
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -42,70 +50,98 @@ import androidx.compose.ui.input.key.Key.Companion.Ro
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.navigation.NavController
+import coil.compose.AsyncImage
 import com.example.international.ui.theme.HotPink
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun PhotosScreen(navController: NavController) {
-    var dialog by remember {mutableStateOf(-1)}
+    var dialog by remember {mutableStateOf("")}
+    var swipe = rememberSwipeableState(0)
+    var swipe2 = rememberSwipeableState(0)
+    LaunchedEffect(swipe.currentValue, swipe.offset, swipe) {
+        println(swipe.offset)
+        if(swipe.currentValue == 1) {
+            navController.navigate("skills")
+        }
+        if(swipe.currentValue == -1) {
+            navController.navigate("statistic")
+        }
+    }
+
 
     Spacer(modifier = Modifier.height(10.dp))
 Row(modifier = Modifier
     .fillMaxWidth()
-    .padding(end = 20.dp, top = 20.dp)) {
+    .padding(end = 20.dp, top = 20.dp) .swipeable(
+        state = swipe,
+        anchors = mapOf(-10000f to -1, 0f to 0, 10000f to 1),
+        reverseDirection = true,
+        orientation = Orientation.Vertical
+    )
+    .offset {
+        IntOffset(0, -swipe.offset.value.toInt())
+    }) {
+    val listThing = remember {listOf("https://d3izhzxqbknro4.cloudfront.net/web_development.jpg","https://d3izhzxqbknro4.cloudfront.net/photo-6.jpg","https://d3izhzxqbknro4.cloudfront.net/photo-2.jpg","https://d3izhzxqbknro4.cloudfront.net/photo-7.jpg")}
     Column(modifier = Modifier.padding(end = 10.dp)) {
         LazyVerticalGrid(columns = GridCells.Fixed(2), horizontalArrangement = Arrangement.spacedBy(10.dp), verticalArrangement = Arrangement.spacedBy(10.dp), modifier = Modifier.width(480.dp)) {
             items(4) {
-                Image(painter = painterResource(id = R.drawable.ws04), contentDescription = "", modifier = Modifier
+                AsyncImage(listThing[it], contentDescription = "", modifier = Modifier
                     .size(230.dp)
                     .clickable {
-                        dialog = R.drawable.ws04
+                        dialog =listThing[it]
                     }, contentScale = ContentScale.Crop, )
             }
 
 
         }
         Spacer(modifier = Modifier.height(10.dp))
-        Image(painter = painterResource(id = R.drawable.ws06), contentDescription = "", modifier = Modifier
+        AsyncImage("https://d3izhzxqbknro4.cloudfront.net/network_administration.jpg", contentDescription = "", modifier = Modifier
             .width(480.dp)
             .height(230.dp)
             .clickable {
-                dialog = R.drawable.ws06
+                dialog = "https://d3izhzxqbknro4.cloudfront.net/network_administration.jpg"
             }, contentScale = ContentScale.Crop)
     }
     Column() {
-        Image(painter = painterResource(id = R.drawable.ws05), contentDescription = "", modifier = Modifier
+        AsyncImage("https://d3izhzxqbknro4.cloudfront.net/music_composition.jpg", contentDescription = "", modifier = Modifier
             .size(474.dp)
             .clickable {
-                dialog = R.drawable.ws05
+                dialog = "https://d3izhzxqbknro4.cloudfront.net/music_composition.jpg"
             }, contentScale = ContentScale.Crop)
         Spacer(modifier = Modifier.height(10.dp))
         Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-            Image(painter = painterResource(R.drawable.ws04), contentDescription ="", contentScale = ContentScale.Crop    , modifier = Modifier
+            AsyncImage("https://d3izhzxqbknro4.cloudfront.net/film_production.jpg", contentDescription ="", contentScale = ContentScale.Crop    , modifier = Modifier
                 .size(230.dp)
                 .clickable {
-                    dialog = R.drawable.ws04
+                    dialog = "https://d3izhzxqbknro4.cloudfront.net/film_production.jpg"
                 })
-            Image(painter = painterResource(R.drawable.ws04), contentDescription ="" , contentScale = ContentScale.Crop , modifier = Modifier
+            AsyncImage("https://d3izhzxqbknro4.cloudfront.net/nursing.jpg", contentDescription ="" , contentScale = ContentScale.Crop , modifier = Modifier
                 .size(230.dp)
                 .clickable {
-                    dialog = R.drawable.ws04
+                    dialog ="https://d3izhzxqbknro4.cloudfront.net/nursing.jpg"
                 })
         }
     }
 
 }
 
-        AnimatedVisibility(visible = dialog != -1, enter = expandIn(), exit = scaleOut()) {
-            Dialog(onDismissRequest = { dialog = -1}) {
-                Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                    IconButton(onClick = { dialog = -1}) {
-                        Icon(imageVector = Icons.Default.Close, contentDescription = "Close", tint = HotPink)
+        if(dialog != "") {
+            Dialog(onDismissRequest = { dialog = ""}) {
+                Box( contentAlignment = Alignment.Center) {
+
+                    if(dialog != "") {
+                        AsyncImage( dialog, contentDescription ="Image", contentScale = ContentScale.Crop)
+                        IconButton(onClick = { dialog = ""}, Modifier.align(Alignment.TopEnd).padding(10.dp).background(Color.White, CircleShape)) {
+                            Icon(imageVector = Icons.Default.Close, contentDescription = "Close", tint = HotPink)
+                        }
                     }
-                    Image(painter =  painterResource(if(dialog == -1) R.drawable.ic_launcher_background else  dialog), contentDescription ="Image", modifier = Modifier.fillMaxSize())
+
                 }
             }
         }

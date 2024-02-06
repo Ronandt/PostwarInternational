@@ -96,7 +96,7 @@ fun CreateTicketScreen(navController: NavController) {
                     )?.readBytes()?.let { it1 -> ByteStream.fromBytes(it1) }
 
                 }?.let { S3Bucket().upload(byteStream = it) }
-                imageLink?.let { TicketItem(UUID.randomUUID().toString(), imageLink = it, ticketType = selection, name = name, time = formattedDateTime, seat = "$number$randomLetter Row$randomLetter Column$randomLetter") }
+                imageLink?.let { TicketItem(UUID.randomUUID().toString(), imageLink = it, ticketType = selection, name = name, time = formattedDateTime, seat = "$randomLetter$number Row$number Column$number", order = 0) }
                     ?.let { WorldSkillsAPI().createTicket(it) }
                // db?.ticketDao()?.insertAll(listOf(Ticket(selection, name, System.currentTimeMillis(), "$number$randomLetter Row$randomLetter Column$randomLetter", currentImage.toString())))
 

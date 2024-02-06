@@ -42,6 +42,15 @@ class WorldSkillsAPI {
 
     }
 
+    suspend fun deleteTicket(id:String) {
+        val jsonAdapter = moshi.adapter<TicketItem>()
+        val json: JSONObject = JSONObject().apply {
+            put("id", id)
+        }
+        postRequest("/deleteTickets", json)
+
+
+    }
 
 
 
@@ -88,7 +97,7 @@ data class EventItem(
     val text: String,
     val viewCount: Int,
     val otherImages: List<String>,
-    val status: String? = "Unread"
+    var status: String? = "Unread"
 )
 
 @JsonClass(generateAdapter = true)
@@ -98,7 +107,8 @@ data class TicketItem(
     val imageLink: String,
     val ticketType: String,
     val seat: String,
-    val time: String
+    val time: String,
+    val order: Int? = 0
 
 )
 

@@ -31,7 +31,9 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -45,6 +47,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.navigation.NavController
+import coil.compose.AsyncImage
 import com.squareup.moshi.Json
 
 @OptIn(ExperimentalLayoutApi::class, ExperimentalFoundationApi::class)
@@ -52,17 +55,19 @@ import com.squareup.moshi.Json
 fun SkillsScreen(navController: NavController) {
     var skillDialog by remember {mutableStateOf(-1)}
     val context = LocalContext.current
-    var skills = remember {JsonRetriever(context).skills()}
+    var skills = remember { mutableStateListOf<Category>()}
     var skillsCategory by remember { mutableStateOf(-1)}
-
+    LaunchedEffect(Unit) {
+        WorldSkillsAPI().getSkill()?.let { skills.addAll(it) }
+    }
     LazyColumn(modifier = Modifier.fillMaxSize()) {
 
         skills?.size?.let {
             items(it) { arr ->
                 Spacer(modifier = Modifier.height(10.dp))
-                Text(text = skills[arr].categoryName, fontSize = 34.sp )
+                Text(text = skills[arr].category, fontSize = 34.sp )
             FlowRow(maxItemsInEachRow = 3, horizontalArrangement = Arrangement.spacedBy(10.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                repeat(skills[arr].skills.size) {
+                repeat(skills[arr].trades.size) {
                     Row(modifier= Modifier
                         .width(300.dp)
                         .height(100.dp)
@@ -76,7 +81,7 @@ fun SkillsScreen(navController: NavController) {
                             shape = RoundedCornerShape(10.dp)
                         )
                         .padding(8.dp), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
-                        Text(text = skills[arr].skills[it].name)
+                        Text(text = skills[arr].trades[it].skillName)
                         Icon(imageVector = Icons.Default.Add, contentDescription ="Add" )
                     }
                 }
@@ -96,25 +101,25 @@ fun SkillsScreen(navController: NavController) {
                         .fillMaxSize(0.9f)
                         .background(Color.White)
                         .padding(10.dp)) {
-                        skills?.get(skillsCategory)?.skills?.get(skillDialog)
-                            ?.let { Text(text = it.name, fontWeight = FontWeight.Bold, modifier = Modifier.fillMaxWidth()) }
+                        skills?.get(skillsCategory)?.trades?.get(skillDialog)
+                            ?.let { Text(text = it.skillName, fontWeight = FontWeight.Bold, modifier = Modifier.fillMaxWidth()) }
 
                         Spacer(modifier = Modifier.height(20.dp))
                         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
                             SelectionContainer {
-                                skills?.get(skillsCategory)?.skills?.get(skillDialog)?.description?.let { Text(text = it, modifier = Modifier
+                                skills?.get(skillsCategory)?.trades?.get(skillDialog)?.text?.let { Text(text = it, modifier = Modifier
                                     .fillMaxWidth(0.6f)
                                   ) }
                             }
 
                             Column() {
-                                Image(painter = painterResource(R.drawable.ic_launcher_background), contentDescription = "Image of skill", modifier = Modifier.size(160.dp, 200.dp))
+                                AsyncImage(skills?.get(skillsCategory)?.trades?.get(skillDialog)?.imageLink, contentDescription = "Image of skill", modifier = Modifier.size(160.dp, 200.dp))
                                 Spacer(modifier = Modifier.weight(1f))
                                 Button(onClick = {
                                     skillDialog +=1
 
 
-                                }, modifier = Modifier.align(Alignment.End), enabled =    skills?.get(skillsCategory)?.skills?.getOrNull(skillDialog + 1) != null) {
+                                }, modifier = Modifier.align(Alignment.End), enabled =    skills?.get(skillsCategory)?.trades?.getOrNull(skillDialog + 1) != null) {
                                     Text(text = "Next")
                                 }
                             }
@@ -132,12 +137,12 @@ fun SkillsScreen(navController: NavController) {
                         .background(Color.White)
                         .padding(10.dp)) {
 
-                        skills?.get(skillsCategory)?.skills?.get(skillDialog)
-                            ?.let { Text(text = it.name, fontWeight = FontWeight.Bold, modifier = Modifier.fillMaxWidth()) }
+                        skills?.get(skillsCategory)?.trades?.get(skillDialog)
+                            ?.let { Text(text = it.skillName, fontWeight = FontWeight.Bold, modifier = Modifier.fillMaxWidth()) }
 
                         Spacer(modifier = Modifier.height(20.dp))
                         SelectionContainer {
-                            skills?.get(skillsCategory)?.skills?.get(skillDialog)?.description?.let { Text(text = it, modifier = Modifier.fillMaxWidth(0.9f)) }
+                            skills?.get(skillsCategory)?.trades?.get(skillDialog)?.text?.let { Text(text = it, modifier = Modifier.fillMaxWidth(0.9f)) }
                         }
 
                             Column(modifier = Modifier.fillMaxWidth()) {
@@ -147,7 +152,7 @@ fun SkillsScreen(navController: NavController) {
                                     skillDialog +=1
 
 
-                                }, modifier = Modifier.align(Alignment.End), enabled =    skills?.get(skillsCategory)?.skills?.getOrNull(skillDialog + 1) != null) {
+                                }, modifier = Modifier.align(Alignment.End), enabled =    skills?.get(skillsCategory)?.trades?.getOrNull(skillDialog + 1) != null) {
                                     Text(text = "Next")
                                 }
                             }

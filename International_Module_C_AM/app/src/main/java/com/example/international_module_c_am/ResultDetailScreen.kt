@@ -1,5 +1,7 @@
 package com.example.international_module_c_am
 
+import android.content.Context
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -21,6 +23,8 @@ import androidx.compose.material.IconButton
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowLeft
+import androidx.compose.material3.CardColors
+import androidx.compose.material3.CardDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -41,7 +45,13 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import coil.compose.AsyncImagePainter.State.Empty.painter
+import com.example.international_module_c_am.ui.theme.Bronze
+import com.example.international_module_c_am.ui.theme.CardGray
 import com.example.international_module_c_am.ui.theme.DarkBlue
+import com.example.international_module_c_am.ui.theme.DarkGray
+import com.example.international_module_c_am.ui.theme.Gold
+import com.example.international_module_c_am.ui.theme.LightGray
+import com.example.international_module_c_am.ui.theme.Silver
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -62,26 +72,32 @@ fun ResultDetailScreen(navController: NavController, toInt: Int) {
         bronzeMedal = item?.bronze
     }
 
-
-Column(modifier = Modifier.fillMaxWidth()) {
+    val sharedPref = context.getSharedPreferences("settings", Context.MODE_PRIVATE).getBoolean("darkMode", false)
+    val text1ColorAsState by animateColorAsState(targetValue = if(sharedPref) Color.White else DarkBlue)
+    val text2ColorAsState by animateColorAsState(targetValue = if(sharedPref) Color.LightGray else Color.DarkGray)
+    val cardBackgroundAsState by animateColorAsState(targetValue =if (sharedPref) CardGray else Color.White )
+    val  background by animateColorAsState(targetValue = if(sharedPref) DarkGray else Color.White)
+Column(modifier = Modifier
+    .fillMaxWidth()
+    .background(background)) {
     Row(modifier = Modifier
         .fillMaxWidth()
         .padding(vertical = 14.dp), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
         IconButton(onClick = { navController.navigateUp() }) {
-            Icon( Icons.Default.KeyboardArrowLeft, contentDescription = "Go back", tint = DarkBlue, modifier = Modifier.size(30.dp))
+            Icon( Icons.Default.KeyboardArrowLeft, contentDescription = "Go back", tint =  text1ColorAsState, modifier = Modifier.size(30.dp))
 
 
         }
-        Text(text = "Results", fontWeight = FontWeight.SemiBold)
+        Text(text = "Results", fontWeight = FontWeight.SemiBold, modifier = Modifier.offset(x = -10.dp), color = text2ColorAsState)
     }
     Column(modifier = Modifier
         .fillMaxWidth()
         .height(180.dp)
-        .background(Color.LightGray)
+        .background(cardBackgroundAsState)
         .padding(vertical = 20.dp), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.SpaceAround) {
         AsyncImage(model = item?.countryImage , contentDescription = "", modifier = Modifier.size(130.dp, 80.dp), contentScale = ContentScale.Crop)
 
-        item?.country?.let { Text(text = it, fontWeight = FontWeight.Bold, color = DarkBlue, fontSize = 20.sp   ) }
+        item?.country?.let { Text(text = it, fontWeight = FontWeight.Bold, color = text1ColorAsState, fontSize = 20.sp   ) }
 
 
     }
@@ -90,9 +106,9 @@ Column(modifier = Modifier.fillMaxWidth()) {
             item {
                 Row(modifier= Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 20.dp, vertical = 10.dp), horizontalArrangement = Arrangement.SpaceBetween) {
+                    .padding(horizontal = 20.dp, vertical = 10.dp), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
                     Image(painter = painterResource(R.drawable.gold_medal), contentDescription = "Gold medal", modifier = Modifier.size(35.dp))
-                    Text(text = "Gold Medals", fontWeight = FontWeight.SemiBold, fontSize = 18.sp)
+                    Text(text = "Gold Medals", fontWeight = FontWeight.SemiBold, fontSize = 18.sp, color = Gold )
                 }
 
             }
@@ -102,18 +118,24 @@ Column(modifier = Modifier.fillMaxWidth()) {
 
                         androidx.compose.material3.Card(modifier = Modifier
                             .size(200.dp, 260.dp)
-                            .padding(10.dp)) {
-                            Column(modifier = Modifier.padding(top = 6.dp,).padding(horizontal = 10.dp)) {
+                            .padding(10.dp), colors = CardDefaults.cardColors(cardBackgroundAsState)) {
+                            Column(modifier = Modifier
+                                .padding(top = 6.dp,)
+                                .padding(horizontal = 10.dp)) {
 
-                                AsyncImage(item?.gold?.get(it)?.avatar, contentDescription = "Theordore", modifier = Modifier.clip(
-                                    RoundedCornerShape(20.dp))
+                                AsyncImage(item?.gold?.get(it)?.avatar, contentDescription = "Theordore", modifier = Modifier
+                                    .clip(
+                                        RoundedCornerShape(20.dp)
+                                    )
                                     .size(170.dp)
                                     .clip(
                                         RoundedCornerShape(20.dp)
-                                    ).align(Alignment.CenterHorizontally).offset(x = 0.dp), contentScale = ContentScale.Crop)
+                                    )
+                                    .align(Alignment.CenterHorizontally)
+                                    .offset(x = 0.dp), contentScale = ContentScale.Crop)
                                 Spacer(modifier = Modifier.height(10.dp ))
-                                goldMedal?.get(it)?.let { it1 -> Text(text = it1.competitorName, fontWeight = FontWeight.SemiBold, fontSize = 18.sp, modifier = Modifier.basicMarquee(), maxLines = 1) }
-                                goldMedal?.get(it)?.let { it1 -> Text(text = it1.skillName, color = Color.DarkGray, modifier = Modifier.basicMarquee()) }
+                                goldMedal?.get(it)?.let { it1 -> Text(text = it1.competitorName, fontWeight = FontWeight.SemiBold, fontSize = 18.sp, modifier = Modifier.basicMarquee(), maxLines = 1, color = text2ColorAsState) }
+                                goldMedal?.get(it)?.let { it1 -> Text(text = it1.skillName, modifier = Modifier.basicMarquee(), color = text2ColorAsState) }
                             }
 
                         }
@@ -126,9 +148,9 @@ Column(modifier = Modifier.fillMaxWidth()) {
             item {
                 Row(modifier= Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 20.dp, vertical = 10.dp), horizontalArrangement = Arrangement.SpaceBetween) {
-                    Image(painter = painterResource(R.drawable.silver_medal), contentDescription = "Gold medal", modifier = Modifier.size(35.dp))
-                    Text(text = "Silver Medals", fontWeight = FontWeight.SemiBold, fontSize = 18.sp)
+                    .padding(horizontal = 20.dp, vertical = 10.dp), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
+                    Image(painter = painterResource(R.drawable.silver_medal), contentDescription = "Silver medal", modifier = Modifier.size(35.dp))
+                    Text(text = "Silver Medals", fontWeight = FontWeight.SemiBold, fontSize = 18.sp, color = Silver)
                 }
 
             }
@@ -138,17 +160,23 @@ Column(modifier = Modifier.fillMaxWidth()) {
 
                         androidx.compose.material3.Card(modifier = Modifier
                             .size(200.dp, 260.dp)
-                            .padding(10.dp)) {
-                            Column(modifier = Modifier.padding(top = 6.dp,).padding(horizontal = 10.dp)) {
-                                AsyncImage(item?.silver?.get(it)?.avatar, contentDescription = "Theordore", modifier = Modifier.clip(
-                                    RoundedCornerShape(20.dp))
+                            .padding(10.dp), colors = CardDefaults.cardColors(cardBackgroundAsState)) {
+                            Column(modifier = Modifier
+                                .padding(top = 6.dp,)
+                                .padding(horizontal = 10.dp)) {
+                                AsyncImage(item?.silver?.get(it)?.avatar, contentDescription = "Theordore", modifier = Modifier
+                                    .clip(
+                                        RoundedCornerShape(20.dp)
+                                    )
                                     .size(170.dp)
                                     .clip(
                                         RoundedCornerShape(20.dp)
-                                    ).align(Alignment.CenterHorizontally).offset(x = 0.dp), contentScale = ContentScale.Crop)
+                                    )
+                                    .align(Alignment.CenterHorizontally)
+                                    .offset(x = 0.dp), contentScale = ContentScale.Crop)
                                 Spacer(modifier = Modifier.height(10.dp ))
-                                silverMedal?.get(it)?.let { it1 -> Text(text = it1.competitorName, fontWeight = FontWeight.SemiBold, fontSize = 18.sp, modifier = Modifier.basicMarquee(), maxLines = 1) }
-                                silverMedal?.get(it)?.let { it1 -> Text(text =  it1.skillName, color = Color.DarkGray, modifier = Modifier.basicMarquee()) }
+                                silverMedal?.get(it)?.let { it1 -> Text(text = it1.competitorName, fontWeight = FontWeight.SemiBold, fontSize = 18.sp, modifier = Modifier.basicMarquee(), maxLines = 1, color = text2ColorAsState) }
+                                silverMedal?.get(it)?.let { it1 -> Text(text =  it1.skillName, modifier = Modifier.basicMarquee(), color = text2ColorAsState) }
                             }
 
                         }
@@ -161,9 +189,9 @@ Column(modifier = Modifier.fillMaxWidth()) {
             item {
                 Row(modifier= Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 20.dp, vertical = 10.dp), horizontalArrangement = Arrangement.SpaceBetween) {
-                    Image(painter = painterResource(R.drawable.bronze_medal), contentDescription = "Gold medal", modifier = Modifier.size(35.dp))
-                    Text(text = "Bronze Medals", fontWeight = FontWeight.SemiBold, fontSize = 18.sp)
+                    .padding(horizontal = 20.dp, vertical = 10.dp), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
+                    Image(painter = painterResource(R.drawable.bronze_medal), contentDescription = "Bronze medal", modifier = Modifier.size(35.dp))
+                    Text(text = "Bronze Medals", fontWeight = FontWeight.SemiBold, fontSize = 18.sp, color = Bronze)
                 }
 
             }
@@ -175,17 +203,23 @@ Column(modifier = Modifier.fillMaxWidth()) {
 
                             androidx.compose.material3.Card(modifier = Modifier
                                 .size(200.dp, 260.dp)
-                                .padding(10.dp)) {
-                                Column(modifier = Modifier.padding(top = 6.dp,).padding(horizontal = 10.dp)) {
-                                    AsyncImage(item?.bronze?.get(it)?.avatar, contentDescription = "Theordore", modifier = Modifier.clip(
-                                        RoundedCornerShape(20.dp))
+                                .padding(10.dp), colors = CardDefaults.cardColors(cardBackgroundAsState)) {
+                                Column(modifier = Modifier
+                                    .padding(top = 6.dp,)
+                                    .padding(horizontal = 10.dp)) {
+                                    AsyncImage(item?.bronze?.get(it)?.avatar, contentDescription = "Theordore", modifier = Modifier
+                                        .clip(
+                                            RoundedCornerShape(20.dp)
+                                        )
                                         .size(170.dp)
                                         .clip(
                                             RoundedCornerShape(20.dp)
-                                        ).align(Alignment.CenterHorizontally).offset(x = 0.dp), contentScale = ContentScale.Crop)
+                                        )
+                                        .align(Alignment.CenterHorizontally)
+                                        .offset(x = 0.dp), contentScale = ContentScale.Crop)
                                     Spacer(modifier = Modifier.height(10.dp ))
-                                    Text(text = bronzeMedal!![it].competitorName, fontWeight = FontWeight.SemiBold, fontSize = 18.sp, modifier = Modifier.basicMarquee(), maxLines = 1)
-                                    Text(text = bronzeMedal!![it].skillName, color = Color.DarkGray, modifier = Modifier.basicMarquee())
+                                    Text(text = bronzeMedal!![it].competitorName, fontWeight = FontWeight.SemiBold, fontSize = 18.sp, modifier = Modifier.basicMarquee(), maxLines = 1, color = text2ColorAsState)
+                                    Text(text = bronzeMedal!![it].skillName, modifier = Modifier.basicMarquee(), color = text2ColorAsState)
                                 }
 
                             }

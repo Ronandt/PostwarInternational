@@ -1,8 +1,11 @@
 package com.example.international_a_am
 
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.annotation.RequiresApi
+import androidx.compose.animation.AnimatedContentTransitionScope
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -14,9 +17,10 @@ import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavDestination.Companion.hierarchy
@@ -28,12 +32,21 @@ import androidx.navigation.compose.rememberNavController
 import com.example.international_a_am.ui.theme.International_A_AMTheme
 
 class MainActivity : ComponentActivity() {
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             val navController = rememberNavController()
             val navItems = remember {listOf("events", "tickets", "records")}
             var currentNavigation = navController.currentBackStackEntryAsState().value?.destination
+            LaunchedEffect(key1 = Unit ) {
+
+                if(intent?.data != null) {
+                    println(intent?.data)
+                    navController.navigate(intent.data.toString())
+                }
+            }
+
             International_A_AMTheme {
                 Scaffold(bottomBar= {
                     if(currentNavigation?.route.toString() != "splash") {
@@ -42,20 +55,43 @@ class MainActivity : ComponentActivity() {
                                 currentNavigation?.hierarchy?.any { it.route == current }
                                     ?.let { NavigationBarItem(selected = it, onClick = { navController.navigate(current)
                                                                                        println(current)
-                                                                                       }, icon = { Icon(
-                                        imageVector = Icons.Default.Home,
-                                        contentDescription = "HJ"
-                                    ) }, label = {
+                                                                                       }, icon = {
+                                        when(current) {
+                                            "events" -> {
+                                                Icon(
+                                                    imageVector = Icons.Default.Home,
+                                                    contentDescription = "HJ"
+                                                )
+                                            }
+                                            "tickets" -> {
+                                                Icon(
+                                                    painterResource(id = R.drawable.baseline_post_add_24),
+                                                    contentDescription = "HJ"
+                                                )
+                                            }
+                                            "records" -> {
+                                                Icon(
+                                                    painterResource(id = R.drawable.baseline_fiber_smart_record_24),
+                                                    contentDescription = "HJ"
+                                                )
+                                            }
+                                        }
+                                         }, label = {
                                         Text(text = current.capitalize(), fontSize = 20.sp)
 
-                                    }, colors = NavigationBarItemDefaults.colors(selectedTextColor = Color.Red))}
+                                    }, colors = NavigationBarItemDefaults.colors())}
                             }
                         }
                     }
            }) {
+
                     Column(modifier = Modifier.padding(it   )) {
                         NavHost(navController, startDestination = "splash") {
-                            composable("splash") {
+
+
+                            composable("splash", enterTransition = {
+                                this.slideIntoContainer(towards = AnimatedContentTransitionScope.SlideDirection.Left)
+                            }) {
                                 SplashScreen(navController = navController)
                             }
                             navigation("eventsList", route = "events") {

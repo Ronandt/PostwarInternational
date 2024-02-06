@@ -77,8 +77,16 @@ dependencies {
     implementation("androidx.camera:camera-camera2:${camerax_version}")
     implementation("androidx.camera:camera-view:${camerax_version}")
     kapt("com.squareup.moshi:moshi-kotlin-codegen:1.14.0")
+    implementation("io.coil-kt:coil-compose:2.5.0")
+    // For AppWidgets support
+    implementation("androidx.glance:glance-appwidget:1.0.0")
 
 
+    // For interop APIs with Material 2
+    implementation("androidx.glance:glance-material:1.0.0")
+
+    // For interop APIs with Material 3
+    implementation("androidx.glance:glance-material3:1.0.0")
 
     val room_version = "2.6.0"
 

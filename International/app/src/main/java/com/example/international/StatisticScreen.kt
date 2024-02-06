@@ -1,8 +1,10 @@
 package com.example.international
 
+import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -10,8 +12,12 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.rememberSwipeableState
+import androidx.compose.material.swipeable
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -28,11 +34,13 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import kotlinx.coroutines.delay
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun StatisticScreen(navController: NavController) {
     val context = LocalContext.current
@@ -41,8 +49,26 @@ fun StatisticScreen(navController: NavController) {
     LaunchedEffect(Unit) {
         WorldSkillsAPI().getStatistics()?.let { statistic.addAll(it) }
     }
+    var swipe = rememberSwipeableState(0)
+    LaunchedEffect(swipe.currentValue, swipe.offset, swipe) {
+        println(swipe.offset)
+        if(swipe.currentValue == 1) {
+            navController.navigate("photos")
+        }
+        if(swipe.currentValue == -1) {
+            navController.navigate("about")
+        }
+    }
     Column(modifier = Modifier
-        .fillMaxWidth()
+        .fillMaxWidth() .swipeable(
+            state = swipe,
+            anchors = mapOf(-10000f to -1, 0f to 0, 10000f to 1),
+            reverseDirection = true,
+            orientation = Orientation.Vertical
+        )
+        .offset {
+            IntOffset(0, -swipe.offset.value.toInt())
+        }
         .padding(vertical = 20.dp)
         .padding(end = 20.dp)) {
         Column(modifier = Modifier
@@ -58,15 +84,18 @@ fun StatisticScreen(navController: NavController) {
                         var competitors by remember {mutableStateOf(0)}
                         var calc =  400.dp.div(1300)
                         LaunchedEffect(Unit) {
-                            delay(1100L)
+                            delay(200L)
                             currentSize = (calc * statistic[it].numberOfCompetitors)
-                            (1..statistic[it].numberOfCompetitors)  .forEach {
-                                delay(0L)
-                                competitors += 1
+                            (1..statistic[it].numberOfCompetitors/4)  .forEach {
+                                delay(1L)
+                                competitors += 4
                             }
 
                         }
-                        Text(text = competitors.toString(), color = Color.White)
+
+                            Text(text = competitors.toString(), color = Color.White)
+
+
                         Box(contentAlignment = Alignment.BottomCenter) {
 
                             var width = 26.dp
@@ -76,13 +105,15 @@ fun StatisticScreen(navController: NavController) {
                                 .width(width)
                                 .background(Color(0xFF00223D)))
                             Spacer(modifier = Modifier
-                                .height(currentSize)
-                                .width(width).animateContentSize()
+                                .height(competitors.dp / 4)
+                                .width(width)
+                                .animateContentSize()
                                 .background(
                                     Color(
                                         0xFF0BA4EC
                                     )
-                                ).animateContentSize())
+                                )
+                                .animateContentSize())
 
                         }
 

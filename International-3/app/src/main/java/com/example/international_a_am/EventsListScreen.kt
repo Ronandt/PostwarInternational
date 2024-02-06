@@ -1,11 +1,11 @@
 package com.example.international_a_am
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
@@ -18,12 +18,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import coil.compose.AsyncImage
+import com.example.international_a_am.data.Database
 import com.example.international_a_am.data.EventItem
 import com.example.international_a_am.data.WorldSkillsAPI
 
@@ -37,7 +39,10 @@ fun EventsListScreen(navController: NavController) {
     val context = LocalContext.current
     var events = remember {mutableStateListOf<EventItem>()}
     LaunchedEffect(Unit) {
-        WorldSkillsAPI().getEvents()?.let { events.addAll(it) }
+        WorldSkillsAPI().getEvents()?.let { events.addAll(it.map {
+            it.apply {    status =  if (Database.getDb(context)?.eventDao()?.select(it.id.toInt()) == true) "Read" else "Unread" }
+
+        }) }
 
 
     }
@@ -62,14 +67,15 @@ fun EventsListScreen(navController: NavController) {
                     Row(modifier = Modifier.clickable {
                         navController.navigate("eventDetails/${events[it].id}")
                     }) {
-                        Image(painter = painterResource(R.drawable.ic_launcher_background), contentDescription = "image")
-                        Column {
+                        AsyncImage(model = events[it].image, contentDescription = "image", modifier = Modifier.size(100.dp), contentScale = ContentScale.Crop)
+                        Column(verticalArrangement = Arrangement.Center) {
                             Text(text = events[it].title)
                             Text(
                                 text = events[it].text  ,
                                 overflow = TextOverflow.Ellipsis,
                                 maxLines = 2
                             )
+
                             events[it].status?.let { it1 -> Text(text = it1) }
                         }
                     }

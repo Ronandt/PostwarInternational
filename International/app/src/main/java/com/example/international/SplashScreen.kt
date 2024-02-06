@@ -1,9 +1,13 @@
 package com.example.international
 
+
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateColor
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.animateValue
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
@@ -30,9 +34,15 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.vector.Path
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -43,6 +53,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.international.ui.theme.HotPink
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
@@ -59,6 +71,30 @@ Column(modifier = Modifier
         repeatMode = RepeatMode.Reverse)
 
     )
+
+    var scope = rememberCoroutineScope()
+    var lampMove by remember {mutableStateOf(false)}
+    var contentsAppear by remember {mutableStateOf(false)}
+    var lightAppear by remember {mutableStateOf(false)}
+    LaunchedEffect(key1 = Unit ) {
+        lampMove = true
+    }
+    var alpha = animateFloatAsState(targetValue = if(contentsAppear) 1f else 0f)
+    var alphas = animateFloatAsState(targetValue = if(lightAppear) 1f else 0f)
+    val distance by  animateDpAsState(targetValue = if(lampMove )120.dp else 0.dp    ,
+        animationSpec = tween(durationMillis = 1700) , finishedListener = {
+            scope.launch {
+                delay(500)
+                lightAppear = true
+                delay(500)
+                contentsAppear = true
+
+            }
+
+
+        })
+
+
     LaunchedEffect(swipe.currentValue, swipe.offset, swipe) {
         println(swipe.offset)
         if(swipe.currentValue == 1) {
@@ -66,37 +102,62 @@ Column(modifier = Modifier
         }
     }
 
-    Box(modifier = Modifier.fillMaxSize().swipeable(state = swipe, anchors =mapOf(0f to 0, 10000f to 1), reverseDirection = true, orientation = Orientation.Vertical).offset{
-        IntOffset(0, -swipe.offset.value.toInt())
-}) {
+    Box(modifier = Modifier
+        .fillMaxSize()
+        .background(HotPink)
+        .swipeable(
+            state = swipe,
+            anchors = mapOf(0f to 0, 10000f to 1),
+            reverseDirection = true,
+            orientation = Orientation.Vertical
+        )
+        .offset {
+            IntOffset(0, -swipe.offset.value.toInt())
+        }) {
 
         val trianglePath = androidx.compose.ui.graphics.Path().apply {
             moveTo(2000f/2f, 0f)
             lineTo(3000f, 2000f)
             lineTo(-1190f, 2000f)
         }
-        Canvas(
-            Modifier
-                .align(Alignment.TopCenter)
-                .offset(x = -483.5.dp, y = 35.dp), onDraw = {
-            drawPath(path = trianglePath, color = Color.White)
 
-        })
-        Column(modifier = Modifier.align(Alignment.Center), horizontalAlignment = Alignment.CenterHorizontally) {
-            Text(text = "Master Skills Change The World", fontWeight = FontWeight.Black, fontSize = 32.sp, modifier = Modifier.width(300.dp), textAlign = TextAlign.Center, lineHeight = 35.sp)
-            Spacer(modifier = Modifier.height(30.dp))
-            Image(painter = painterResource(R.drawable.world), contentDescription = "World", contentScale = ContentScale.Crop, modifier = Modifier.size(500.dp, 300.dp))
-        }
+            Canvas(
+                Modifier
+                    .align(Alignment.TopCenter)
+                    .offset(x = -483.5.dp, y = 35.dp).alpha(alphas.value).graphicsLayer {
+                                                 this.alpha = alphas.value
+                    }, onDraw = {
+
+                    drawPath(path = trianglePath, color = Color.White, alpha = alphas.value)
+
+                })
+
+
+
+
+
+
+
+            Column(modifier = Modifier.align(Alignment.Center), horizontalAlignment = Alignment.CenterHorizontally) {
+
+                Text(text = "Master Skills Change The World", fontWeight = FontWeight.Black, fontSize = 32.sp, modifier = Modifier.width(300.dp).alpha(alpha.value), textAlign = TextAlign.Center, lineHeight = 35.sp)
+                Spacer(modifier = Modifier.height(30.dp))
+                Image(painter = painterResource(R.drawable.world), contentDescription = "World", contentScale = ContentScale.Crop, modifier = Modifier.size(500.dp, 300.dp).alpha(alpha.value))
+            }
+
+
+
+            Icon(imageVector = Icons.Default.KeyboardArrowDown, contentDescription = "Down", modifier = Modifier.alpha(alpha.value)
+                .size(50.dp)
+                .align(Alignment.BottomCenter)
+                .offset(y = 0.dp + -50.dp)
+                .offset(y = move.dp), tint = Color.Black, )
+
         Image(painterResource(R.drawable.lamp), contentDescription = null, modifier = Modifier
             .align(Alignment.TopCenter)
-            .offset(x = 16.dp)
+            .offset(y = -120.dp)
+            .offset(x = 16.dp, distance)
             .size(150.dp))
-
-        Icon(imageVector = Icons.Default.KeyboardArrowDown, contentDescription = "Down", modifier = Modifier
-            .size(50.dp)
-            .align(Alignment.BottomCenter)
-            .offset(y = 0.dp + -50.dp)
-            .offset(y = move.dp), tint = Color.Black, )
 
     }
 }

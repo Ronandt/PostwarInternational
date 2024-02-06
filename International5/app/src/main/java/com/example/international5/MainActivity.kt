@@ -1,5 +1,6 @@
 package com.example.international5
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -36,6 +37,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navDeepLink
 import com.example.international5.ui.theme.DarkBlue
 import com.example.international5.ui.theme.International5Theme
 
@@ -90,8 +92,14 @@ class MainActivity : ComponentActivity() {
                         }
                         // A surface container using the 'background' color from the theme
                         NavHost(navController, startDestination = "home") {
-                            composable("home") {
+                            composable("home", deepLinks = listOf(
+                                navDeepLink {
+                                    uriPattern = "https://ln262qn923.execute-api.ap-southeast-1.amazonaws.com/Prod"
+                                    action = Intent.ACTION_VIEW
+                                }
+                            )) {
                                 HomeScreen(navController)
+
                             }
                             composable("skills") {
                                 SkillsScreen(navController)
@@ -102,6 +110,8 @@ class MainActivity : ComponentActivity() {
                             composable("videos") {
                                 VideosScreen(navController)
                             }
+
+
                         }
                     }
 
