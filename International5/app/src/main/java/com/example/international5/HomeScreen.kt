@@ -18,6 +18,7 @@ import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -74,15 +75,22 @@ fun HomeScreen(navController: NavController) {
                     Spacer(modifier = Modifier
                         .size(25.dp)
                         .clip(CircleShape)
-                        .background(  if(pagerState.currentPage == it) Color.DarkGray else Color.LightGray))
+                        .background(if (pagerState.currentPage == it) Color.DarkGray else Color.LightGray))
                 }
             }
         }
-        Row(modifier = Modifier.fillMaxWidth().padding(10.dp), horizontalArrangement = Arrangement.spacedBy(30.dp, Alignment.CenterHorizontally)) {
+        Row(modifier = Modifier
+            .fillMaxWidth()
+            .padding(10.dp), horizontalArrangement = Arrangement.spacedBy(30.dp, Alignment.CenterHorizontally)) {
 
             cardList.forEach {
-                Card(modifier = Modifier.height(200.dp).width(300.dp), onClick = {navController.navigate(it)}) {
-                    Text(text = it.capitalize(), fontSize = 40.sp, fontWeight = FontWeight.Bold)
+                Card(modifier = Modifier
+                    .height(200.dp)
+                    .width(300.dp), colors = CardDefaults.cardColors(containerColor = Color.Black), onClick = {navController.navigate(it)}) {
+                    Column(modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
+                        Text(text = it.capitalize(), fontSize = 40.sp, fontWeight = FontWeight.Bold, color = Color.White)
+                    }
+
                 }
             }
 

@@ -25,6 +25,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Text
@@ -38,6 +39,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
@@ -51,6 +53,7 @@ import androidx.core.content.FileProvider
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.io.File
@@ -63,11 +66,15 @@ fun PhotosScreen(navController: NavController) {
 
     var currentPage by remember {mutableStateOf(0)}
     val context = LocalContext.current
+    var loadPagination by remember {mutableStateOf(0)}
     val photos = remember {
         mutableStateListOf<PhotoItem>()
     }
     LaunchedEffect(Unit) {
         WorldSkillsAPI().getPhotos()?.let { photos.addAll(it) }
+        delay(500)
+        loadPagination = 1
+
     }
     val scope = rememberCoroutineScope()
 
@@ -95,7 +102,7 @@ fun PhotosScreen(navController: NavController) {
 
                            Image(
                                 LoaderImage(photos[it + (currentPage * 6)].imageLink), modifier = Modifier
-                                    .matchParentSize()
+                                    .matchParentSize().clip(RoundedCornerShape(10.dp))
                                   , contentDescription = "", contentScale = ContentScale.Crop)
                             Column(modifier = Modifier
                                 .align(Alignment.BottomEnd)
@@ -145,19 +152,24 @@ fun PhotosScreen(navController: NavController) {
                             }
                         }
                         if(dialog) {
+                            var moveX by remember {mutableStateOf(0f)}
+                            var moveY by remember {mutableStateOf(0f)}
                             var scale by remember {mutableStateOf(1.0f)}
                             var transformState = rememberTransformableState {
                                     zoomChange, offsetChange, rotationChange ->
                                 scale *= zoomChange
+                                moveX += offsetChange.x
+                                moveY += offsetChange.y
+
 
                             }
                             Dialog(onDismissRequest = { dialog = false }) {
                                 Column {
                                    Image(
                                         LoaderImage(photos[it + (maxOf(0, (currentPage)) * 6)].imageLink), contentDescription = "Stuff", modifier = Modifier
-                                           .graphicsLayer(scaleX = scale, scaleY = scale)
+                                           .graphicsLayer(scaleX = scale, scaleY = scale, translationX = moveX, translationY = moveY)
                                            .transformable(state = transformState)
-                                           .size(500.dp))
+                                           .size(500.dp).clip(RoundedCornerShape(10.dp)))
 
                                 }
 
@@ -165,21 +177,24 @@ fun PhotosScreen(navController: NavController) {
                         }
                     }}
                 }
-                Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally)) {
-                    generatePagination(maxOf(1, currentPage), totalPages = (photos?.size?.div(6.0)!!).toInt()).forEach {
-                        if(it == -1) {
-                            Text(text = "...", fontSize = 24.sp, modifier = Modifier.padding(10.dp))
-                        } else {
-                            Text(text = (it).toString(), fontSize = 24.sp, fontWeight = if(it == currentPage) FontWeight.Bold else FontWeight.Normal,modifier = Modifier
-                                .clickable {
+                if(loadPagination == 1) {
+                    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally)) {
+                        generatePagination(maxOf(1, currentPage), totalPages = (photos?.size?.div(6.0)!!).toInt()).forEach {
+                            if(it == -1) {
+                                Text(text = "...", fontSize = 24.sp, modifier = Modifier.padding(10.dp))
+                            } else {
+                                Text(text = (it).toString(), fontSize = 24.sp, fontWeight = if(it == currentPage || (currentPage == 1 && it==1)) FontWeight.Bold else FontWeight.Normal,modifier = Modifier
+                                    .clickable {
 
-                                    currentPage = it
-                                }
-                                .padding(10.dp))
+                                        currentPage = it
+                                    }
+                                    .padding(10.dp))
+                            }
+
                         }
-
                     }
                 }
+
             }
         } else {
             Column(modifier = Modifier.fillMaxSize()) {
@@ -199,7 +214,7 @@ fun PhotosScreen(navController: NavController) {
                                ) {
 
                                Image(LoaderImage(photos.get(it + (currentPage * 6)).imageLink), modifier = Modifier
-                                    .matchParentSize(), contentDescription = "", contentScale = ContentScale.Crop)
+                                    .matchParentSize().clip(RoundedCornerShape(10.dp)), contentDescription = "", contentScale = ContentScale.Crop, )
                                 Column(modifier = Modifier
                                     .align(Alignment.BottomEnd)
                                     .background(Color(0xAA000000))) {
@@ -258,7 +273,7 @@ fun PhotosScreen(navController: NavController) {
                                             LoaderImage(imageLink = photos.get(it -1+ (currentPage * 6)).imageLink,), contentDescription = "Stuff", modifier = Modifier
                                                 .graphicsLayer(scaleX = scale, scaleY = scale)
                                                 .transformable(state = transformState)
-                                                .size(500.dp))
+                                                .size(500.dp).clip(RoundedCornerShape(10.dp)))
 
                                     }
 
@@ -268,21 +283,24 @@ fun PhotosScreen(navController: NavController) {
 
                     }
                 }
-                Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally)) {
-                    generatePagination(maxOf(1, currentPage), totalPages = (photos?.size?.div(6.0)!!).toInt()).forEach {
-                        if(it == -1) {
-                            Text(text = "...", fontSize = 24.sp, modifier = Modifier.padding(10.dp))
-                        } else {
-                            Text(text = (it).toString(), fontSize = 24.sp, fontWeight = if(it == currentPage) FontWeight.Bold else FontWeight.Normal,modifier = Modifier
-                                .clickable {
+                if(loadPagination ==1) {
+                    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally)) {
+                        generatePagination(maxOf(1, currentPage), totalPages = (photos?.size?.div(6.0)!!).toInt()).forEach {
+                            if(it == -1) {
+                                Text(text = "...", fontSize = 24.sp, modifier = Modifier.padding(10.dp))
+                            } else {
+                                Text(text = (it).toString(), fontSize = 24.sp, fontWeight = if(it == currentPage) FontWeight.Bold else FontWeight.Normal,modifier = Modifier
+                                    .clickable {
 
-                                    currentPage = it
-                                }
-                                .padding(10.dp))
+                                        currentPage = it
+                                    }
+                                    .padding(10.dp))
+                            }
+
                         }
-
                     }
                 }
+
             }
         }
 

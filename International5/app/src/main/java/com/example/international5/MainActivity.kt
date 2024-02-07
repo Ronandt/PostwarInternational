@@ -54,7 +54,7 @@ class MainActivity : ComponentActivity() {
                 Row(modifier = Modifier.fillMaxSize()) {
                     NavigationRail {
                         Image(painter = painterResource(R.drawable.wslyon), contentDescription = "Logo", modifier = Modifier
-                            .size(130.dp, 100.dp)
+                            .size(130.dp, 110.dp)
                             .padding(20.dp), contentScale = ContentScale.Crop)
                         navList.forEach {
 
@@ -79,7 +79,7 @@ class MainActivity : ComponentActivity() {
 
                                    },
                                 label = {
-                                    Text(it.capitalize())
+                                    Text(it.capitalize(), modifier = Modifier.padding(start = 10.dp))
                                 })
                         }
                     }

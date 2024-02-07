@@ -43,6 +43,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -92,7 +93,7 @@ fun RecordsScreen(navController: NavController) {
     }
     var loading by remember {mutableStateOf(true)}
     var files = remember {mutableStateListOf<Object>()}
-    //var files = remember {context.getExternalFilesDir(Environment.DIRECTORY_MUSIC)?.listFiles() }
+    //var files = remember {context.getExternalFilesDir( b   Environment.DIRECTORY_MUSIC)?.listFiles() }
     var change by remember {mutableStateOf(false)}
     var playing by remember {mutableStateOf<String?>(null)}
     LaunchedEffect(change) {
@@ -224,15 +225,16 @@ Column(modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.Cente
                             .padding(10.dp)
                             .clickable {
                                 scope.launch {
-
+                                    playing = files[it].key
                                     files[it].key
                                         ?.let { it1 ->
                                             S3Bucket().getItems(
                                                 context = context,
                                                 keyN = it1
                                             )
+
                                         }
-                                        ?.let { it2 -> player.play(it2) }
+                                        ?.let { it2 -> player.play(it2, { playing = null }) }
 
                                 }
 
@@ -241,8 +243,15 @@ Column(modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.Cente
                             files[it].key?.let { it1 -> Text(text = it1, fontWeight = FontWeight.Medium, fontSize = 18.sp, maxLines = 1, modifier = Modifier
                                 .width(300.dp)
                                 .basicMarquee()) }
-                            IconButton(onClick = { /*TODO*/ }, colors = IconButtonDefaults.iconButtonColors(containerColor = Color.Black)) {
-                                Icon(imageVector = Icons.Default.PlayArrow, contentDescription = "Play recording ", tint = Color.White)
+                            IconButton(onClick = {
+
+                            }, colors = IconButtonDefaults.iconButtonColors(containerColor = Color.Black)) {
+                                if(playing == files[it].key) {
+                                    Icon(painterResource(id = R.drawable.baseline_pause_24), contentDescription = "Stop recording ", tint = Color.White)
+                                } else {
+                                    Icon(imageVector = Icons.Default.PlayArrow, contentDescription = "Play recording ", tint = Color.White)
+                                }
+
                             }
 
 
