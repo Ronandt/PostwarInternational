@@ -9,13 +9,24 @@ import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Chip
+import androidx.compose.material.ChipDefaults
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Divider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -27,11 +38,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Rect
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.boundsInWindow
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat
@@ -44,7 +57,9 @@ import com.example.international_a_am.data.TicketItem
 import com.example.international_a_am.data.WorldSkillsAPI
 import com.example.international_a_am.data.screenshot
 import com.example.international_a_am.data.showNotification
+import com.example.international_a_am.ui.theme.LightGray
 
+@OptIn(ExperimentalMaterialApi::class)
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
 @Composable
 fun TicketDetailsScreen(navController: NavController, id: String) {
@@ -81,32 +96,74 @@ fun TicketDetailsScreen(navController: NavController, id: String) {
             permissions.launch(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
         }
     }
-Column(modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
-Text("Ticket Details", fontSize = 30.sp)
+Column(modifier = Modifier.fillMaxSize()) {
+Text("Ticket Details", fontSize = 30.sp, fontWeight = FontWeight.SemiBold,modifier = Modifier.padding(start = 8.dp),)
 Spacer(modifier = Modifier.height(20.dp))
 Card(modifier = Modifier
     .fillMaxWidth()
+    .padding(horizontal = 10.dp)
     .onGloballyPositioned {
         composableBounds = it.boundsInWindow()
-    }) {
-    Column(modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally){
+    }, colors = CardDefaults.cardColors(LightGray)) {
+    Column(modifier = Modifier.fillMaxWidth()){
 
         val imagePainterTest = rememberAsyncImagePainter(model = ImageRequest.Builder(LocalContext.current).data(ticket?.imageLink).crossfade(true).placeholder(R.drawable.morecomplexpreloader).build(), contentScale = ContentScale.Crop)
+        Box {
+            Image(imagePainterTest, contentDescription = "", modifier = Modifier
+                .height(200.dp)
+                .fillMaxWidth(), contentScale = ContentScale.Crop)
+            Chip(onClick = { /*TODO*/ }, colors = ChipDefaults.chipColors(Color.Black), modifier = Modifier
+                .padding(10.dp)
+                .align(Alignment.TopEnd)) {
+                ticket?.ticketType?.let { Text(text = it, color = Color.White) }
+            }
+        }
 
-       Image(imagePainterTest, contentDescription = "", modifier = Modifier
-           .height(200.dp)
-           .fillMaxWidth(), contentScale = ContentScale.Crop)
+        Column(modifier = Modifier.padding(start= 10.dp)){
+            Spacer(modifier = Modifier.height(10.dp))
+            Row(horizontalArrangement = Arrangement.spacedBy(18.dp)){
+                Column {
+                    Text(text = "Audience Name", fontWeight = FontWeight.Medium, color = Color.Gray)
+                    ticket?.name?.let { Text(text = it, color = Color.DarkGray, fontWeight =FontWeight.Medium) }
+                }
+                Column {
+                    Text(text = "Time", fontWeight = FontWeight.Medium, color = Color.Gray)
+                    ticket?.time?.let { Text(text = it, color = Color.DarkGray, fontWeight =FontWeight.Medium) }
+                }
+            }
+            Spacer(modifier = Modifier.height(8.dp))
+            Divider()
+            Spacer(modifier = Modifier.height(8.dp))
+            Row(horizontalArrangement = Arrangement.spacedBy(18.dp)) {
+                Column {
+                    Text(text = "Seat", fontWeight = FontWeight.Medium, color = Color.Gray)
+                    Text(text = "${ticket?.seat?.split(" ")?.get(0)}", color = Color.DarkGray, fontWeight =FontWeight.Medium)
+                }
+                Column {
+                    Text(text = "Row", fontWeight = FontWeight.Medium, color = Color.Gray)
+                    Text(text = "${ticket?.seat?.split(" ")?.get(1)?.last()?.titlecase()}", color = Color.DarkGray, fontWeight =FontWeight.Medium)
+                }
+                Column {
+                    Text(text = "Column", fontWeight = FontWeight.Medium, color = Color.Gray)
+                    Text(text = "${ticket?.seat?.split(" ")?.get(2)?.last()?.titlecase()}", color = Color.DarkGray, fontWeight =FontWeight.Medium)
+                }
 
-        Text(text = "Ticket type: ${ticket?.ticketType}")
-        Text(text = "Audience's name: ${ticket?.name}")
-        Text(text = "Time: ${ticket?.time}")
-        Text(text = "Seat: ${ticket?.seat}")
+            }
+
+            Spacer(modifier = Modifier.height(14.dp))
+        }
+
     }
 
 
 }
-
-    Button(onClick = {
+    Spacer(modifier = Modifier.height(10.dp))
+    Button(shape = RoundedCornerShape(10.dp),colors = ButtonDefaults.buttonColors(containerColor = Color.Black),modifier = Modifier.padding(start = 8.dp),onClick = {
+        if (ContextCompat.checkSelfPermission(context, android.Manifest.permission.POST_NOTIFICATIONS) !=
+            PackageManager.PERMISSION_GRANTED
+        ) {
+            permissions.launch(android.Manifest.permission.POST_NOTIFICATIONS)
+        }
 
 
 
@@ -133,6 +190,7 @@ Card(modifier = Modifier
 
 
     }) {
+
         Text(text = "Download")
     }
 }

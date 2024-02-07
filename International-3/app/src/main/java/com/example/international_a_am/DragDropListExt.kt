@@ -1,6 +1,7 @@
 package com.example.international_a_am
 
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectDragGesturesAfterLongPress
 import androidx.compose.foundation.gestures.scrollBy
 import androidx.compose.foundation.layout.Column
@@ -11,6 +12,7 @@ import androidx.compose.foundation.lazy.LazyListItemInfo
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -24,6 +26,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.consumeAllChanges
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.unit.dp
+import com.example.international_a_am.ui.theme.LightGray
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
@@ -184,7 +187,7 @@ fun <T>DragDropList(
                 onDragEnd = { dragDropListState.onDragInterrupted() },
                 onDragCancel = { dragDropListState.onDragInterrupted() })
         }
-        .fillMaxWidth()
+        .fillMaxWidth().background(LightGray, RoundedCornerShape(14.dp))
         .padding(top = 10.dp, start = 10.dp, end = 10.dp), state = dragDropListState.lazyListState) {
         itemsIndexed(items) {
             index,item ->

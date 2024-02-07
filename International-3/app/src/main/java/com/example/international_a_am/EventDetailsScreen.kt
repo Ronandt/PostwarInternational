@@ -1,7 +1,9 @@
 package com.example.international_a_am
 
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -10,10 +12,16 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredHeight
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Chip
+import androidx.compose.material.ChipDefaults
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -26,12 +34,17 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
+import coil.compose.rememberImagePainter
 import com.example.international_a_am.data.Database
 import com.example.international_a_am.data.Event
 import com.example.international_a_am.data.EventItem
@@ -66,29 +79,49 @@ fun EventDetailsScreen(navController: NavController, id: Int) {
         imageList.size
     }
 
-    Column(modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally){
+    Column(modifier = Modifier
+        .fillMaxSize()
+        .padding(14.dp)){
         Back(navController = navController, modifier = Modifier.align(Alignment.Start))
-        Text(text = "Event Details")
+        Text(text = "Event Details", fontWeight = FontWeight.SemiBold, fontSize = 22.sp)
         Spacer(modifier = Modifier.height(20.dp))
-        event?.title?.let { Text(text = it) }
-        Text(text = (event?.viewCount?.plus(1)).toString())
-        Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+        event?.title?.let { Text(text = it, fontWeight = FontWeight.Medium, fontSize = 19.sp) }
+        Chip(onClick = { /*TODO*/ }, colors = ChipDefaults.chipColors(backgroundColor = Color.Black), modifier = Modifier.padding(vertical = 8.dp)) {
+            Text(text = "Views: " + (event?.viewCount?.plus(1)).toString(), color = Color.White)
+        }
+
+        Row(horizontalArrangement = Arrangement.spacedBy(10.dp), modifier = Modifier.horizontalScroll(
+            rememberScrollState())) {
             repeat(imageList.size) {
-                AsyncImage(imageList[it], contentDescription = "", modifier = Modifier
-                    .size(80.dp)
+                val imagePainter = rememberImagePainter(
+                    data = imageList[it],
+                    builder = {
+                        // Specify the placeholder GIF resource (replace with your actual placeholder)
+                        placeholder(R.drawable.morecomplexpreloader)
+                    }
+                )
+
+                Image(imagePainter, contentDescription = "", modifier = Modifier
+                    .height(140.dp)
+                    .width(120.dp)
                     .clickable {
                         imageDialog = it
                         scope.launch {
                             pagerState.scrollToPage(it)
                         }
 
-                    }, contentScale = ContentScale.Crop)
+                    }
+                    .clip(RoundedCornerShape(10.dp)), contentScale = ContentScale.Crop, )
             }
 
 
         }
         Spacer(modifier = Modifier.requiredHeight(10.dp))
-        event?.text?.let { Text(text = it) }
+        
+        event?.text?.let {
+            Spacer(modifier = Modifier.height(14.dp))
+            Text(text = "Description", fontWeight = FontWeight.SemiBold, fontSize = 18.sp)
+            Text(text = it, modifier = Modifier.padding(top = 10.dp)) }
 
     }
 
@@ -98,7 +131,8 @@ fun EventDetailsScreen(navController: NavController, id: Int) {
                 HorizontalPager(state = pagerState, modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
                     AsyncImage(imageList[it], contentDescription = null, modifier= Modifier
                         .size(260.dp)
-                        .offset(x = 40.dp), contentScale = ContentScale.Crop)
+                        .offset(x = 40.dp)
+                        .clip(RoundedCornerShape(10.dp)), contentScale = ContentScale.Crop)
                 }
 
             }

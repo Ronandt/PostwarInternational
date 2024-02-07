@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.AnimatedContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -25,6 +26,7 @@ import androidx.compose.material3.NavigationRailItem
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -90,6 +92,9 @@ class MainActivity : ComponentActivity() {
                             currentDestination?.capitalize()?.let { Text(text = it, fontSize = 30.sp , color = Color.White) }
 
                         }
+                        val observer = InternetResolver(context = applicationContext).observe().collectAsState(
+                            initial = false
+                        )
                         // A surface container using the 'background' color from the theme
                         NavHost(navController, startDestination = "home") {
                             composable("home", deepLinks = listOf(
@@ -102,13 +107,33 @@ class MainActivity : ComponentActivity() {
 
                             }
                             composable("skills") {
-                                SkillsScreen(navController)
+                                AnimatedContent(targetState = observer.value) {
+                                    if(it) {
+                                        SkillsScreen(navController)
+                                    } else {
+                                        NoInternetScreen()
+                                    }
+                                }
+
+
                             }
                             composable("photos") {
-                                PhotosScreen(navController)
+                                AnimatedContent(targetState = observer.value) {
+                                    if(it) {
+                                        PhotosScreen(navController)
+                                    } else {
+                                        NoInternetScreen()
+                                    }
+                                }
                             }
                             composable("videos") {
-                                VideosScreen(navController)
+                                AnimatedContent(targetState = observer.value) {
+                                    if(it) {
+                                        VideosScreen(navController)
+                                    } else {
+                                        NoInternetScreen()
+                                    }
+                                }
                             }
 
 

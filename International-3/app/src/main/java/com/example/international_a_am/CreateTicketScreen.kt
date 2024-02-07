@@ -11,9 +11,13 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
@@ -25,11 +29,14 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import aws.smithy.kotlin.runtime.content.ByteStream
 import com.example.international_a_am.data.Database
@@ -51,6 +58,7 @@ fun CreateTicketScreen(navController: NavController) {
     var name by remember {mutableStateOf("")}
     var currentImage by remember {mutableStateOf<Uri?>(null)}
     val scope = rememberCoroutineScope()
+    var createdImage by remember {mutableStateOf(false)}
 
     val context = LocalContext.current
     var db = remember { Database.getDb(context) }
@@ -58,28 +66,33 @@ fun CreateTicketScreen(navController: NavController) {
         if(it !=null) {
             context.contentResolver.takePersistableUriPermission(it, Intent.FLAG_GRANT_READ_URI_PERMISSION)
             currentImage = it
-
+            createdImage = true
         }
     }
-    Column(modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
-        Text(text = "Ticket Create")
+    Column(modifier = Modifier.fillMaxSize().padding(10.dp)) {
+        Text(text = "Ticket Create", fontWeight = FontWeight.SemiBold, fontSize = 20.sp)
         Spacer(modifier = Modifier.height(20.dp))
         ExposedDropdownMenuBox(expanded = openDropdown, onExpandedChange = {openDropdown = !openDropdown}) {
             ExposedDropdownMenu(expanded = openDropdown, onDismissRequest = { openDropdown = false }) {
                 DropdownMenuItem(text = { Text(text = "Closing Ceremony") }, onClick = { selection = "Closing Ceremony" })
                 DropdownMenuItem(text = { Text(text = "Opening Ceremony") }, onClick = { selection = "Opening Ceremony" })
             }
-            OutlinedTextField(value = selection, onValueChange = {}, readOnly = true, modifier = Modifier.menuAnchor())
+            OutlinedTextField(value = selection, onValueChange = {}, readOnly = true, modifier = Modifier.fillMaxWidth().menuAnchor())
         }
-        OutlinedTextField(value =name, onValueChange = {name = it}, label = {Text( "Input your name")})
-        Button(onClick = { launch.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))}) {
+        
+        OutlinedTextField(value =name, onValueChange = {name = it}, label = {Text( "Input your name", modifier = Modifier.fillMaxWidth())}, modifier = Modifier.fillMaxWidth())
+        Spacer(modifier = Modifier.height(10.dp))
+        Button(onClick = { launch.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))}, colors = ButtonDefaults.buttonColors(containerColor = Color.Black), shape = RoundedCornerShape(10.dp)) {
             Text(text = "Choose one picture")
         }
         if(currentImage != null) {
-            Image(BitmapFactory.decodeStream(context.contentResolver.openInputStream(currentImage!!)).asImageBitmap(), contentDescription = "Preview image", modifier = Modifier.size(300.dp    ))
+            Image(BitmapFactory.decodeStream(context.contentResolver.openInputStream(currentImage!!)).asImageBitmap(), contentDescription = "Preview image", modifier = Modifier.size(300.dp    ).clip(
+                RoundedCornerShape(10.dp)))
         }
         Spacer(modifier = Modifier.weight(1f))
-        Button(onClick = {
+        Button(enabled = createdImage && name!="",modifier = Modifier
+            .fillMaxWidth()
+            .padding(10.dp), colors = ButtonDefaults.buttonColors(containerColor = Color.Black),onClick = {
             scope.launch {
                 var number = (1..10).random()
                 var randomLetter = listOf("a", "b", "c")[(0 until 3).random()]
