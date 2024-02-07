@@ -99,7 +99,7 @@ class MainActivity : ComponentActivity() {
                         NavHost(navController, startDestination = "home") {
                             composable("home", deepLinks = listOf(
                                 navDeepLink {
-                                    uriPattern = "https://ln262qn923.execute-api.ap-southeast-1.amazonaws.com/Prod"
+                                    uriPattern = "https://static-website345gh.s3.ap-southeast-1.amazonaws.com/index.html"
                                     action = Intent.ACTION_VIEW
                                 }
                             )) {
