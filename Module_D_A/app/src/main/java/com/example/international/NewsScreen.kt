@@ -40,14 +40,11 @@ fun NewsScreen(navController: NavController, title: String, newsTitle: String?, 
     val context = LocalContext.current
     val jsonRetriever = JsonRetriever(context)
 
-    var news = remember { mutableStateListOf<News>()}
+    var news = remember { mutableStateListOf<NewsItem?>()}
     LaunchedEffect(key1 = Unit ) {
-
-         news.addAll(jsonRetriever.retrieveNews().filter {
-
-             title != "Search Results"|| (it.title.lowercase().contains(newsTitle?.lowercase().toString()) && it.skillName.lowercase().contains(skillName?.lowercase().toString()))
-         })
-
+        println("HERE")
+        WorldSkillsAPI().getNewsInfo()?.map {it.subcategories}?.getOrNull(0)?.filter { title == "Search Results" || it.subcategory == title }?.map { it.newsItems }
+            ?.getOrNull(0)?.let { news.addAll(it) }
 
     }
     Column() {
@@ -66,19 +63,28 @@ fun NewsScreen(navController: NavController, title: String, newsTitle: String?, 
                         onShadow(true)
                     }) {
                         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                            Text(text = "${news[it].title}")
+                            Text(text = "${news[it]?.title}")
                             Text(text = it.toString())
 
                         }
 
                         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                            Text(text = "${news[it].skillName}")
-                            Text(text = "${news[it].datetime}")
+                            Text(text = "${title}")
+                            Text(text = "${news[it]?.time}")
                         }
                         if(dialogOpen) {
                             Dialog(onDismissRequest = { dialogOpen = false
                             onShadow(false)}) {
-                                ArticleDialog(news[it].title, news[it].datetime, news[it].description)
+                                news[it]?.description?.let { it1 ->
+                                    news[it]?.time?.let { it2 ->
+                                        news[it]?.title?.let { it3 ->
+                                            ArticleDialog(
+                                                it3, it2,
+                                                it1
+                                            )
+                                        }
+                                    }
+                                }
                             }
                         }
                     }

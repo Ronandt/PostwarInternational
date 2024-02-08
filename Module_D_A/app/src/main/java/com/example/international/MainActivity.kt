@@ -71,7 +71,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             InternationalTheme {
-                val categories = remember {mutableStateListOf<Category>() }
+                val categories = remember {mutableStateListOf<CategoryItem>() }
                 var drawerType by remember {mutableStateOf(false)}
                 var shadow by remember {mutableStateOf(false)}
                 var openDrawer by remember {mutableStateOf(false)}
@@ -84,8 +84,8 @@ class MainActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 val navController = rememberNavController()
                 LaunchedEffect(Unit) {
-
-                    categories.addAll(jsonRetriever.retrieve())
+                    WorldSkillsAPI().getNewsInfo()?.let { categories.addAll(it) }
+               //     categories.addAll(jsonRetriever.retrieve())
 
                 }
                 Box(modifier = Modifier.semantics {
@@ -122,17 +122,17 @@ class MainActivity : ComponentActivity() {
                                                 Image(painter = painterResource(id = R.drawable.b), contentDescription = "b")
                                             }
 
-                                            Text(text = categories[it].name, fontWeight = FontWeight.Bold)
+                                            Text(text = categories[it].category, fontWeight = FontWeight.Bold)
 
                                         }
                                         if(selection == it) {
-                                            categories[it].trades.forEach {
+                                            categories[it].subcategories.forEach {
                                                 Row(horizontalArrangement = Arrangement.spacedBy(10.dp), verticalAlignment = Alignment.CenterVertically, modifier = Modifier.clickable {
-                                                    navController.navigate("news/$it")
+                                                    navController.navigate("news/${it.subcategory}")
                                                 }) {
                                                     Spacer(modifier = Modifier.width(14.dp))
                                                     Text(text = "-")
-                                                    Text(text = it, fontWeight = FontWeight.Bold)
+                                                    Text(text = it.subcategory, fontWeight = FontWeight.Bold)
 
                                                 }
                                             }
