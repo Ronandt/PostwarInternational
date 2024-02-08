@@ -41,6 +41,11 @@
             android:theme="@style/Theme.International5">
             <intent-filter android:autoVerify="true">
                 <data android:host="static-website345gh.s3.ap-southeast-1.amazonaws.com"
+
+
+                    />
+
+                <data
                     android:scheme="https"
 
                     />

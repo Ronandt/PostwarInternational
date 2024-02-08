@@ -42,6 +42,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navDeepLink
 import com.example.international5.ui.theme.DarkBlue
 import com.example.international5.ui.theme.International5Theme
+import android.net.Uri
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -77,7 +78,7 @@ class MainActivity : ComponentActivity() {
                                         }
                                     }
 
-                                   },
+                                },
                                 label = {
                                     Text(it.capitalize(), modifier = Modifier.padding(start = 10.dp))
                                 })
@@ -99,7 +100,7 @@ class MainActivity : ComponentActivity() {
                         NavHost(navController, startDestination = "home") {
                             composable("home", deepLinks = listOf(
                                 navDeepLink {
-                                    uriPattern = "https://static-website345gh.s3.ap-southeast-1.amazonaws.com/index.html"
+                                    uriPattern = "https://static-website345gh.s3.ap-southeast-1.amazonaws.com/openApplication"
                                     action = Intent.ACTION_VIEW
                                 }
                             )) {
@@ -144,6 +145,10 @@ class MainActivity : ComponentActivity() {
 
             }
         }
+        // ATTENTION: This was auto-generated to handle app links.
+        val appLinkIntent: Intent = intent
+        val appLinkAction: String? = appLinkIntent.action
+        val appLinkData: Uri? = appLinkIntent.data
     }
 }
 

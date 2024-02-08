@@ -27,6 +27,7 @@ import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -39,6 +40,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -99,27 +101,31 @@ fun SkillsScreen(navController: NavController) {
                     Column(modifier = Modifier
                         .height(IntrinsicSize.Max)
                         .fillMaxSize(0.9f)
-                        .background(Color.White)
+                        .background(Color.White, shape = RoundedCornerShape(10.dp))
                         .padding(10.dp)) {
                         skills?.get(skillsCategory)?.trades?.get(skillDialog)
-                            ?.let { Text(text = it.skillName, fontWeight = FontWeight.Bold, modifier = Modifier.fillMaxWidth()) }
+                            ?.let { Text(text = it.skillName, fontWeight = FontWeight.Bold, modifier = Modifier.fillMaxWidth()  , fontSize = 24.sp) }
 
                         Spacer(modifier = Modifier.height(20.dp))
                         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
                             SelectionContainer {
                                 skills?.get(skillsCategory)?.trades?.get(skillDialog)?.text?.let { Text(text = it, modifier = Modifier
                                     .fillMaxWidth(0.6f)
-                                  ) }
+                                ) }
                             }
 
-                            Column() {
-                              Image(LoaderImage(skills?.get(skillsCategory)?.trades?.get(skillDialog)?.imageLink!!), contentDescription = "Image of skill", modifier = Modifier.size(160.dp, 200.dp))
+                            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                              Image(LoaderImage(skills?.get(skillsCategory)?.trades?.get(skillDialog)?.imageLink!!), contentDescription = "Image of skill", modifier = Modifier
+                                  .size(160.dp, 200.dp)
+                                  .clip(
+                                      RoundedCornerShape(10.dp)
+                                  ))
                                 Spacer(modifier = Modifier.weight(1f))
                                 Button(onClick = {
                                     skillDialog +=1
 
 
-                                }, modifier = Modifier.align(Alignment.End), enabled =    skills?.get(skillsCategory)?.trades?.getOrNull(skillDialog + 1) != null) {
+                                }, modifier = Modifier.align(Alignment.End), enabled =    skills?.get(skillsCategory)?.trades?.getOrNull(skillDialog + 1) != null, colors = ButtonDefaults.buttonColors(containerColor = Color.Black), shape = RoundedCornerShape(10.dp)) {
                                     Text(text = "Next")
                                 }
                             }
@@ -134,7 +140,7 @@ fun SkillsScreen(navController: NavController) {
                     Column(modifier = Modifier
                         .height(IntrinsicSize.Max)
                         .fillMaxSize(0.9f)
-                        .background(Color.White)
+                        .background(Color.White, shape = RoundedCornerShape(10.dp))
                         .padding(10.dp)) {
 
                         skills?.get(skillsCategory)?.trades?.get(skillDialog)
