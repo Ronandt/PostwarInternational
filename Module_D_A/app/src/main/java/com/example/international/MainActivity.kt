@@ -278,8 +278,8 @@ fun SearchDrawer(onClose: () -> Unit, navController: NavController) {
             if(startDate == "" || endDate == "") {
                 Toast.makeText(context, "Start date and end date must not be empty", Toast.LENGTH_LONG).show()
             }
-            if(isValidDateFormat( startDate) || isValidDateFormat(endDate)) {
-                Toast.makeText(context, "", Toast.LENGTH_LONG).show()
+            if(!isValidDateFormat( startDate) || !isValidDateFormat(endDate)) {
+                Toast.makeText(context, "Start and end date has to be dd/MM/yyyy", Toast.LENGTH_LONG).show()
             }
             navController.navigate("news/${title}?newsTitle=${searchTitle}&skillName=${skillName}&startDate=$startDate&endDate=$endDate")
 
