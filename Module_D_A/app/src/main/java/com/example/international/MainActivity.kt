@@ -278,6 +278,9 @@ fun SearchDrawer(onClose: () -> Unit, navController: NavController) {
             if(startDate == "" || endDate == "") {
                 Toast.makeText(context, "Start date and end date must not be empty", Toast.LENGTH_LONG).show()
             }
+            if(isValidDateFormat( startDate) || isValidDateFormat(endDate)) {
+                Toast.makeText(context, "", Toast.LENGTH_LONG).show()
+            }
             navController.navigate("news/${title}?newsTitle=${searchTitle}&skillName=${skillName}&startDate=$startDate&endDate=$endDate")
 
         }, colors = IconButtonDefaults.iconButtonColors(containerColor = Color.White), modifier = Modifier.testTag("searchIcon")) {
@@ -287,4 +290,8 @@ fun SearchDrawer(onClose: () -> Unit, navController: NavController) {
 
     }
 
+}
+fun isValidDateFormat(dateString: String): Boolean {
+    val regexPattern = Regex("\\d{2}/\\d{2}/\\d{4}")
+    return regexPattern.matches(dateString)
 }

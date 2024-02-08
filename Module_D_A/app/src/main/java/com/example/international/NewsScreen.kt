@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -33,6 +34,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.navigation.NavController
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -43,8 +47,13 @@ fun NewsScreen(navController: NavController, title: String, newsTitle: String?, 
     var news = remember { mutableStateListOf<NewsItem?>()}
     LaunchedEffect(key1 = Unit ) {
         println("HERE")
-        WorldSkillsAPI().getNewsInfo()?.map {it.subcategories}?.getOrNull(0)?.filter { title == "Search Results" || it.subcategory == title }?.map { it.newsItems }
-            ?.getOrNull(0)?.let { news.addAll(it) }
+        println(WorldSkillsAPI().getNewsInfo())
+      var cache =  WorldSkillsAPI().getNewsInfo()
+        (0..cache?.toList()?.map {it.subcategories}?.size!!).forEach {
+            cache?.toList()?.map {it.subcategories}?.getOrNull(it)?.filter { title == "Search Results" || it.subcategory == title }?.map { it.newsItems }
+                ?.getOrNull(0)?.filter{(startDate == null || formatDate(it.time.split(" ").drop(1).joinToString(" ")) == startDate)}?.let { news.addAll(it) }
+        }
+
 
     }
     Column() {
@@ -52,6 +61,7 @@ fun NewsScreen(navController: NavController, title: String, newsTitle: String?, 
             .fillMaxSize()
             .padding(10.dp)) {
             Text("$title", fontWeight = FontWeight.SemiBold, modifier = Modifier.align(Alignment.CenterHorizontally))
+            Spacer(modifier = Modifier.height(14.dp))
             LazyColumn(verticalArrangement = Arrangement.spacedBy(10.dp)) {
                 items(news.size) {
 
@@ -62,27 +72,31 @@ fun NewsScreen(navController: NavController, title: String, newsTitle: String?, 
                         dialogOpen = true
                         onShadow(true)
                     }) {
-                        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                            Text(text = "${news[it]?.title}")
-                            Text(text = it.toString())
+                        Column(verticalArrangement = Arrangement.SpaceBetween, modifier = Modifier.fillMaxSize().padding(14.dp)) {
+                            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+                                Text(text = "${news[it]?.title}")
+                                Text(text = (it+1).toString())
 
-                        }
+                            }
 
-                        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                            Text(text = "${title}")
-                            Text(text = "${news[it]?.time}")
+                            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+                                Text(text = "${title}")
+                                Text(text = "${news[it]?.time}")
+                            }
                         }
-                        if(dialogOpen) {
-                            Dialog(onDismissRequest = { dialogOpen = false
+                 
+
+                    }
+                    if(dialogOpen) {
+                        Dialog(onDismissRequest = { dialogOpen = false
                             onShadow(false)}) {
-                                news[it]?.description?.let { it1 ->
-                                    news[it]?.time?.let { it2 ->
-                                        news[it]?.title?.let { it3 ->
-                                            ArticleDialog(
-                                                it3, it2,
-                                                it1
-                                            )
-                                        }
+                            news[it]?.description?.let { it1 ->
+                                news[it]?.time?.let { it2 ->
+                                    news[it]?.title?.let { it3 ->
+                                        ArticleDialog(
+                                            it3, it2,
+                                            it1
+                                        )
                                     }
                                 }
                             }
@@ -117,3 +131,13 @@ fun ArticleDialog(title: String, datetime: String, description: String) {
         Text(text = description, fontSize = textSize)
     }
 }
+
+
+fun formatDate(inputDate: String): String {
+    val inputFormat = SimpleDateFormat("MMM dd yyyy", Locale.ENGLISH)
+    val outputFormat = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
+    val date: Date = inputFormat.parse(inputDate) ?: Date()
+    return outputFormat.format(date)
+}
+
+
