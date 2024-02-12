@@ -17,12 +17,15 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material3.CenterAlignedTopAppBar
+import androidx.compose.material3.Divider
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -34,6 +37,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -47,11 +51,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTagsAsResourceId
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -61,8 +67,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.international.ui.theme.DarkBlue
 import com.example.international.ui.theme.InternationalTheme
 import com.example.international.ui.theme.Magenta
+import com.example.international.ui.theme.Purple
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
@@ -99,61 +107,104 @@ class MainActivity : ComponentActivity() {
                                 .background(Color.White)) {
                                 Box(modifier = Modifier
                                     .fillMaxWidth()
-                                    .height(30.dp)
-                                    .background(Color.Black), contentAlignment = Alignment.Center) {
-                                    Text(text = "Skills", color = Color.White, fontSize = 20.sp, fontWeight = FontWeight.SemiBold)
+                                    .height(120.dp)
+                                  ) {
+                                    Image(painterResource(R.drawable.skills), contentDescription = null, modifier = Modifier.matchParentSize(), contentScale = ContentScale.Crop)
+
                                 }
-                                Spacer(modifier =Modifier.height(20.dp))
+                                Spacer(modifier = Modifier.height(10.dp))
                                 LazyColumn(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                                    items(categories.size) {
-                                        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(10.dp), modifier = Modifier
-                                            .fillMaxWidth()
-                                            .clickable {
-                                                if (selection != it) {
-                                                    selection = it
-                                                } else {
-                                                    selection = -1
-                                                }
+                                    item {
+                                        Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                                            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(10.dp), modifier = Modifier
+                                                .fillMaxWidth()
+                                                .padding(bottom = 5.dp, start = 5.dp)
+                                                .clickable {
+                                                    navController.navigate("home")
 
-                                            }) {
-                                            if(selection == it) {
-                                                Image(Icons.Default.Close, contentDescription = "b")
-                                            } else {
-                                                Image(painter = painterResource(id = R.drawable.b), contentDescription = "b")
-                                            }
-
-                                            Text(text = categories[it].category, fontWeight = FontWeight.Bold)
-
-                                        }
-                                        if(selection == it) {
-                                            categories[it].subcategories.forEach {
-                                                Row(horizontalArrangement = Arrangement.spacedBy(10.dp), verticalAlignment = Alignment.CenterVertically, modifier = Modifier.clickable {
-                                                    navController.navigate("news/${it.subcategory}")
                                                 }) {
-                                                    Spacer(modifier = Modifier.width(14.dp))
-                                                    Text(text = "-")
-                                                    Text(text = it.subcategory, fontWeight = FontWeight.Bold)
 
-                                                }
+                                                    Image(painter = painterResource(id = R.drawable.b), contentDescription = "b", modifier = Modifier.size(30.dp))
+
+
+                                                Text(text = "Home", fontWeight = FontWeight.Bold, fontSize = 12.sp, modifier = Modifier.padding(5.dp))
+
                                             }
+                                            Divider()
+
 
                                         }
+                                    }
+                                    items(categories.size) {
+                                        Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                                            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(10.dp), modifier = Modifier
+                                                .fillMaxWidth()
+                                                .padding(bottom = 5.dp, start = 5.dp)
+                                                .clickable {
+                                                    if (selection != it) {
+                                                        selection = it
+                                                    } else {
+                                                        selection = -1
+                                                    }
+
+                                                }) {
+                                                if(selection == it) {
+                                                    Image(Icons.Default.Close, contentDescription = "b", modifier = Modifier.size(23.dp))
+                                                } else {
+                                                    Image(painter = painterResource(id = R.drawable.box_2), contentDescription = "b", modifier = Modifier.size(22.dp))
+                                                }
+
+                                                Text(text = categories[it].category, fontWeight = FontWeight.Bold, fontSize = 12.sp, modifier = Modifier.padding(5.dp))
+
+                                            }
+                                            Divider()
+
+                                            if(selection == it) {
+                                                categories[it].subcategories.forEach {
+                                                    Row(horizontalArrangement = Arrangement.spacedBy(10.dp), verticalAlignment = Alignment.CenterVertically, modifier = Modifier
+                                                        .clickable {
+                                                            navController.navigate("news/${it.subcategory}")
+                                                        }
+                                                        .padding(10.dp)) {
+                                                        Spacer(modifier = Modifier.width(14.dp))
+                                                        Text(text = "-", fontSize = 12.sp)
+                                                        Text(text = it.subcategory, fontWeight = FontWeight.Bold, fontSize = 12.sp)
+
+
+
+                                                    }
+                                                    Divider()
+                                                }
+
+                                            }
+                                        }
+
                                     }
                                 }
                                 Spacer(Modifier.weight(1f))
                                 Row(modifier = Modifier
                                     .fillMaxWidth()
-                                    .background(Color.Gray)
+                                    .background(Purple)
                                     .clickable {
                                         navController.navigate("news")
                                     }) {
-                                    Icon(Icons.Default.Search, contentDescription = "Content description")
 
-                                    Column(modifier = Modifier.testTag("search").clickable {
-                                        drawerType = true
-                                    }) {
-                                        Text(text = "Can't find what you want?")
-                                        Text(text = "Search now", fontSize = 24.sp)
+
+                                    Column(modifier = Modifier.padding(10.dp)
+                                        .testTag("search")
+                                        .clickable {
+                                            drawerType = true
+                                        }) {
+
+                                        Row {
+                                            Icon(Icons.Default.Search, contentDescription = "Content description", tint = Color.White, modifier = Modifier.size(30.dp).align(Alignment.Bottom))
+                                            Column {
+                                                Text(text = "Can't find you want?", color = Color.White, fontSize = 9.sp)
+                                                Text(text = "Search now", fontSize = 20.sp, fontStyle = FontStyle.Italic, fontWeight = FontWeight.Bold, color = Color.White)
+                                            }
+
+                                        }
+
 
                                     }
                                 }
@@ -164,13 +215,16 @@ class MainActivity : ComponentActivity() {
 
                     }, drawerState = drawerState) {
                         Scaffold(topBar = {
-                            TopAppBar(title = { Text(text = "Worldskills") }, navigationIcon = {
+                            CenterAlignedTopAppBar(colors = TopAppBarDefaults.centerAlignedTopAppBarColors(containerColor = DarkBlue, titleContentColor = Color.White), title = { Image(
+                                painter = painterResource(R.drawable.worldskills),
+                                contentDescription = "Worldskills"
+                            ) }, navigationIcon = {
                                 IconButton(onClick = {
                                     scope.launch {
                                         drawerState.open()
                                     }
                                 }) {
-                                    Icon(imageVector = Icons.Default.Menu , contentDescription =  "Menu", Modifier.testTag("menu"))
+                                    Icon(imageVector = Icons.Default.Menu , contentDescription =  "Menu", Modifier.testTag("menu"), tint = Color.White)
                                 }
                             })
                         }) {
@@ -193,7 +247,9 @@ class MainActivity : ComponentActivity() {
                         }
                     }
                     if(shadow) {
-                        Column(modifier = Modifier.fillMaxSize().background(Color(0xAA000000))) {
+                        Column(modifier = Modifier
+                            .fillMaxSize()
+                            .background(Color(0xAA000000))) {
 
                         }
                     }
@@ -244,21 +300,29 @@ fun SearchDrawer(onClose: () -> Unit, navController: NavController) {
 
         }
 
-        OutlinedTextField(value = searchTitle , onValueChange = {searchTitle = it}, modifier = Modifier.testTag("title").fillMaxWidth(), label = { Text(
+        OutlinedTextField(value = searchTitle , onValueChange = {searchTitle = it}, modifier = Modifier
+            .testTag("title")
+            .fillMaxWidth(), label = { Text(
             text = "Search title"
         )}, colors = TextFieldDefaults.outlinedTextFieldColors(containerColor = Color.White))
 
 
-        OutlinedTextField(value = skillName , onValueChange = {skillName = it}, modifier = Modifier.testTag("skill").fillMaxWidth(), label = { Text(
+        OutlinedTextField(value = skillName , onValueChange = {skillName = it}, modifier = Modifier
+            .testTag("skill")
+            .fillMaxWidth(), label = { Text(
             text = "Skill Name"
         )}, colors = TextFieldDefaults.outlinedTextFieldColors(containerColor = Color.White))
-        Row(horizontalArrangement = Arrangement.SpaceEvenly, modifier = Modifier.testTag("start").fillMaxWidth()) {
+        Row(horizontalArrangement = Arrangement.SpaceEvenly, modifier = Modifier
+            .testTag("start")
+            .fillMaxWidth()) {
 
             OutlinedTextField(value = startDate, onValueChange = {startDate = it}, modifier = Modifier.width(100.dp), label = { Text(
                 text = "Start Date",  fontSize = 13.sp
             )}, colors = TextFieldDefaults.outlinedTextFieldColors(containerColor = Color.White))
 
-            OutlinedTextField(value = endDate , onValueChange = {endDate = it}, modifier = Modifier.testTag("end").width(100.dp), label = { Text(
+            OutlinedTextField(value = endDate , onValueChange = {endDate = it}, modifier = Modifier
+                .testTag("end")
+                .width(100.dp), label = { Text(
                 text = "End date"
             , fontSize = 13.sp)}, colors = TextFieldDefaults.outlinedTextFieldColors(containerColor = Color.White))
         }
