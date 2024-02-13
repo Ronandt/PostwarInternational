@@ -20,6 +20,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Menu
@@ -50,6 +51,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -57,8 +59,11 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTagsAsResourceId
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -186,18 +191,21 @@ class MainActivity : ComponentActivity() {
                                     .fillMaxWidth()
                                     .background(Purple)
                                     .clickable {
-                                        navController.navigate("news")
+                                        drawerType = true
                                     }) {
 
 
-                                    Column(modifier = Modifier.padding(10.dp)
+                                    Column(modifier = Modifier
+                                        .padding(10.dp)
                                         .testTag("search")
                                         .clickable {
                                             drawerType = true
                                         }) {
 
                                         Row {
-                                            Icon(Icons.Default.Search, contentDescription = "Content description", tint = Color.White, modifier = Modifier.size(30.dp).align(Alignment.Bottom))
+                                            Icon(Icons.Default.Search, contentDescription = "Content description", tint = Color.White, modifier = Modifier
+                                                .size(30.dp)
+                                                .align(Alignment.Bottom))
                                             Column {
                                                 Text(text = "Can't find you want?", color = Color.White, fontSize = 9.sp)
                                                 Text(text = "Search now", fontSize = 20.sp, fontStyle = FontStyle.Italic, fontWeight = FontWeight.Bold, color = Color.White)
@@ -292,9 +300,9 @@ fun SearchDrawer(onClose: () -> Unit, navController: NavController) {
         .background(Magenta)
         .padding(10.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
-            Text(text = "Search", fontWeight = FontWeight.SemiBold, )
+            Text(text = "Search", fontWeight = FontWeight.SemiBold, color = Color.White, fontStyle =  FontStyle.Italic)
             IconButton(onClick = { onClose()}) {
-                Icon(imageVector = Icons.Default.Close, contentDescription = "Close" )
+                Icon(imageVector = Icons.Default.Close, contentDescription = "Close", tint=  Color.White)
             }
 
 
@@ -303,28 +311,38 @@ fun SearchDrawer(onClose: () -> Unit, navController: NavController) {
         OutlinedTextField(value = searchTitle , onValueChange = {searchTitle = it}, modifier = Modifier
             .testTag("title")
             .fillMaxWidth(), label = { Text(
-            text = "Search title"
+            text = "News title", fontWeight = FontWeight.Bold, color = Color.Gray
         )}, colors = TextFieldDefaults.outlinedTextFieldColors(containerColor = Color.White))
 
 
         OutlinedTextField(value = skillName , onValueChange = {skillName = it}, modifier = Modifier
             .testTag("skill")
             .fillMaxWidth(), label = { Text(
-            text = "Skill Name"
+            text = "Skill Name", fontWeight = FontWeight.Bold, color = Color.Gray
         )}, colors = TextFieldDefaults.outlinedTextFieldColors(containerColor = Color.White))
         Row(horizontalArrangement = Arrangement.SpaceEvenly, modifier = Modifier
             .testTag("start")
             .fillMaxWidth()) {
 
-            OutlinedTextField(value = startDate, onValueChange = {startDate = it}, modifier = Modifier.width(100.dp), label = { Text(
-                text = "Start Date",  fontSize = 13.sp
+            OutlinedTextField(value = startDate, onValueChange = {startDate = it}, modifier = Modifier.width(137.dp), label = { Text(
+                buildAnnotatedString { append("Start date\n")
+                    withStyle(style = SpanStyle(fontWeight = FontWeight.Normal, fontSize = 13.sp)) {
+                        append("(MM/dd/yyyy)")
+                    }
+                },  fontSize = 15.sp, fontWeight = FontWeight.Bold, color = Color.Gray, lineHeight = 13.sp
             )}, colors = TextFieldDefaults.outlinedTextFieldColors(containerColor = Color.White))
 
             OutlinedTextField(value = endDate , onValueChange = {endDate = it}, modifier = Modifier
                 .testTag("end")
-                .width(100.dp), label = { Text(
-                text = "End date"
-            , fontSize = 13.sp)}, colors = TextFieldDefaults.outlinedTextFieldColors(containerColor = Color.White))
+                .width(137.dp), label = {
+
+                Text(
+                 buildAnnotatedString { append("End date\n")
+                                      withStyle(style =  SpanStyle(fontWeight = FontWeight.Normal, fontSize = 13.sp, color = Color.Gray)) {
+                                          append("(MM/dd/yyyy)")
+                                      }
+                                      }
+            , fontSize = 15.sp,color = Color.Gray, fontWeight = FontWeight.Bold, lineHeight = 13.sp)}, colors = TextFieldDefaults.outlinedTextFieldColors(containerColor = Color.White))
         }
 
         Spacer(modifier = Modifier.height(20.dp))
@@ -347,8 +365,13 @@ fun SearchDrawer(onClose: () -> Unit, navController: NavController) {
             }
             navController.navigate("news/${title}?newsTitle=${searchTitle}&skillName=${skillName}&startDate=$startDate&endDate=$endDate")
 
-        }, colors = IconButtonDefaults.iconButtonColors(containerColor = Color.White), modifier = Modifier.testTag("searchIcon")) {
-            Icon(imageVector = Icons.Default.Search, contentDescription = "Search" )
+        }, colors = IconButtonDefaults.iconButtonColors(), modifier = Modifier
+            .testTag("searchIcon")
+            .align(Alignment.End)) {
+            Column(modifier = Modifier.size(40.dp).background(Color.White, shape = CircleShape), verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
+                Icon(imageVector = Icons.Default.Search, contentDescription = "Search", modifier = Modifier.size(24.dp) )
+            }
+
         }
 
 
