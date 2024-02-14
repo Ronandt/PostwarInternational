@@ -32,14 +32,21 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.blur
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.layout.positionInRoot
+import androidx.compose.ui.layout.positionInWindow
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.testTagsAsResourceId
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -56,7 +63,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
 @Composable
 fun NewsScreen(navController: NavController, title: String, newsTitle: String?, skillName: String?, startDate: String?, endDate: String?, onShadow: (Boolean) -> Unit) {
     val context = LocalContext.current
@@ -87,14 +94,16 @@ fun NewsScreen(navController: NavController, title: String, newsTitle: String?, 
 
 
     }
-    Column() {
+    Column(Modifier.semantics {
+        testTagsAsResourceId = true
+    }) {
 
         Column(modifier = Modifier
             .fillMaxSize()
             ) {
             Box(modifier = Modifier.fillMaxWidth()) {
 
-                Image(painter = painterResource(R.drawable.cloud_cop), contentDescription = "Skill image", modifier = Modifier
+                Image(painter = painterResource(R.drawable.cloud_cop), contentDescription = "Skill image", modifier = Modifier.testTag("test")
                     .blur(10.dp)
                     .fillMaxWidth()
                     .height(100.dp)
@@ -115,12 +124,12 @@ fun NewsScreen(navController: NavController, title: String, newsTitle: String?, 
 
             }
 
-            Spacer(modifier = Modifier.height(14.dp))
-            LazyColumn(verticalArrangement = Arrangement.spacedBy(10.dp), modifier =  Modifier.padding(10.dp)) {
+            Spacer(modifier = Modifier.height(14.dp).testTag("how"))
+            LazyColumn(verticalArrangement = Arrangement.spacedBy(10.dp), modifier =  Modifier.testTag("col").padding(10.dp)) {
                 items(news.size) {
 
                     var dialogOpen by remember {mutableStateOf(false)}
-                    Column(modifier= Modifier
+                    Column(modifier= Modifier.then(if(it + 1 == 10) {println("hit"); Modifier.semantics {testTagsAsResourceId = true}.testTag("target")} else Modifier)
                         .fillMaxWidth()
                         .height(150.dp)
                         .background(
@@ -139,7 +148,8 @@ fun NewsScreen(navController: NavController, title: String, newsTitle: String?, 
                             .fillMaxSize()
                             .padding(14.dp)) {
                             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                                Text(text = "${news[it]?.title}", color = Color.White, fontSize =20.sp, modifier = Modifier.width(320.dp))
+                                Text(text = "${news[it]?.title}", color = Color.White, fontSize =20.sp, modifier = Modifier.testTag(
+                                    "title".toString()).width(320.dp))
                                 Text(text = (it+1).toString(), color = Color.White, fontWeight = FontWeight.Bold, fontSize = 24.sp)
 
 
@@ -213,7 +223,10 @@ fun ArticleDialog(title: String, datetime: String, description: String, close: (
                 textSize =  textSize.times(0.8)}) {
                 Icon(painterResource(id = R.drawable.baseline_minimize_24), contentDescription = "Minimise " )
             }
-            IconButton(onClick = { textSize = textSize.times(1.2)}) {
+            IconButton(onClick = { textSize = textSize.times(1.2)}, modifier = Modifier.testTag("l").onGloballyPositioned {
+                println(it.positionInWindow().x)
+                println(it.positionInWindow().y)
+            }) {
                 val player = MediaPlayer.create(context, R.raw.pop)
                 player.start()
                 Icon(Icons.Default.Add, contentDescription = "Plus" )

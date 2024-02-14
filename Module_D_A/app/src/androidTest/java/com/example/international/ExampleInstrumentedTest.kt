@@ -5,6 +5,7 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.uiautomator.By
+import androidx.test.uiautomator.Direction
 import androidx.test.uiautomator.UiDevice
 import androidx.test.uiautomator.Until
 
@@ -47,15 +48,43 @@ class ExampleInstrumentedTest {
         device.wait(Until.hasObject(By.pkg("com.example.international")), 10000)
         device.findObject(By.res("menu")).click()
 
+        Thread.sleep(1000)
         device.findObject(By.text("Information and Communication Technology")).click()
+        Thread.sleep(1000)
         device.findObject(By.text("Information Network Cabling")).click()
+        Thread.sleep(1000)
+        device.findObject(By.res("skillsImage")).click()
+        Thread.sleep(1000)
+
+        val screenWidth = device.displayWidth
+        val screenHeight = device.displayHeight
+        val startX = screenWidth / 2 // Swipe horizontally at the center of the screen
+        val startY = screenHeight / 4 // Start swiping from one quarter down the screen
+        val endY = screenHeight * 3 / 4 // Swipe to three quarters down the screen
+        device.swipe(startX, endY, startX, startY, 10)
+
+        Thread.sleep(1000)
+        device.click(100, 100 )
+
+        Thread.sleep(1000)
         device.findObject(By.res("search")).click()
+        Thread.sleep(1000)
         device.findObject(By.res("title")).text = "web"
         device.findObject(By.res("skill")).text = "Mobile"
-        device.findObject(By.res("start")).text = "03/21/2022"
-        device.findObject(By.res("end")).text = "09/30/2022"
+        device.findObject(By.res("start")).text = "21/03/2022"
+        device.findObject(By.res("end")).text = "30/09/2022"
         device.findObject(By.res("searchIcon")).click()
+        device.findObject(By.res("close")).click()
+        device.findObject(By.res("skillsImage")).click()
+        Thread.sleep(1000)
+        device.swipe(startX, endY, startX, startY, 3)
+        Thread.sleep(2000)
+        device.click(346, 1400)
+        Thread.sleep(2000)
+        device.click(714, 1580)
+        device.findObject(By.desc("Plus")).click()
+        Thread.sleep(1000)
 
-        Thread.sleep(4000)
+
     }
 }

@@ -58,6 +58,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.testTag
 import androidx.compose.ui.semantics.testTagsAsResourceId
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -114,7 +115,7 @@ class MainActivity : ComponentActivity() {
                                     .fillMaxWidth()
                                     .height(120.dp)
                                   ) {
-                                    Image(painterResource(R.drawable.skills), contentDescription = null, modifier = Modifier.matchParentSize(), contentScale = ContentScale.Crop)
+                                    Image(painterResource(R.drawable.skills), contentDescription = null, modifier = Modifier.testTag("skillsImage").matchParentSize(), contentScale = ContentScale.Crop)
 
                                 }
                                 Spacer(modifier = Modifier.height(10.dp))
@@ -236,7 +237,7 @@ class MainActivity : ComponentActivity() {
                                 }
                             })
                         }) {
-                            Column(modifier = Modifier
+                            Column(modifier = Modifier.semantics { testTagsAsResourceId  = true }
                                 .fillMaxSize()
                                 .padding(it)) {
                                 NavHost(navController = navController, startDestination = "home" ) {
@@ -301,7 +302,7 @@ fun SearchDrawer(onClose: () -> Unit, navController: NavController) {
         .padding(10.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
             Text(text = "Search", fontWeight = FontWeight.SemiBold, color = Color.White, fontStyle =  FontStyle.Italic)
-            IconButton(onClick = { onClose()}) {
+            IconButton(onClick = { onClose()}, modifier = Modifier.testTag("close")) {
                 Icon(imageVector = Icons.Default.Close, contentDescription = "Close", tint=  Color.White)
             }
 
@@ -324,10 +325,10 @@ fun SearchDrawer(onClose: () -> Unit, navController: NavController) {
             .testTag("start")
             .fillMaxWidth()) {
 
-            OutlinedTextField(value = startDate, onValueChange = {startDate = it}, modifier = Modifier.width(137.dp), label = { Text(
+            OutlinedTextField(value = startDate, onValueChange = {startDate = it}, modifier = Modifier.testTag("start").width(137.dp), label = { Text(
                 buildAnnotatedString { append("Start date\n")
                     withStyle(style = SpanStyle(fontWeight = FontWeight.Normal, fontSize = 13.sp)) {
-                        append("(MM/dd/yyyy)")
+                        append("(dd/MM/yyyy)")
                     }
                 },  fontSize = 15.sp, fontWeight = FontWeight.Bold, color = Color.Gray, lineHeight = 13.sp
             )}, colors = TextFieldDefaults.outlinedTextFieldColors(containerColor = Color.White))
@@ -339,7 +340,7 @@ fun SearchDrawer(onClose: () -> Unit, navController: NavController) {
                 Text(
                  buildAnnotatedString { append("End date\n")
                                       withStyle(style =  SpanStyle(fontWeight = FontWeight.Normal, fontSize = 13.sp, color = Color.Gray)) {
-                                          append("(MM/dd/yyyy)")
+                                          append("(dd/MM/yyyy)")
                                       }
                                       }
             , fontSize = 15.sp,color = Color.Gray, fontWeight = FontWeight.Bold, lineHeight = 13.sp)}, colors = TextFieldDefaults.outlinedTextFieldColors(containerColor = Color.White))
@@ -359,10 +360,17 @@ fun SearchDrawer(onClose: () -> Unit, navController: NavController) {
             }
             if(startDate == "" || endDate == "") {
                 Toast.makeText(context, "Start date and end date must not be empty", Toast.LENGTH_LONG).show()
+                return@IconButton
             }
             if(!isValidDateFormat( startDate) || !isValidDateFormat(endDate)) {
                 Toast.makeText(context, "Start and end date has to be dd/MM/yyyy", Toast.LENGTH_LONG).show()
+                return@IconButton
             }
+            if(convertddMMyyyyToUnixTime(startDate) > convertddMMyyyyToUnixTime(endDate)) {
+                Toast.makeText(context, "Start date must not be greater than end date", Toast.LENGTH_LONG).show()
+                return@IconButton
+            }
+
             navController.navigate("news/${title}?newsTitle=${searchTitle}&skillName=${skillName}&startDate=$startDate&endDate=$endDate")
 
         }, colors = IconButtonDefaults.iconButtonColors(), modifier = Modifier
