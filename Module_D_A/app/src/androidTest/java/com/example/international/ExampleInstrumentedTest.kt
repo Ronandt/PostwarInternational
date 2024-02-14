@@ -84,7 +84,7 @@ class ExampleInstrumentedTest {
         device.click(714, 1580)
         device.findObject(By.desc("Plus")).click()
         Thread.sleep(1000)
-
+        device.findObject(By.desc("close")).click()
 
     }
 }
