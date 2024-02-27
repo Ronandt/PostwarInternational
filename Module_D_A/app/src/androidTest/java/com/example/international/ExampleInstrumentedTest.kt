@@ -70,21 +70,28 @@ class ExampleInstrumentedTest {
         device.findObject(By.res("search")).click()
         Thread.sleep(1000)
         device.findObject(By.res("title")).text = "web"
+        Thread.sleep(1000)
+
         device.findObject(By.res("skill")).text = "Mobile"
+        Thread.sleep(1000)
         device.findObject(By.res("start")).text = "21/03/2022"
+        Thread.sleep(1000)
         device.findObject(By.res("end")).text = "30/09/2022"
+        Thread.sleep(1000)
         device.findObject(By.res("searchIcon")).click()
+        Thread.sleep(1000)
         device.findObject(By.res("close")).click()
+        Thread.sleep(1000)
         device.findObject(By.res("skillsImage")).click()
         Thread.sleep(1000)
         device.swipe(startX, endY, startX, startY, 3)
-        Thread.sleep(2000)
-        device.click(346, 1400)
-        Thread.sleep(2000)
+        Thread.sleep(5000)
+        device.click(346, 1200)
+        Thread.sleep(5000)
         device.click(714, 1580)
         device.findObject(By.desc("Plus")).click()
-        Thread.sleep(1000)
+        Thread.sleep(2000)
         device.findObject(By.desc("close")).click()
-
+        Thread.sleep(4000)
     }
 }

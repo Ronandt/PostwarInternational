@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 
 class InternetObserver(context: Context) {
-    val connectivityManager = context.getSystemService(ConnectivityManager::class.java)
+    private val connectivityManager: ConnectivityManager = context.getSystemService(ConnectivityManager::class.java)
 
     fun observe(): Flow<Boolean> {
         var observe = callbackFlow<Boolean> {
