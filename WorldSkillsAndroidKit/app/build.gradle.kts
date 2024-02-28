@@ -79,8 +79,8 @@ dependencies {
     implementation("androidx.camera:camera-camera2:${camerax_version}")
     implementation("androidx.camera:camera-view:${camerax_version}")
     kapt("com.squareup.moshi:moshi-kotlin-codegen:1.14.0")
-
-
+    implementation("androidx.biometric:biometric:1.1.0")
+ //   implementation("androidx.frag")
 
     val room_version = "2.6.0"
 

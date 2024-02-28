@@ -1,4 +1,5 @@
 package com.example.worldskillsandroidkit.data
 
-class RealmDatabase {
+object  RealmDatabase {
+
 }

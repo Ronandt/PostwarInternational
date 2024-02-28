@@ -35,7 +35,11 @@ fun View.screenshot(
             PixelCopy.request(
                 (this.context as Activity).window,
                 bounds.toAndroidRect(),
-                bitmap,
+                Bitmap.createBitmap(
+                    bounds.width.toInt(),
+                    bounds.height.toInt(),
+                    Bitmap.Config.ARGB_8888,
+                ),
                 {},
                 Handler(Looper.getMainLooper())
             )
