@@ -1,4 +1,4 @@
-package com.example.worldskillsandroidkit.ui.theme
+package com.example.worldskillsandroidkit.presentation.ui.theme
 
 import android.app.Activity
 import android.os.Build

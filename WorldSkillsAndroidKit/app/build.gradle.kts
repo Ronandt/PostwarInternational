@@ -4,6 +4,8 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
+    id("io.realm.kotlin")
+
 }
 
 android {
@@ -83,7 +85,7 @@ dependencies {
  //   implementation("androidx.frag")
 
     val room_version = "2.6.0"
-
+    implementation("io.realm.kotlin:library-base:1.11.0")
     implementation("androidx.room:room-runtime:$room_version")
     annotationProcessor("androidx.room:room-compiler:$room_version")
   kapt("androidx.room:room-compiler:$room_version")
