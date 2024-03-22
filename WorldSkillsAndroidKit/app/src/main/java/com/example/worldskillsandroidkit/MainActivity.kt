@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.ClipData
 import android.content.Intent
 import android.graphics.Bitmap
+import android.health.connect.datatypes.SexualActivityRecord
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
@@ -71,6 +72,9 @@ class MainActivity : FragmentActivity() {
             }
             var composableBounds by remember {
                 mutableStateOf<Rect?>(null)
+            }
+            LaunchedEffect(Unit) {
+
             }
             val context = LocalContext.current
             val view = LocalView.current
