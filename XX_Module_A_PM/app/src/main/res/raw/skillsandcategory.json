@@ -1,0 +1,93 @@
+
+  [
+          {
+            "category": "ICT",
+            "trades": [
+              {
+                "skillName": "Software Development",
+                "imageLink": "https://d3izhzxqbknro4.cloudfront.net/software_development.jpg",
+                "text": "Software development involves designing, coding, testing, and maintaining software applications. Developers use programming languages to create functional and efficient software solutions."
+              },
+              {
+                "skillName": "Network Administration",
+                "imageLink": "https://d3izhzxqbknro4.cloudfront.net/network_administration.jpg",
+                "text": "Network administrators are responsible for managing and maintaining an organization's computer networks. This includes setting up, configuring, and troubleshooting network hardware and software."
+              },
+              {
+                "skillName": "Database Management",
+                "imageLink": "https://d3izhzxqbknro4.cloudfront.net/database_management.jpg",
+                "text": "Database managers oversee the design, implementation, and maintenance of databases. They ensure data integrity, security, and optimal performance of database systems."
+              },
+              {
+                "skillName": "Cybersecurity",
+                "imageLink": "https://d3izhzxqbknro4.cloudfront.net/cybersecurity.jpeg",
+                "text": "Cybersecurity professionals work to protect computer systems, networks, and data from cyber threats. They implement security measures to prevent unauthorized access, attacks, and data breaches."
+              },
+              {
+                "skillName": "Web Development",
+                "imageLink": "https://d3izhzxqbknro4.cloudfront.net/web_development.jpg",
+                "text": "Web developers create and maintain websites and web applications. They use programming languages, frameworks, and design principles to build user-friendly and visually appealing online experiences."
+              }
+            ]
+          },
+          {
+            "category": "Healthcare",
+            "trades": [
+              {
+                "skillName": "Nursing",
+                "imageLink": "https://d3izhzxqbknro4.cloudfront.net/nursing.jpg",
+                "text": "Nurses provide patient care, administer medications, and assist in medical procedures. They play a crucial role in promoting and maintaining the health of individuals and communities."
+              },
+              {
+                "skillName": "Medical Imaging",
+                "imageLink": "https://d3izhzxqbknro4.cloudfront.net/medical_imaging.jpg",
+                "text": "Medical imaging professionals operate imaging equipment to create visual representations of the interior of a body. This helps in diagnosing and treating medical conditions."
+              },
+              {
+                "skillName": "Physical Therapy",
+                "imageLink": "https://d3izhzxqbknro4.cloudfront.net/physical_therapy.jpg",
+                "text": "Physical therapists help individuals with physical injuries or disabilities improve their mobility, manage pain, and regain functional abilities through therapeutic exercises and interventions."
+              }
+            ]
+          },
+          {
+            "category": "Business and Finance",
+            "trades": [
+              {
+                "skillName": "Accounting",
+                "imageLink": "https://d3izhzxqbknro4.cloudfront.net/accounting.jpg",
+                "text": "Accountants manage financial records, prepare financial statements, and ensure compliance with tax regulations. They play a crucial role in financial decision-making for businesses."
+              },
+              {
+                "skillName": "Financial Analysis",
+                "imageLink": "https://d3izhzxqbknro4.cloudfront.net/financial_analysis.jpg",
+                "text": "Financial analysts assess financial data, trends, and market conditions to provide insights for investment decisions. They help businesses and individuals make informed financial choices."
+              },
+              {
+                "skillName": "Business Management",
+                "imageLink": "https://d3izhzxqbknro4.cloudfront.net/business_management.jpg",
+                "text": "Business managers oversee the day-to-day operations of a company. They develop strategies, manage resources, and lead teams to achieve organizational goals."
+              }
+            ]
+          },
+          {
+            "category": "Creative Arts",
+            "trades": [
+              {
+                "skillName": "Graphic Design",
+                "text": "Graphic designers create visual content for print and digital media. They use artistic and technical skills to communicate messages effectively through images and layouts.",
+                "imageLink": "https://d3izhzxqbknro4.cloudfront.net/graphic_design.jpg"
+              },
+              {
+                "skillName": "Film Production",
+                "imageLink": "https://d3izhzxqbknro4.cloudfront.net/film_production.jpg",
+                "text": "Film producers oversee the production of films from pre-production to post-production. They coordinate activities, manage budgets, and ensure the successful completion of film projects."
+              },
+              {
+                "skillName": "Music Composition",
+                "imageLink": "https://d3izhzxqbknro4.cloudfront.net/music_composition.jpg",
+                "text": "Music composers create original musical compositions for various purposes, including films, television, and other media. They use musical theory and creativity to evoke emotions through music."
+              }
+            ]
+          }
+        ]

@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="aee04120-4f0b-486f-8989-c03ce19cc12c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../International-3/app/src/main/java/com/example/international_a_am/Test.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../International-3/app/src/main/java/com/example/international_a_am/data/yeaa.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../International-3/app/src/main/java/com/example/international_a_am/tset.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/.idea/deploymentTargetDropDown.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/.idea/kotlinc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/app/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/app/build.gradle.kts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/app/proguard-rules.pro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/app/src/androidTest/java/com/example/worldskills/ExampleInstrumentedTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/app/src/main/java/com/example/worldskills/AudioRecorder.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/app/src/main/java/com/example/worldskills/EventDetailsScreen.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/app/src/main/java/com/example/worldskills/EventsScreen.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/app/src/main/java/com/example/worldskills/JsonManager.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/app/src/main/java/com/example/worldskills/MainActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/app/src/main/java/com/example/worldskills/RealmDb.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/app/src/main/java/com/example/worldskills/RecorderPlayer.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/app/src/main/java/com/example/worldskills/RecordsScreen.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/app/src/main/java/com/example/worldskills/SplashScreen.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/app/src/main/java/com/example/worldskills/TicketCreateScreen.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/app/src/main/java/com/example/worldskills/TicketDetailsScreen.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/app/src/main/java/com/example/worldskills/TicketsScreen.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/app/src/main/java/com/example/worldskills/ui/theme/Color.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/app/src/main/java/com/example/worldskills/ui/theme/Theme.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/app/src/main/java/com/example/worldskills/ui/theme/Type.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/app/src/main/res/drawable/baseline_fiber_smart_record_24.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/app/src/main/res/drawable/baseline_home_24.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/app/src/main/res/drawable/baseline_post_add_24.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/app/src/main/res/drawable/ic_launcher_foreground.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/app/src/main/res/drawable/worldskills.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/app/src/main/res/mipmap-anydpi/ic_launcher.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/app/src/main/res/mipmap-anydpi/ic_launcher_round.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/app/src/main/res/mipmap-hdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/app/src/main/res/mipmap-mdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/app/src/main/res/mipmap-xhdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/app/src/main/res/raw/events.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/app/src/main/res/values/themes.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/app/src/main/res/xml/backup_rules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/app/src/main/res/xml/data_extraction_rules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/app/src/test/java/com/example/worldskills/ExampleUnitTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/build.gradle.kts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/gradle.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/C_AM/settings.gradle.kts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/.idea/deploymentTargetDropDown.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/.idea/kotlinc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/app/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/app/build.gradle.kts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/app/proguard-rules.pro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/app/src/androidTest/java/com/example/worldskillsa_am_2/ExampleInstrumentedTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/app/src/main/java/com/example/worldskillsa_am_2/EventDetailsScreen.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/app/src/main/java/com/example/worldskillsa_am_2/EventsScreen.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/app/src/main/java/com/example/worldskillsa_am_2/JsonManager.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/app/src/main/java/com/example/worldskillsa_am_2/MainActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/app/src/main/java/com/example/worldskillsa_am_2/RealmDb.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/app/src/main/java/com/example/worldskillsa_am_2/Recorder.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/app/src/main/java/com/example/worldskillsa_am_2/RecordsScreen.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/app/src/main/java/com/example/worldskillsa_am_2/SplashScren.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/app/src/main/java/com/example/worldskillsa_am_2/TicketCreateScreen.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/app/src/main/java/com/example/worldskillsa_am_2/TicketDetailsScreen.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/app/src/main/java/com/example/worldskillsa_am_2/TicketsScreen.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/app/src/main/java/com/example/worldskillsa_am_2/ui/theme/Color.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/app/src/main/java/com/example/worldskillsa_am_2/ui/theme/Theme.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/app/src/main/java/com/example/worldskillsa_am_2/ui/theme/Type.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/app/src/main/res/drawable/baseline_home_24.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/app/src/main/res/drawable/ic_launcher_foreground.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/app/src/main/res/drawable/worldskills.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/app/src/main/res/mipmap-anydpi/ic_launcher.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/app/src/main/res/mipmap-anydpi/ic_launcher_round.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/app/src/main/res/mipmap-hdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/app/src/main/res/mipmap-mdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/app/src/main/res/mipmap-xhdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/app/src/main/res/raw/events.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/app/src/main/res/values/themes.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/app/src/main/res/xml/backup_rules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/app/src/main/res/xml/data_extraction_rules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/app/src/main/res/xml/shortcuts.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/app/src/test/java/com/example/worldskillsa_am_2/ExampleUnitTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/build.gradle.kts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/gradle.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/WorldskillsA_AM_2/settings.gradle.kts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/.idea/kotlinc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/app/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/app/build.gradle.kts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/app/proguard-rules.pro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/app/src/androidTest/java/com/example/worldskills_am_b/ExampleInstrumentedTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/app/src/main/java/com/example/worldskills_am_b/Database.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/app/src/main/java/com/example/worldskills_am_b/HomeScreen.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/app/src/main/java/com/example/worldskills_am_b/JsonManager.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/app/src/main/java/com/example/worldskills_am_b/MainActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/app/src/main/java/com/example/worldskills_am_b/PhotoScreen.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/app/src/main/java/com/example/worldskills_am_b/Shared.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/app/src/main/java/com/example/worldskills_am_b/SkillScreen.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/app/src/main/java/com/example/worldskills_am_b/VideoScreen.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/app/src/main/java/com/example/worldskills_am_b/findVideoData.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/app/src/main/java/com/example/worldskills_am_b/ui/theme/Color.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/app/src/main/java/com/example/worldskills_am_b/ui/theme/Theme.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/app/src/main/java/com/example/worldskills_am_b/ui/theme/Type.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/app/src/main/res/drawable/baseline_photo_library_24.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/app/src/main/res/drawable/baseline_videocam_24.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/app/src/main/res/drawable/ic_launcher_foreground.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/app/src/main/res/mipmap-anydpi/ic_launcher.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/app/src/main/res/mipmap-anydpi/ic_launcher_round.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/app/src/main/res/mipmap-hdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/app/src/main/res/mipmap-mdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/app/src/main/res/mipmap-xhdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/app/src/main/res/raw/photos.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/app/src/main/res/raw/skillsandcategory.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/app/src/main/res/raw/videos.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/app/src/main/res/values/themes.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/app/src/main/res/xml/backup_rules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/app/src/main/res/xml/data_extraction_rules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/app/src/main/res/xml/provider_paths.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/app/src/test/java/com/example/worldskills_am_b/ExampleUnitTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/build.gradle.kts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/gradle.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/settings.gradle.kts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldSkillsAndroidKit/app/src/main/java/com/example/worldskillsandroidkit/data/MyAppReceiver.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldSkillsAndroidKit/app/src/main/java/com/example/worldskillsandroidkit/myAppReceiver.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldSkillsAndroidKit/app/src/main/java/com/example/worldskillsandroidkit/presentation/SendBinaryIntents.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldSkillsAndroidKit/app/src/main/res/xml/appwidget_provider.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldSkillsAndroidKit/app/src/main/res/xml/defaults.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldSkillsAndroidKit/app/src/main/res/xml/file_provider_path.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldSkillsAndroidKit/app/src/main/res/xml/shortcuts.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldskillsTrial/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldskillsTrial/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldskillsTrial/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldskillsTrial/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldskillsTrial/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldskillsTrial/.idea/kotlinc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldskillsTrial/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldskillsTrial/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldskillsTrial/app/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldskillsTrial/app/build.gradle.kts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldskillsTrial/app/proguard-rules.pro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldskillsTrial/app/src/androidTest/java/com/example/worldskillstrial/ExampleInstrumentedTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldskillsTrial/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldskillsTrial/app/src/main/java/com/example/worldskillstrial/EventsScreen.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldskillsTrial/app/src/main/java/com/example/worldskillstrial/MainActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldskillsTrial/app/src/main/java/com/example/worldskillstrial/RecordsScreen.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldskillsTrial/app/src/main/java/com/example/worldskillstrial/SplashScreen.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldskillsTrial/app/src/main/java/com/example/worldskillstrial/TicketsScreen.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldskillsTrial/app/src/main/java/com/example/worldskillstrial/ui/theme/Color.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldskillsTrial/app/src/main/java/com/example/worldskillstrial/ui/theme/Theme.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldskillsTrial/app/src/main/java/com/example/worldskillstrial/ui/theme/Type.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldskillsTrial/app/src/main/res/drawable/baseline_fiber_smart_record_24.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldskillsTrial/app/src/main/res/drawable/baseline_home_24.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldskillsTrial/app/src/main/res/drawable/baseline_post_add_24.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldskillsTrial/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldskillsTrial/app/src/main/res/drawable/ic_launcher_foreground.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldskillsTrial/app/src/main/res/mipmap-anydpi/ic_launcher.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldskillsTrial/app/src/main/res/mipmap-anydpi/ic_launcher_round.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldskillsTrial/app/src/main/res/mipmap-hdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldskillsTrial/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldskillsTrial/app/src/main/res/mipmap-mdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldskillsTrial/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldskillsTrial/app/src/main/res/mipmap-xhdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldskillsTrial/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldskillsTrial/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldskillsTrial/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldskillsTrial/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldskillsTrial/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldskillsTrial/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldskillsTrial/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldskillsTrial/app/src/main/res/values/themes.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldskillsTrial/app/src/main/res/xml/backup_rules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldskillsTrial/app/src/main/res/xml/data_extraction_rules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldskillsTrial/app/src/main/res/xml/shortcuts.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldskillsTrial/app/src/test/java/com/example/worldskillstrial/ExampleUnitTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldskillsTrial/build.gradle.kts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldskillsTrial/gradle.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldskillsTrial/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldskillsTrial/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldskillsTrial/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldskillsTrial/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorldskillsTrial/settings.gradle.kts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../YoutubeClone/app/src/main/java/com/example/youtubeclone/DetailedScreen.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../test/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../test/app/src/main/java/com/example/test/ChatScreen.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../test/app/src/main/java/com/example/test/HomeScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../International-3/app/src/main/java/com/example/international_a_am/DragDropListExt.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../International-3/app/src/main/java/com/example/international_a_am/DragDropListExt.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../International-3/app/src/main/java/com/example/international_a_am/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../International-3/app/src/main/java/com/example/international_a_am/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../International-3/app/src/main/java/com/example/international_a_am/data/Notification.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../International-3/app/src/main/java/com/example/international_a_am/data/Notification.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../International-3/app/src/main/res/xml/shortcuts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../International-3/app/src/main/res/xml/shortcuts.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../International/app/src/main/res/drawable/worldskillslogo.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/app/src/main/res/drawable/worldskillslogo.PNG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../International/app/src/main/res/drawable/ws01.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/app/src/main/res/drawable/ws01.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../International/app/src/main/res/drawable/ws02.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/app/src/main/res/drawable/ws02.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../International/app/src/main/res/drawable/ws03.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../Variation1/Worldskills_AM_B/app/src/main/res/drawable/ws03.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../International5/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../International5/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../International5/app/src/main/java/com/example/international5/AppWidget.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../International5/app/src/main/java/com/example/international5/AppWidget.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WorldSkillsAndroidKit/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../WorldSkillsAndroidKit/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WorldSkillsAndroidKit/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/../WorldSkillsAndroidKit/app/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WorldSkillsAndroidKit/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../WorldSkillsAndroidKit/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WorldSkillsAndroidKit/app/src/main/java/com/example/worldskillsandroidkit/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../WorldSkillsAndroidKit/app/src/main/java/com/example/worldskillsandroidkit/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WorldSkillsAndroidKit/app/src/main/java/com/example/worldskillsandroidkit/data/RealmDatabase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../WorldSkillsAndroidKit/app/src/main/java/com/example/worldskillsandroidkit/data/RealmDatabase.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WorldSkillsAndroidKit/app/src/main/java/com/example/worldskillsandroidkit/presentation/PermissionsHandler.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../WorldSkillsAndroidKit/app/src/main/java/com/example/worldskillsandroidkit/presentation/PermissionsHandler.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WorldSkillsAndroidKit/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/../WorldSkillsAndroidKit/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../realmtest/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../realmtest/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test/.idea/deploymentTargetDropDown.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../test/.idea/deploymentTargetDropDown.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/../test/app/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test/app/src/main/java/com/example/test/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../test/app/src/main/java/com/example/test/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test/app/src/main/java/com/example/test/ui/theme/Color.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../test/app/src/main/java/com/example/test/ui/theme/Color.kt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\Admin\.android\avd\Pixel_C_API_34.avd]" />
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin File" />
+        <option value="resourceFile" />
+      </list>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2dt3w76kMsGplaUJjHCYKlKoMNj" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "cidr.known.project.marker": "true",
+    "last_directory_selection": "C:/Users/Admin/Documents/Declan/PostwarInternational/Worldskills_am_b_2/app/src/main/java/com/example/worldskills",
+    "last_opened_file_path": "C:/Users/Admin/Documents/Declan/PostwarInternational/XX_Module_A_PM",
+    "project.structure.last.edited": "Build Variants",
+    "project.structure.proportion": "0.17",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
+  }
+}]]></component>
+  <component name="PsdUISettings">
+    <option name="BUILD_VARIANTS_TAB" value="Flavors" />
+    <option name="LAST_EDITED_BUILD_TYPE" value="release" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\Documents\Declan\PostwarInternational\Worldskills_am_b_2\app\src\main\res\drawable" />
+      <recent name="C:\Users\Admin\Documents\Declan\PostwarInternational\Worldskills_am_b_2\app\src\main\res\raw" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\Documents\Declan\PostwarInternational\Worldskills_am_b_2\app\src\main\java\edu\ws2022\aXX\pm" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
+      <module name="worldskills.app.main" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ALL_USERS" value="false" />
+      <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
+      <option name="CLEAR_APP_STORAGE" value="false" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="INSPECTION_WITHOUT_ACTIVITY_RESTART" value="false" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Hybrid>
+      <Java>
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Java>
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Java/Kotlin Method Sample (legacy)" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
+      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="aee04120-4f0b-486f-8989-c03ce19cc12c" name="Changes" comment="" />
+      <created>1710813782470</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1710813782470</updated>
+    </task>
+    <servers />
+  </component>
+</project>
