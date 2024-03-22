@@ -18,14 +18,14 @@ fun showNotification(context: Context, title: String, message: String) {
     val notificationManager = NotificationManagerCompat.from(context)
 
     // Check if the Android version is Oreo or higher and create a notification channel
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+
         val channel = NotificationChannel(
             channelId,
             "Ticket Notification Channel",
             NotificationManager.IMPORTANCE_DEFAULT
         )
         notificationManager.createNotificationChannel(channel)
-    }
+
 
     // Build the notification
     val notificationBuilder = NotificationCompat.Builder(context, channelId)

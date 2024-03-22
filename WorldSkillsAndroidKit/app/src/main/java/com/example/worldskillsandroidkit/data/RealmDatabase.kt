@@ -16,7 +16,7 @@ object RealmDatabase {
   private var realmDb: Realm? = null
   fun getDb(): Realm {
     realmDb = realmDb ?: Realm.open(configuration = RealmConfiguration.create(
-      schema = setOf()
+      schema = setOf(Teacher::class, Course::class)
     ))
     return realmDb as Realm
   }
@@ -26,14 +26,14 @@ object RealmDatabase {
 class Teacher: RealmObject {
   @PrimaryKey
   var _id: ObjectId = ObjectId()
-  var address: Address? = null
+
   var courses: RealmList<Course> = realmListOf()
 
 
 }
 class Course: RealmObject {
   @PrimaryKey var id: ObjectId = ObjectId()
-  var name: String = ""
+  //var name: String = ""
   var teacher: Teacher? = null
 
 

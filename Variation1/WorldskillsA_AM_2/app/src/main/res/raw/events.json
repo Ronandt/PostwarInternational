@@ -1,0 +1,63 @@
+[
+                {
+                    "id": "0",
+                    "image": "https://d3izhzxqbknro4.cloudfront.net/event-1.jpg",
+                    "title": "WorldSkills 2022",
+                    "text": "WorldSkills 2022. The WorldSkills Shanghai was postponed by COVID and will be back in another year again greater than before. The amazing thoughts of the people and the cameraman of the nine events was such a sport today. ",
+                    "viewCount": 0,
+                    "otherImages": [
+                        "https://d3izhzxqbknro4.cloudfront.net/event-1.jpg",
+                        "https://d3izhzxqbknro4.cloudfront.net/event-2.jpg",
+                        "https://d3izhzxqbknro4.cloudfront.net/event-3.jpg"
+                    ]
+                },
+                {
+                    "id": "1",
+                    "image": "https://d3izhzxqbknro4.cloudfront.net/event-2.jpg",
+                    "title": "Teo Chee Hean Speech",
+                    "text": "Teo Chee hean during the speech gave such greatness of the Lee Hsien Loong. He imparted amazing knoweldge into the people and the people had pizza for afterparites. He talked about how Singapore as a nation grew and the growth it gained.",
+                    "viewCount": 0,
+                    "otherImages": [
+                        "https://d3izhzxqbknro4.cloudfront.net/event-1.jpg",
+                        "https://d3izhzxqbknro4.cloudfront.net/event-2.jpg",
+                        "https://d3izhzxqbknro4.cloudfront.net/event-3.jpg"
+                    ]
+                },
+                {
+                    "id": "2",
+                    "image": "https://d3izhzxqbknro4.cloudfront.net/event-3.jpg",
+                    "title": "Teddy Bear and WorldSkills Singapore",
+                    "text": "The WorldSkills Singapore people had such great fun during the fight. Presented by the Minster of the Minster of Ms Vivian Balakrishan, he partook the migration of languages from C++ to Rust",
+                    "viewCount": 0,
+                    "otherImages": [
+                        "https://d3izhzxqbknro4.cloudfront.net/event-1.jpg",
+                        "https://d3izhzxqbknro4.cloudfront.net/event-2.jpg",
+                        "https://d3izhzxqbknro4.cloudfront.net/event-3.jpg"
+                    ]
+                },
+                {
+                    "id": "3",
+                    "image": "https://d3izhzxqbknro4.cloudfront.net/cybersecurity.jpeg",
+                    "title": "Hacker meetup",
+                    "text": "Find your favourite exploitations such as Remote Code Execution or losing money from Reverse Proxy Shell (Although it was patched). Find zero day vulnerabilties in two seconds and instnatly join Google in 3 minutes. ",
+                    "viewCount": 0,
+                    "otherImages": [
+                        "https://d3izhzxqbknro4.cloudfront.net/cybersecurity.jpeg",
+                        "https://d3izhzxqbknro4.cloudfront.net/web_development.jpg",
+                        "https://d3izhzxqbknro4.cloudfront.net/event-3.jpg"
+                    ]
+                },
+                {
+                    "id": "4",
+                    "image": "https://d3izhzxqbknro4.cloudfront.net/thumbnail_4.PNG",
+                    "title": "Tokyo fun and more fun",
+                    "text": "The Tokyo Channel and the NHK is known for praising all food and all food Japan. The amazing Okonomiyaki and the Pokke  that they have surpasses everythign the world has to offer.",
+                    "viewCount": 0,
+                    "otherImages": [
+                        "https://d3izhzxqbknro4.cloudfront.net/thumbnail_4.PNG",
+                        "https://d3izhzxqbknro4.cloudfront.net/event-2.jpg",
+                        "https://d3izhzxqbknro4.cloudfront.net/event-3.jpg"
+                    ]
+                }
+
+            ]

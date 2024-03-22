@@ -36,6 +36,7 @@ return this.layoutInfo.visibleItemsInfo.getOrNull(absolute - this.layoutInfo.vis
 
 }
 
+
 val LazyListItemInfo.offsetEnd: Int
     get() = this.offset + this.size
 

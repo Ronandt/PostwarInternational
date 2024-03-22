@@ -3,23 +3,19 @@ package com.example.test
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.lifecycle.ReportFragment.Companion.reportFragment
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.example.test.ui.theme.TestTheme
 import io.realm.kotlin.ext.query
 import io.realm.kotlin.ext.realmListOf
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.stateIn
 
 class MainActivity : ComponentActivity() {
 
@@ -49,6 +45,18 @@ class MainActivity : ComponentActivity() {
 
 
             TestTheme {
+                val navController = rememberNavController()
+              NavHost(navController = navController, startDestination = "home") {
+                  composable("home") {
+                      HomeScreen(navController)
+                  }
+                  composable("chat/{prompt}") {
+                      ChatScreen(navController, it.arguments?.getString("prompt"))
+
+                  }
+
+              }
+                /*
                 LazyColumn() {
                     items(state.value.size) {
                         println(state.value[it]._id)
@@ -61,7 +69,7 @@ class MainActivity : ComponentActivity() {
                         }
                         Text(text = state.value[it].frogs.toList().map {it._id}.toString())
                     }
-                }
+                }*/
             }
         }
     }

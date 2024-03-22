@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+<shortcut
+    android:shortcutId="records"
+    android:shortcutShortLabel = "@string/record"
+    android:icon="@drawable/baseline_fiber_smart_record_24"
+    android:enabled="true"
+    >
+    <intent
+        android:action="android.intent.action.VIEW"
+        android:targetClass="com.example.worldskillstrial.MainActivity"
+        android:targetPackage="com.example.worldskillstrial"
+        android:data = "records"
+        />
+
+</shortcut>
+    <shortcut
+        android:shortcutId="tickets"
+        android:shortcutShortLabel = "@string/tickets"
+        android:icon="@drawable/baseline_post_add_24"
+        android:enabled="true"
+        >
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="com.example.worldskillstrial.MainActivity"
+            android:targetPackage="com.example.worldskillstrial"
+            android:data = "tickets"
+            />
+
+    </shortcut>
+    <shortcut
+        android:shortcutId="events"
+        android:shortcutShortLabel = "@string/events"
+        android:icon="@drawable/baseline_home_24"
+        android:enabled="true"
+        >
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="com.example.worldskillstrial.MainActivity"
+            android:targetPackage="com.example.worldskillstrial"
+            android:data = "events"
+            />
+
+    </shortcut>
+</shortcuts>

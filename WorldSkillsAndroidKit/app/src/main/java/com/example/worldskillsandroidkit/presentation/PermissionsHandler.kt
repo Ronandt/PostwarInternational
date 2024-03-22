@@ -14,14 +14,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import kotlinx.coroutines.launch
 
-@Composable
-fun  PermissionsHandler(permission: String, onSuccess: () -> Unit = {}, onFailure: () -> Unit = {} ) {
-    val permissionCallback = rememberLauncherForActivityResult(contract = ActivityResultContracts.RequestPermission()) {
-        if(it) onSuccess() else onFailure()
-    }
-    permissionCallback.launch(permission)
 
-}
 
 
 object PermissionsHandler {

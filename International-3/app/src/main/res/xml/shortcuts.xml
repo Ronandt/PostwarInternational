@@ -14,8 +14,6 @@
             android:data="events"
           />
 
-        <categories android:name="android.shortcut.conversation" />
-        <capability-binding android:key="actions.intent.CREATE_MESSAGE" />
     </shortcut>
 
     <!-- Specify more shortcuts here. -->
@@ -31,8 +29,6 @@
             android:targetClass="com.example.international_a_am.MainActivity"
             android:data="tickets"/>
 
-        <categories android:name="android.shortcut.conversation" />
-        <capability-binding android:key="actions.intent.CREATE_MESSAGE" />
     </shortcut>
     <shortcut
         android:icon="@drawable/baseline_fiber_smart_record_24"
@@ -46,8 +42,6 @@
             android:targetClass="com.example.international_a_am.MainActivity"
             android:data="records"/>
 
-        <categories android:name="android.shortcut.conversation" />
-        <capability-binding android:key="actions.intent.CREATE_MESSAGE" />
     </shortcut>
 
 

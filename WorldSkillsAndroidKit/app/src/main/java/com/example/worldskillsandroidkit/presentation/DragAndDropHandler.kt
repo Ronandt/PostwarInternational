@@ -30,6 +30,8 @@ import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
+//https://canopas.com/how-to-drag-and-drop-using-modifier-drag-and-drop-source-target-jetpack-compose
+
 fun LazyListState.getListVisibleItemInfoFor(absolute: Int): LazyListItemInfo? {
     return this.layoutInfo.visibleItemsInfo.getOrNull(absolute - this.layoutInfo.visibleItemsInfo.first().index )
 

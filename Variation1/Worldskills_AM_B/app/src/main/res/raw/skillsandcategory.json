@@ -1,0 +1,33 @@
+
+   [
+          {
+            "category": "ICT",
+            "trades": [
+              {
+                "skillName": "Software Development",
+                "imageLink": "https://d3izhzxqbknro4.cloudfront.net/software_development.jpg",
+                "text": "Software development involves designing, coding, testing, and maintaining software applications. Developers use programming languages to create functional and efficient software solutions."
+              },
+              {
+                "skillName": "Network Administration",
+                "imageLink": "https://d3izhzxqbknro4.cloudfront.net/network_administration.jpg",
+                "text": "Network administrators are responsible for managing and maintaining an organization's computer networks. This includes setting up, configuring, and troubleshooting network hardware and software."
+              },
+              {
+                "skillName": "Database Management",
+                "imageLink": "https://d3izhzxqbknro4.cloudfront.net/database_management.jpg",
+                "text": "Database managers oversee the design, implementation, and maintenance of databases. They ensure data integrity, security, and optimal performance of database systems."
+              },
+              {
+                "skillName": "Cybersecurity",
+                "imageLink": "https://d3izhzxqbknro4.cloudfront.net/cybersecurity.jpeg",
+                "text": "Cybersecurity professionals work to protect computer systems, networks, and data from cyber threats. They implement security measures to prevent unauthorized access, attacks, and data breaches."
+              },
+              {
+                "skillName": "Web Development",
+                "imageLink": "https://d3izhzxqbknro4.cloudfront.net/web_development.jpg",
+                "text": "Web developers create and maintain websites and web applications. They use programming languages, frameworks, and design principles to build user-friendly and visually appealing online experiences."
+              }
+            ]
+          }
+        ]
