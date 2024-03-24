@@ -1,4 +1,4 @@
-package com.example.worldskillsandroidkit.presentation
+package com.example.worldskillsandroidkit.utils
 
 import android.content.Context
 import android.content.Intent
