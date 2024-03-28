@@ -5,6 +5,7 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.uiautomator.By
+import org.w3c.dom.ls.LSSerializer
 import androidx.test.uiautomator.Direction
 import androidx.test.uiautomator.UiDevice
 import androidx.test.uiautomator.Until
@@ -32,20 +33,14 @@ class ExampleInstrumentedTest {
 
     @Test
     fun uiAutomatorTest() {
+        //get the device
         device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
-        device.pressHome()
-        val launcher: String = device.launcherPackageName
-        device.wait(
-            Until.hasObject(By.pkg(launcher).depth(0)),
-            10000
-        )
-        val context = ApplicationProvider.getApplicationContext<android.content.Context>()
-        val intent = context.packageManager.getLaunchIntentForPackage("com.example.international")
-            ?.apply {
-                addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-            }
-        context.startActivity(intent)
-        device.wait(Until.hasObject(By.pkg("com.example.international")), 10000)
+        var context = ApplicationProvider.getApplicationContext<android.content.Context>()
+       val intent =  context.packageManager.getLaunchIntentForPackage(context.packageName)
+        device.wait(Until.hasObject(By.pkg(context.packageName)), 10000)
+
+
+
         device.findObject(By.res("menu")).click()
 
         Thread.sleep(1000)
