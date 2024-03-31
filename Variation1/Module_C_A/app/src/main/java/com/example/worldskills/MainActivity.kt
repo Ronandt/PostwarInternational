@@ -15,6 +15,17 @@ import com.example.worldskills.ui.theme.WorldskillsTheme
 class MainActivity : ComponentActivity() {
 
 
+    //Components:
+    /*
+    1. Standard Card
+    2. Column scaffold with standard padding
+    3. Blue and bold header (For settings hader, Card headers/subheaders [numbers] ,history evennt name, and detail headers )
+    3. Subtitles (For card subtitle and mock data text)
+    4. Black and bold texxt for history header text, results header text, news detail summary text
+    5. Try to do flows and shared observers
+
+
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
