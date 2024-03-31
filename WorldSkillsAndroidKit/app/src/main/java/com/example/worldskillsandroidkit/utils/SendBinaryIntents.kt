@@ -12,17 +12,21 @@ import java.net.URL
 class SendBinaryIntents(private val context: Context) {
 
     suspend fun sendBinary(url: String) {
-        val tempFile = File(context.getExternalFilesDir(Environment.DIRECTORY_PICTURES), "tmp")
-        withContext(Dispatchers.IO  ) {
-            URL(url).openStream().copyTo(tempFile.outputStream())
+
+        withContext(Dispatchers.IO) {
+            val tempFile = File(context.getExternalFilesDir(Environment.DIRECTORY_PICTURES), "tmp")
+            var stream = URL(url)
+            stream.openStream().copyTo(tempFile.outputStream())
+            var intent = Intent().apply {
+                this.action = Intent.ACTION_SEND
+                this.type = "image/png"
+                putExtra(Intent.EXTRA_STREAM,FileProvider.getUriForFile(context, context.packageName + ".provider",tempFile) )
+            }
+            Intent.createChooser(intent, null)
 
         }
-        val intent = Intent().apply {
-            action = Intent.ACTION_SEND
-            type = "image/*"
-            putExtra(Intent.EXTRA_STREAM, FileProvider.getUriForFile(context, context.packageName + ".provider",tempFile))
-        }
-        context.startActivity(Intent.createChooser(intent, null ))
+
+
 
 
     }

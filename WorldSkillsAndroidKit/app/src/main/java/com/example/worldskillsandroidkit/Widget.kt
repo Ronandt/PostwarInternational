@@ -15,7 +15,7 @@ class MyAppReceiver(): GlanceAppWidgetReceiver() {
 class MyAppWidget() : GlanceAppWidget() {
     override suspend fun provideGlance(context: Context, id: GlanceId) {
         provideContent {
-            Text(text = "amazing")
+
         }
     }
 }

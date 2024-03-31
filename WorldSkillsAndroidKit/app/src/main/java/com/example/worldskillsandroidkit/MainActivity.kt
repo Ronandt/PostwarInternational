@@ -65,11 +65,10 @@ import androidx.core.graphics.drawable.IconCompat
 import androidx.core.net.toUri
 import androidx.fragment.app.FragmentActivity
 import androidx.glance.appwidget.lazy.LazyColumn
-import com.example.worldskillsandroidkit.Practice.API
-import com.example.worldskillsandroidkit.Practice.Notification
+import com.example.worldskillsandroidkit.presentation.DragAndDropHandler
 
-import com.example.worldskillsandroidkit.presentation.SendBinaryIntents
 import com.example.worldskillsandroidkit.presentation.ui.theme.WorldSkillsAndroidKitTheme
+import com.example.worldskillsandroidkit.utils.SendBinaryIntents
 import kotlinx.coroutines.launch
 
 class MainActivity : FragmentActivity() {
@@ -81,54 +80,7 @@ class MainActivity : FragmentActivity() {
         setContent {
             val context = LocalContext.current
 
-            LaunchedEffect(key1 = Unit) {
-                // Create a bubble intent.
-                val target = Intent(context, MainActivity::class.java)
-                val bubbleIntent = PendingIntent.getActivity(
-                    context, 0, target,
-                    PendingIntent.FLAG_IMMUTABLE /* flags */
-                )
-                val category = "com.example.category.IMG_SHARE_TARGET"
 
-                val chatPartner = Person.Builder()
-                    .setName("Chat partner")
-                    .setImportant(true)
-                    .build()
-
-// Create a sharing shortcut.
-                val shortcutId = "bllsjfffwefewfefefwe"
-                val shortcut =
-
-                    ShortcutInfo.Builder(context, shortcutId)
-                        .setCategories(setOf(category))
-                        .setIntent(Intent(Intent.ACTION_DEFAULT))
-                        .setLongLived(true)
-                        .setShortLabel("Chat Partner")
-                        .build()
-
-
-// Create a bubble metadata.
-                val bubbleData = androidx.core.app.NotificationCompat.BubbleMetadata.Builder(
-                    bubbleIntent,
-                    IconCompat.createWithResource(context, R.drawable.ic_launcher_background)
-                )
-                    .setDesiredHeight(600)
-                    .build()
-
-// Create a notification, referencing the sharing shortcut.
-                val builder = androidx.core.app.NotificationCompat.Builder(context, "blabla")
-                    .setBubbleMetadata(bubbleData)
-                    .setShortcutId(shortcutId)
-                    .addPerson(chatPartner)
-
-                builder.build()
-                //context.startForegroundService(Intent(this@MainActivity,MusicForegroundService::class.java))
-                println(API().Thing())
-                var layout = window.attributes
-
-                layout.screenBrightness = 1f
-                //   win
-            }
             var composableBounds by remember {
                 mutableStateOf<Rect?>(null)
             }
@@ -136,20 +88,50 @@ class MainActivity : FragmentActivity() {
         //   val context = LocalContext.current
             val view = LocalView.current
             Column {
-                Button(onClick = {
-                    var bitmap = composableBounds?.height?.toInt()
-                        ?.let { composableBounds?.width?.toInt()
-                            ?.let { it1 -> Bitmap.createBitmap(it1, it, Bitmap.Config.ARGB_8888) } }
-                    if (bitmap != null) {
-                        PixelCopy.request((context as Activity).window,composableBounds?.toAndroidRect(), bitmap, {}, Handler(
-                            Looper.getMainLooper()))
-                        MediaStore.Images.Media.insertImage(context.contentResolver, bitmap, "", "")
+                Column(modifier = Modifier.fillMaxSize()) {
+                    DragAndDropHandler()
+                }
+                Column {
+                    val context = LocalContext.current
+                    val scope = rememberCoroutineScope()
+                    var launcherActivity = rememberLauncherForActivityResult(contract = ActivityResultContracts.RequestPermission()) {
+
+
+                    }
+//can't test haptic feedback generator
+
+                    LaunchedEffect(key1 = Unit) {
+                        launcherActivity.launch(android.Manifest.permission.POST_NOTIFICATIONS)
+                        //launchActivity.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
                     }
 
-                }) {
-                    Text(text = "Download image")
+                    Button(onClick = {
 
-                }
+                        //haptic2.performHapticFeedback(HapticFeedbackConstants.CONFIRM)
+                        //  Notification(applicationContext).notify("Bruh")
+                        scope.launch {
+
+                            SendBinaryIntents(context).sendBinary("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1280px-Image_created_with_a_mobile_phone.png")
+                        }
+                    }) {
+                        Text(text = "Test")
+                    }
+                    Button(onClick = {
+                        var bitmap = composableBounds?.height?.toInt()
+                            ?.let { composableBounds?.width?.toInt()
+                                ?.let { it1 -> Bitmap.createBitmap(it1, it, Bitmap.Config.ARGB_8888) } }
+                        if (bitmap != null) {
+                            PixelCopy.request((context as Activity).window,composableBounds?.toAndroidRect(), bitmap, {}, Handler(
+                                Looper.getMainLooper()))
+                            MediaStore.Images.Media.insertImage(context.contentResolver, bitmap, "", "")
+                        }
+
+                    }) {
+                        Text(text = "Download image")
+
+                    }
+            }
+
              /*   Column(modifier = Modifier
                     .background(Color.Black)
                     .size(100.dp, 200.dp)
@@ -170,7 +152,9 @@ class MainActivity : FragmentActivity() {
 
             }*/
 
-                Column(modifier = Modifier.fillMaxSize().semantics { this.testTagsAsResourceId = true }) {
+              /*  Column(modifier = Modifier
+                    .fillMaxSize()
+                    .semantics { this.testTagsAsResourceId = true }) {
                   androidx.compose.foundation.lazy.LazyColumn(modifier = Modifier.testTag("test")) {
                         items(100) {
                             Row(modifier = Modifier.fillMaxWidth()) {
@@ -179,34 +163,11 @@ class MainActivity : FragmentActivity() {
 
                         }
                     }
-                }
+                }*/
             WorldSkillsAndroidKitTheme {
                 // A surface container using the 'background' color from the theme
            //     val haptic2 = LocalView.current
-                val context = LocalContext.current
-                val scope = rememberCoroutineScope()
-                var launcherActivity = rememberLauncherForActivityResult(contract = ActivityResultContracts.RequestPermission()) {
 
-
-                }
-//can't test haptic feedback generator
-
-LaunchedEffect(key1 = Unit) {
-    launcherActivity.launch(android.Manifest.permission.POST_NOTIFICATIONS)
-    //launchActivity.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
-}
-
-                    Button(onClick = {
-
-                    //haptic2.performHapticFeedback(HapticFeedbackConstants.CONFIRM)
-                        Notification(applicationContext).notify("Bruh")
-                        scope.launch {
-
-                            SendBinaryIntents(context).sendBinary("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1280px-Image_created_with_a_mobile_phone.png")
-                        }
-                    }) {
-                        Text(text = "Test")
-                    }
 
 
 
