@@ -50,16 +50,15 @@
                 android:resource="@xml/shortcuts_practice"/>
 
         </activity>
-        <receiver android:name=".Practice.Receiver"
-            android:exported="true">
+        <receiver android:exported="true" android:name=".Practice.Receiver">
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/defaultss"
                 />
-
-                <intent-filter>
-                    <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
-                </intent-filter>
+            <intent-filter
+        >
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
         </receiver>
 
         <provider

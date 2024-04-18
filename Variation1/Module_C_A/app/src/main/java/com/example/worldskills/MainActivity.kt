@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -42,9 +43,9 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Column(modifier = Modifier.width(200.dp).height(20.dp   ).background(Brush.horizontalGradient(
+                    Column(modifier = Modifier.width(100.dp).height(20.dp   ).background(Brush.horizontalGradient(
                         listOf( Color.Black, Color.Blue)
-                        ))) {
+                        ), shape = CircleShape)) {
 
                     }
                     Greeting("Android")

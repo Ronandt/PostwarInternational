@@ -88,9 +88,9 @@ class MainActivity : FragmentActivity() {
         //   val context = LocalContext.current
             val view = LocalView.current
             Column {
-                Column(modifier = Modifier.fillMaxSize()) {
+               /* Column(modifier = Modifier.fillMaxSize()) {
                     DragAndDropHandler()
-                }
+                }*/
                 Column {
                     val context = LocalContext.current
                     val scope = rememberCoroutineScope()
@@ -110,7 +110,7 @@ class MainActivity : FragmentActivity() {
                         //haptic2.performHapticFeedback(HapticFeedbackConstants.CONFIRM)
                         //  Notification(applicationContext).notify("Bruh")
                         scope.launch {
-
+                            println("?")
                             SendBinaryIntents(context).sendBinary("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1280px-Image_created_with_a_mobile_phone.png")
                         }
                     }) {
