@@ -19,7 +19,7 @@ class SendBinaryIntents(private val context: Context) {
             stream.openStream().copyTo(tempFile.outputStream())
             var intent = Intent().apply {
                 this.action = Intent.ACTION_SEND
-                this.type = "image/png"
+                this.type = "image/jpg"
                 putExtra(Intent.EXTRA_STREAM,FileProvider.getUriForFile(context, context.packageName + ".provider",tempFile) )
             }
             Intent.createChooser(intent, null)
