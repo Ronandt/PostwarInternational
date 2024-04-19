@@ -1,6 +1,9 @@
 package com.example.worldskillsandroidkit
 
 import android.app.Activity
+import android.app.Notification
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.ClipData
 import android.content.Intent
@@ -10,6 +13,7 @@ import android.graphics.drawable.Icon
 import android.health.connect.datatypes.SexualActivityRecord
 import android.os.Build
 import android.os.Bundle
+import android.os.Environment
 import android.os.Handler
 import android.os.Looper
 import android.provider.MediaStore
@@ -23,6 +27,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
+import androidx.camera.core.imagecapture.TakePictureRequest
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.draganddrop.dragAndDropSource
@@ -58,18 +63,28 @@ import androidx.compose.ui.semantics.testTagsAsResourceId
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
+import androidx.core.app.NotificationManagerCompat
 import androidx.core.app.Person
 import androidx.core.content.ContextCompat
+import androidx.core.content.FileProvider
 import androidx.core.database.getStringOrNull
 import androidx.core.graphics.drawable.IconCompat
 import androidx.core.net.toUri
+import androidx.exifinterface.media.ExifInterface
 import androidx.fragment.app.FragmentActivity
 import androidx.glance.appwidget.lazy.LazyColumn
+import coil.compose.AsyncImage
+import com.example.worldskillsandroidkit.data.SocketManager
 import com.example.worldskillsandroidkit.presentation.DragAndDropHandler
 
 import com.example.worldskillsandroidkit.presentation.ui.theme.WorldSkillsAndroidKitTheme
 import com.example.worldskillsandroidkit.utils.SendBinaryIntents
 import kotlinx.coroutines.launch
+import okhttp3.internal.notify
+import java.io.File
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class MainActivity : FragmentActivity() {
     @OptIn(ExperimentalFoundationApi::class, ExperimentalComposeUiApi::class)
@@ -79,15 +94,73 @@ class MainActivity : FragmentActivity() {
 
         setContent {
             val context = LocalContext.current
+            var activityResult = rememberLauncherForActivityResult(contract = ActivityResultContracts.TakePicture()) {
+                println(File(context.getExternalFilesDir(Environment.DIRECTORY_PICTURES), "tmp").totalSpace)
 
+            }
 
             var composableBounds by remember {
                 mutableStateOf<Rect?>(null)
+            }
+            LaunchedEffect(key1 = Unit) {
+               // SocketManager().connect()
+               var file = File(context.getExternalFilesDir(Environment.DIRECTORY_PICTURES), "tmp")
+                    activityResult.launch(FileProvider.getUriForFile(context,"${context.packageName}.provider",file))
+                println("4432243")
+                println(ExifInterface(file)?.dateTime?.let { f(it) })
+
             }
 
         //   val context = LocalContext.current
             val view = LocalView.current
             Column {
+
+                AsyncImage(model =  File(context.getExternalFilesDir(Environment.DIRECTORY_PICTURES), "tmp").toUri(), contentDescription = "Yes" )
+                Column {
+                    Button(onClick = {
+
+                        val target = Intent(context, MainActivity::class.java)
+                        val bubbleIntent = PendingIntent.getActivity(context, 0, target,
+                            PendingIntent.FLAG_MUTABLE/* flags */)
+                        val category = "com.example.category.IMG_SHARE_TARGET"
+
+                        val chatPartner = android.app.Person.Builder()
+                            .setName("Chat partner")
+                            .setImportant(true).setName("flflflflfllflf")
+                            .build()
+
+// Create a sharing shortcut.
+                        val shortcutId = System.currentTimeMillis().toString()
+                        val shortcut =
+                            ShortcutInfo.Builder(context, shortcutId)
+                                .setCategories(setOf(category))
+                                .setIntent(Intent(Intent.ACTION_DEFAULT))
+                                .setLongLived(true)
+                                .setShortLabel("Chat partner")
+                                .build()
+
+// Create a bubble metadata.
+                        val bubbleData = Notification.BubbleMetadata.Builder(bubbleIntent,
+                            Icon.createWithResource(context, R.drawable.ic_launcher_background))
+                            .setDesiredHeight(1000).setIcon(Icon.createWithResource(context, R.drawable.ic_launcher_background))
+                            .build()
+
+// Create a notification, referencing the sharing shortcut.
+                        val builder = Notification.Builder(context,"CHANNEL_ID")
+                            .setContentIntent(bubbleIntent)
+                            .setSmallIcon(R.drawable.ic_launcher_foreground)
+                            .setBubbleMetadata(bubbleData)
+                            .setShortcutId(shortcutId)
+                            .addPerson(chatPartner)
+
+
+                       val notificationManager =  context.getSystemService(NotificationManager::class.java)
+                        notificationManager.createNotificationChannel(NotificationChannel("CHANNEL_ID", "Chnnel name",NotificationManager.IMPORTANCE_HIGH))
+                        notificationManager.notify(System.currentTimeMillis().toInt(), builder.build())
+                    }) {
+                        Text(text = "Bla bla bla bubbl;e test")
+                    }
+                }
                 Column(modifier = Modifier.fillMaxSize()) {
                     DragAndDropHandler()
                 }
@@ -200,4 +273,9 @@ fun GreetingPreview() {
     WorldSkillsAndroidKitTheme {
         Greeting("Android")
     }
+}
+
+fun f(unixTime: Long) {
+    val a = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
+    println(a.format(Date(unixTime)))
 }

@@ -12,7 +12,7 @@ import java.net.URL
 class SendBinaryIntents(private val context: Context) {
 
     suspend fun sendBinary(url: String) {
-
+//Fileprovider is there to provide specific permissinos to the client app and not allow read wri9t access to files from any app when sharing app storage to another client app
         withContext(Dispatchers.IO) {
             val tempFile = File(context.getExternalFilesDir(Environment.DIRECTORY_PICTURES), "tmp")
             var stream = URL(url)
