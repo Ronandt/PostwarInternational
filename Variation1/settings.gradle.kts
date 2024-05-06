@@ -21,4 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "worldskills_c_am"
 include(":app")
+include(":app")
  

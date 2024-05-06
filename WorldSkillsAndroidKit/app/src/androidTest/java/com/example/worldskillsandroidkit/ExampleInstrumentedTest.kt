@@ -3,6 +3,7 @@ package com.example.worldskillsandroidkit
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.runner.AndroidJUnit4
 import androidx.test.uiautomator.By
 import androidx.test.uiautomator.Direction
 import androidx.test.uiautomator.UiDevice
@@ -31,10 +32,11 @@ class ExampleInstrumentedTest {
     @Test
     fun uiAutomatorTest() {
         device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
-        var context = ApplicationProvider.getApplicationContext<android.content.Context>()
-        val intent =  context.packageManager.getLaunchIntentForPackage(context.packageName)
-        context.startActivity(intent)
+         val context = ApplicationProvider.getApplicationContext<android.content.Context>()
+        context.startActivity(context.packageManager.getLaunchIntentForPackage(context.packageName))
         device.wait(Until.hasObject(By.pkg(context.packageName)), 10000)
+
+
         device.findObject(By.res("test")).scrollUntil(Direction.DOWN, Until.findObject(By.textContains("30")))
         device.findObject(By.desc("close")).click()
         Thread.sleep(4000)

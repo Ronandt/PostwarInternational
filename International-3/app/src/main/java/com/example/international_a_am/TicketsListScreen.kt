@@ -25,7 +25,9 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Text
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -37,6 +39,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
@@ -76,7 +79,7 @@ Column(modifier = Modifier
 ) {
     Text(text = "Tickets List", fontSize = 24.sp, fontWeight = FontWeight.SemiBold)
     Spacer(modifier = Modifier.height(20.dp))
-    Button(onClick = { navController.navigate("createTicket") }, colors = ButtonDefaults.buttonColors(
+    Button(modifier = Modifier.testTag("b"),onClick = { navController.navigate("createTicket") }, colors = ButtonDefaults.buttonColors(
         Color.Black), shape = RoundedCornerShape(10.dp)) {
         Icon(imageVector = Icons.Default.Add, contentDescription = " Add", tint = Color.White)
         Text(text = "Create a new ticket ", color = Color.White)
@@ -95,6 +98,7 @@ Column(modifier = Modifier
                 Icon(imageVector = Icons.Default.Search, contentDescription ="No items", tint = Color.Gray, modifier = Modifier.size(70.dp))
                 Text("No items to display", fontWeight = FontWeight.SemiBold)
             }
+
             Spacer(modifier = Modifier.height(30.dp))
         } else {
             DragDropList(items = openingCeremony, onMove = {fromIndex, toIndex -> openingCeremony.move(fromIndex, toIndex)}, lazyListState = lazyListState1) {

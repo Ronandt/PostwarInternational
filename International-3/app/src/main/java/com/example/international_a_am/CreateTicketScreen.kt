@@ -34,6 +34,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -80,7 +81,7 @@ fun CreateTicketScreen(navController: NavController) {
             OutlinedTextField(value = selection, onValueChange = {}, readOnly = true, modifier = Modifier.fillMaxWidth().menuAnchor())
         }
         
-        OutlinedTextField(value =name, onValueChange = {name = it}, label = {Text( "Input your name", modifier = Modifier.fillMaxWidth())}, modifier = Modifier.fillMaxWidth())
+        OutlinedTextField(value =name, onValueChange = {name = it}, label = {Text( "Input your name", modifier = Modifier.fillMaxWidth())}, modifier = Modifier.testTag("input").fillMaxWidth())
         Spacer(modifier = Modifier.height(10.dp))
         Button(onClick = { launch.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))}, colors = ButtonDefaults.buttonColors(containerColor = Color.Black), shape = RoundedCornerShape(10.dp)) {
             Text(text = "Choose one picture")
@@ -90,7 +91,7 @@ fun CreateTicketScreen(navController: NavController) {
                 RoundedCornerShape(10.dp)))
         }
         Spacer(modifier = Modifier.weight(1f))
-        Button(enabled = createdImage && name!="",modifier = Modifier
+        Button(enabled = createdImage && name!="",modifier = Modifier.testTag("create")
             .fillMaxWidth()
             .padding(10.dp), colors = ButtonDefaults.buttonColors(containerColor = Color.Black),onClick = {
             scope.launch {

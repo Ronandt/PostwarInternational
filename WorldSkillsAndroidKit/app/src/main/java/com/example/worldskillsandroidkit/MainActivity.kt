@@ -28,6 +28,12 @@ import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.camera.core.imagecapture.TakePictureRequest
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.draganddrop.dragAndDropSource
@@ -37,8 +43,14 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.pullrefresh.PullRefreshState
+import androidx.compose.material.pullrefresh.pullRefresh
+import androidx.compose.material.pullrefresh.rememberPullRefreshState
 import androidx.compose.material3.Button
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
+import androidx.compose.material3.pulltorefresh.PullToRefreshState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -50,6 +62,7 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draganddrop.DragAndDropTransferData
 import androidx.compose.ui.geometry.Rect
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toAndroidRect
 import androidx.compose.ui.layout.boundsInRoot
@@ -87,36 +100,55 @@ import java.util.Date
 import java.util.Locale
 
 class MainActivity : FragmentActivity() {
-    @OptIn(ExperimentalFoundationApi::class, ExperimentalComposeUiApi::class)
+    @OptIn(ExperimentalFoundationApi::class, ExperimentalComposeUiApi::class,
+        ExperimentalMaterial3Api::class, ExperimentalMaterialApi::class
+    )
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContent {
+
+            val pullRefreshState = rememberPullRefreshState(
+                refreshing = false,
+                onRefresh = {
+
+                })
             val context = LocalContext.current
+           // (context as Activity).window.attributes.screenBrightness = 1f
             var activityResult = rememberLauncherForActivityResult(contract = ActivityResultContracts.TakePicture()) {
                 println(File(context.getExternalFilesDir(Environment.DIRECTORY_PICTURES), "tmp").totalSpace)
 
             }
+
+            LaunchedEffect(key1 = Unit) {
+                context.resources.getIdentifier("bruh", "drawable", context.packageName)
+            }
+            var infiniteAnimation = rememberInfiniteTransition()
+            val thing by infiniteAnimation.animateFloat(
+                initialValue = 0.5f,
+                targetValue = 1f,
+                animationSpec = infiniteRepeatable(tween(500, easing = LinearEasing), repeatMode = RepeatMode.Restart)
+            )
 
             var composableBounds by remember {
                 mutableStateOf<Rect?>(null)
             }
             LaunchedEffect(key1 = Unit) {
                // SocketManager().connect()
-               var file = File(context.getExternalFilesDir(Environment.DIRECTORY_PICTURES), "tmp")
-                    activityResult.launch(FileProvider.getUriForFile(context,"${context.packageName}.provider",file))
-                println("4432243")
-                println(ExifInterface(file)?.dateTime?.let { f(it) })
+               //var file = File(context.getExternalFilesDir(Environment.DIRECTORY_PICTURES), "tmp")
+                 //   activityResult.launch(FileProvider.getUriForFile(context,"${context.packageName}.provider",file))
+               // println("4432243")
+             //   println(ExifInterface(file)?.dateTime?.let { f(it) })
 
             }
 
         //   val context = LocalContext.current
             val view = LocalView.current
-            Column {
+            Column(modifier = Modifier.pullRefresh(pullRefreshState)) {
 
                 AsyncImage(model =  File(context.getExternalFilesDir(Environment.DIRECTORY_PICTURES), "tmp").toUri(), contentDescription = "Yes" )
-                Column {
+                Column(modifier = Modifier.background(brush = Brush.linearGradient())) {
                     Button(onClick = {
 
                         val target = Intent(context, MainActivity::class.java)
@@ -278,4 +310,9 @@ fun GreetingPreview() {
 fun f(unixTime: Long) {
     val a = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
     println(a.format(Date(unixTime)))
+}
+
+fun b(format: String) {
+    val fr = SimpleDateFormat("dd/MM/yyyy",  Locale.ENGLISH)
+    fr.parse("4")
 }
