@@ -145,7 +145,7 @@ fun GameScreen(navController: NavController) {
                     chosenSolution.value?.first?.let {
                         chosenColor.value?.let { it1 ->
                             Text(
-                                text = it, letterSpacing = 14.sp    ,
+                                text = it.uppercase(), letterSpacing = 14.sp    ,
                                 fontWeight = FontWeight.Black,
                                 fontSize = 40.sp,
                                 modifier = Modifier.padding(10.dp),
