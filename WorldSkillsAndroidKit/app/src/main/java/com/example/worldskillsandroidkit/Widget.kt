@@ -1,5 +1,5 @@
 package com.example.worldskillsandroidkit
-
+/*
 import android.content.Context
 import androidx.glance.GlanceId
 import androidx.glance.appwidget.GlanceAppWidget
@@ -18,4 +18,4 @@ class MyAppWidget() : GlanceAppWidget() {
 
         }
     }
-}
+}*/

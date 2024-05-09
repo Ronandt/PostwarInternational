@@ -1,5 +1,5 @@
 package com.example.worldskillsandroidkit.presentation
-
+/*
 import android.content.ClipData
 import android.content.ClipDescription
 import android.content.Intent
@@ -60,4 +60,4 @@ fun DragAndDropHandler() {
         }
 
     }
-}
+}*/

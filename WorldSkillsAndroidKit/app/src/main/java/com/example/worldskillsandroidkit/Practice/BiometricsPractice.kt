@@ -1,5 +1,5 @@
 package com.example.worldskillsandroidkit.Practice
-
+/*
 import android.content.Context
 import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricManager.Authenticators.BIOMETRIC_STRONG
@@ -64,4 +64,4 @@ class BiometricManagers(private val context: Context) {
     }
 
 
-}
+}*/

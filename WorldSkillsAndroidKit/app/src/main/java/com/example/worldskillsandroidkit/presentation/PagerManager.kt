@@ -9,8 +9,6 @@ class PagerManager() {
     @OptIn(ExperimentalFoundationApi::class)
     @Composable
 fun rememberDefaultPagerState(size: Int): PagerState {
-    return rememberPagerState(initialPage = 0, initialPageOffsetFraction = 0f) {
-        size
-    }
+    return rememberPagerState(initialPage = 0, initialPageOffsetFraction = 0f)
 }
 }

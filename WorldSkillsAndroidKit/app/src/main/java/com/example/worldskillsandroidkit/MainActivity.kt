@@ -10,7 +10,7 @@ import android.content.Intent
 import android.content.pm.ShortcutInfo
 import android.graphics.Bitmap
 import android.graphics.drawable.Icon
-import android.health.connect.datatypes.SexualActivityRecord
+//import android.health.connect.datatypes.SexualActivityRecord
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
@@ -27,7 +27,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
-import androidx.camera.core.imagecapture.TakePictureRequest
+
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
@@ -36,7 +36,7 @@ import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
-import androidx.compose.foundation.draganddrop.dragAndDropSource
+
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -50,7 +50,7 @@ import androidx.compose.material.pullrefresh.rememberPullRefreshState
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
-import androidx.compose.material3.pulltorefresh.PullToRefreshState
+
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -60,7 +60,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draganddrop.DragAndDropTransferData
+
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -84,11 +84,10 @@ import androidx.core.database.getStringOrNull
 import androidx.core.graphics.drawable.IconCompat
 import androidx.core.net.toUri
 import androidx.exifinterface.media.ExifInterface
-import androidx.fragment.app.FragmentActivity
-import androidx.glance.appwidget.lazy.LazyColumn
+
 import coil.compose.AsyncImage
 import com.example.worldskillsandroidkit.data.SocketManager
-import com.example.worldskillsandroidkit.presentation.DragAndDropHandler
+//import com.example.worldskillsandroidkit.presentation.DragAndDropHandler
 
 import com.example.worldskillsandroidkit.presentation.ui.theme.WorldSkillsAndroidKitTheme
 import com.example.worldskillsandroidkit.utils.SendBinaryIntents
@@ -99,7 +98,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-class MainActivity : FragmentActivity() {
+class MainActivity :ComponentActivity(){
     @OptIn(ExperimentalFoundationApi::class, ExperimentalComposeUiApi::class,
         ExperimentalMaterial3Api::class, ExperimentalMaterialApi::class
     )
@@ -146,9 +145,10 @@ class MainActivity : FragmentActivity() {
         //   val context = LocalContext.current
             val view = LocalView.current
             Column(modifier = Modifier.pullRefresh(pullRefreshState)) {
+                Text(text = "Whatever testihng")
 
                 AsyncImage(model =  File(context.getExternalFilesDir(Environment.DIRECTORY_PICTURES), "tmp").toUri(), contentDescription = "Yes" )
-                Column(modifier = Modifier.background(brush = Brush.linearGradient())) {
+                Column(modifier = Modifier.background(brush = Brush.linearGradient(listOf(Color.Green, Color.White)))) {
                     Button(onClick = {
 
                         val target = Intent(context, MainActivity::class.java)
@@ -194,7 +194,7 @@ class MainActivity : FragmentActivity() {
                     }
                 }
                 Column(modifier = Modifier.fillMaxSize()) {
-                    DragAndDropHandler()
+                    //DragAndDropHandler()
                 }
                 Column {
                     val context = LocalContext.current

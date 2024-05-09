@@ -1,5 +1,5 @@
 package com.example.worldskillsandroidkit.Practice
-
+/*
 import android.appwidget.AppWidgetProvider
 import android.content.Context
 import androidx.glance.GlanceId
@@ -15,4 +15,4 @@ class Receiver: GlanceAppWidgetReceiver() {
 class Widget: GlanceAppWidget() {
     override suspend fun provideGlance(context: Context, id: GlanceId) {provideContent {  }
     }
-}
+}*/
