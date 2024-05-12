@@ -40,7 +40,7 @@ class Recorder(private val context: Context) {
 class Player(private val context: Context) {
     var player: MediaPlayer? = null
 
-    @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
+
     fun play(file: File) {
         MediaPlayer.create(context, file.toUri()).apply {
             prepare()

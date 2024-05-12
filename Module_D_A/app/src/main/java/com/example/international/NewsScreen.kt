@@ -253,5 +253,18 @@ fun convertddMMyyyyToUnixTime(dateString: String): Long {
     val date = format.parse(dateString)
     return date.time / 1000 // converting milliseconds to seconds for Unix time
 }
+//this is essentailly String -> SimpleDateFormat.parse -> date unix value
 
+fun convertUnixTimeToDDMMYYYY(unixTime: Long): String {
+    val date = Date(unixTime * 1000) //if seconds multiply by 1000
+    val format = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
+    return format.format(date)
 
+    //Int -> Date unix value -> Simpledateformat.format
+
+}
+
+//Use SimpleDateFormat("string").parse(datestring) = time (Date to unix)
+//use yyyy
+//mm is minute MM is month
+//DD -> Day in a year, dd -> day in a month

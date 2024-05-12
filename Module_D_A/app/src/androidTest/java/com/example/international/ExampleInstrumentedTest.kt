@@ -51,6 +51,7 @@ class ExampleInstrumentedTest {
         device.findObject(By.res("skillsImage")).click()
         Thread.sleep(1000)
 
+
         val screenWidth = device.displayWidth
         val screenHeight = device.displayHeight
         val startX = screenWidth / 2 // Swipe horizontally at the center of the screen
@@ -66,7 +67,6 @@ class ExampleInstrumentedTest {
         Thread.sleep(1000)
         device.findObject(By.res("title")).text = "web"
         Thread.sleep(1000)
-
         device.findObject(By.res("skill")).text = "Mobile"
         Thread.sleep(1000)
         device.findObject(By.res("start")).text = "21/03/2022"

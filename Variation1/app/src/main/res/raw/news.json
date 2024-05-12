@@ -1,0 +1,46 @@
+{
+        "news": [
+          {
+            "image": "https://d3izhzxqbknro4.cloudfront.net/image-484fjwjf980f23jrt023j.PNG",
+            "summary": "Scientists make groundbreaking progress in cancer treatment.",
+            "title": "New Treatment Shows Promise in Battling Cancer",
+            "description": "In a major breakthrough, researchers have developed a novel approach to treating cancer that shows promising results in early trials. The innovative treatment is expected to revolutionize cancer care and bring hope to millions of patients worldwide."
+          },
+          {
+            "image": "https://d3izhzxqbknro4.cloudfront.net/network_administration.jpg",
+            "summary": "Revolutionary technology unveiled at world summit.",
+            "title": "WorldSkills Competition Showcases Cutting-Edge Innovations",
+            "description": "The WorldSkills competition concluded with awe-inspiring displays of technological prowess. Contestants presented revolutionary inventions and solutions, showcasing the latest advancements in various fields. The event drew attention from global leaders and industry experts."
+          },
+          {
+            "image": "https://d3izhzxqbknro4.cloudfront.net/medical_imaging.jpeg",
+            "summary": "Community comes together for a greener future.",
+            "title": "Local Initiative Plants Thousands of Trees to Combat Climate Change",
+            "description": "In a concerted effort to address climate change, a community-led initiative successfully planted thousands of trees in an ambitious reforestation project. The initiative aims to create a more sustainable and green environment for future generations."
+          },
+          {
+            "image": "https://d3izhzxqbknro4.cloudfront.net/photo-4.jpg",
+            "summary": "Researchers unravel mysteries of the universe.",
+            "title": "Newly Discovered Exoplanet Challenges Current Understanding of Space",
+            "description": "Astronomers have identified a previously unknown exoplanet that challenges current theories about the formation of celestial bodies. The discovery opens up new possibilities for understanding the vastness of the universe and the potential for extraterrestrial life."
+          },
+          {
+            "image": "https://d3izhzxqbknro4.cloudfront.net/music_composition.jpg",
+            "summary": "Innovative education program empowers students globally.",
+            "title": "Global Initiative Aims to Provide Quality Education for All",
+            "description": "An ambitious global education initiative has been launched to ensure quality education for every child worldwide. The program aims to empower students with the knowledge and skills needed to thrive in the 21st century, fostering a brighter future for generations to come."
+          },
+          {
+            "image": "https://d3izhzxqbknro4.cloudfront.net/thumbnail_2.PNG",
+            "summary": "Athlete sets new world record in historic performance.",
+            "title": "Record-Breaking Feat: Athlete Shatters World Record in Jaw-Dropping Performance",
+            "description": "In a historic sporting event, an exceptional athlete achieved an extraordinary feat by breaking a long-standing world record. The breathtaking performance captivated spectators and solidified the athlete's place in the annals of sports history."
+          },
+          {
+            "image": "https://d3izhzxqbknro4.cloudfront.net/thumbnail_4.PNG",
+            "summary": "Diverse cultures unite in colorful festival",
+            "title": "International Festival Showcases Rich Tapestry of Global Cultures",
+            "description": "A vibrant and diverse international festival brought people from around the world together to celebrate the richness of global cultures. The event featured captivating performances, traditional cuisines, and cultural exchanges, fostering understanding and appreciation among attendees."
+          }
+        ]
+      }

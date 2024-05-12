@@ -2,11 +2,14 @@ package com.example.worldskillsandroidkit.utils
 
 import android.content.Context
 import android.media.MediaRecorder
+import android.os.Build
+import androidx.annotation.RequiresApi
 import java.io.File
 
 class RecorderManager(private val context: Context) {
     var recorder: MediaRecorder? = null
 
+    @RequiresApi(Build.VERSION_CODES.S)
     fun record(file: File) {
         MediaRecorder(context).apply {
 

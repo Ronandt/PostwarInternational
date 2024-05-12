@@ -22,8 +22,12 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.testTagsAsResourceId
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -39,7 +43,7 @@ enum class EventSelection {
     Unread,
     Read
 }
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
 @Composable
 fun EventsListScreen(navController: NavController) {
     val context = LocalContext.current
@@ -71,7 +75,7 @@ fun EventsListScreen(navController: NavController) {
         }
         Spacer(modifier = Modifier.height(14.dp))
 
-        LazyColumn(verticalArrangement = Arrangement.spacedBy(10.dp), modifier = Modifier
+        LazyColumn(verticalArrangement = Arrangement.spacedBy(10.dp), modifier = Modifier.testTag("a")
             .fillMaxHeight()
             .background(
                 LightGray
@@ -79,7 +83,7 @@ fun EventsListScreen(navController: NavController) {
             items(events.size) { b->
                 AnimatedContent(targetState =selectedFilter == EventSelection.All || (selectedFilter.name == events[b].status) ) {
                     if(it) {
-                        Row(modifier = Modifier.padding(horizontal = 10.dp)) {
+                        Row(modifier = Modifier.testTag(b.toString()).padding(horizontal = 10.dp)) {
                             EventCard(event = events[b], navController = navController)
 
                         }

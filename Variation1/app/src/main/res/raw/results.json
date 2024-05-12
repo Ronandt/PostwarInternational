@@ -1,0 +1,443 @@
+{
+        "results": [
+          {
+            "country": "Korea",
+            "countryImage": "https://d3izhzxqbknro4.cloudfront.net/image-90234u23r9f23r923rj.PNG",
+            "gold": [
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-2390r23jfwecdqiojf.PNG",
+                "competitorName": "Kim Min-jun",
+                "skillName": "Web Technologies"
+              },
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-290jf4jf24fj9023frj9044.PNG",
+                "competitorName": "Park Soo-yeon",
+                "skillName": "Digital Marketing"
+              },
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-90234u23r9f23r923rj.PNG",
+                "competitorName": "Lee Ji-hoon",
+                "skillName": "Mobile App Development"
+              }
+            ],
+            "silver": [
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-2390r23jfwecdqiojf.PNG",
+                "competitorName": "Choi Eun-ji",
+                "skillName": "Graphic Design"
+              },
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-290jf4jf24fj9023frj9044.PNG",
+                "competitorName": "Kim Dong-ha",
+                "skillName": "Data Science"
+              },
+              {
+                "avatar":"https://d3izhzxqbknro4.cloudfront.net/image-290jf4jf24fj9023frj9044.PNG",
+                "competitorName": "Han Mi-soo",
+                "skillName": "Software Engineering"
+              }
+            ],
+            "bronze": [
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-2390r23jfwecdqiojf.PNG",
+                "competitorName": "Yoo Seo-yeon",
+                "skillName": "UI/UX Design"
+              },
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-290jf4jf24fj9023frj9044.PNG",
+                "competitorName": "Kim Min-gyu",
+                "skillName": "Network Administration"
+              },
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-2390r23jfwecdqiojf.PNG",
+                "competitorName": "Jung Hye-jin",
+                "skillName": "Cybersecurity"
+              }
+            ],
+            "excellence" : 6
+          },
+          {
+            "country": "United States",
+            "countryImage": "https://d3izhzxqbknro4.cloudfront.net/us.png",
+            "gold": [
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-2390r23jfwecdqiojf.PNG",
+                "competitorName": "John Smith",
+                "skillName": "Web Technologies"
+              },
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-290jf4jf24fj9023frj9044.PNG",
+                "competitorName": "Alice Johnson",
+                "skillName": "Digital Marketing"
+              },
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-2390r23jfwecdqiojf.PNG",
+                "competitorName": "David Wang",
+                "skillName": "Mobile App Development"
+              }
+            ],
+            "silver": [
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-2390r23jfwecdqiojf.PNG",
+                "competitorName": "Emily White",
+                "skillName": "Graphic Design"
+              },
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-290jf4jf24fj9023frj9044.PNG",
+                "competitorName": "Daniel Kim",
+                "skillName": "Data Science"
+              },
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-2390r23jfwecdqiojf.PNG",
+                "competitorName": "Sophia Rodriguez",
+                "skillName": "Software Engineering"
+              }
+            ],
+            "bronze": [
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-2390r23jfwecdqiojf.PNG",
+                "competitorName": "Michael Chen",
+                "skillName": "UI/UX Design"
+              },
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-290jf4jf24fj9023frj9044.PNG",
+                "competitorName": "Olivia Martinez",
+                "skillName": "Network Administration"
+              },
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-2390r23jfwecdqiojf.PNG",
+                "competitorName": "Ethan Thompson",
+                "skillName": "Cybersecurity"
+              }
+            ],
+            
+            "excellence" : 5
+          },
+          {
+            "country": "Singapore",
+            "countryImage": "https://d3izhzxqbknro4.cloudfront.net/singapore.png",
+            "gold": [
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-2390r23jfwecdqiojf.PNG",
+                "competitorName": "Tan Wei Jie",
+                "skillName": "Web Technologies"
+              },
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-290jf4jf24fj9023frj9044.PNG",
+                "competitorName": "Lim Mei Ling",
+                "skillName": "Digital Marketing"
+              },
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-2390r23jfwecdqiojf.PNG",
+                "competitorName": "Heng Kai Jie",
+                "skillName": "Mobile App Development"
+              }
+            ],
+            "silver": [
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-2390r23jfwecdqiojf.PNG",
+                "competitorName": "Ng Hui Min",
+                "skillName": "Graphic Design"
+              },
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-290jf4jf24fj9023frj9044.PNG",
+                "competitorName": "Tan Cheng Wei",
+                "skillName": "Data Science"
+              },
+              {
+                "avatar":  "https://d3izhzxqbknro4.cloudfront.net/image-2390r23jfwecdqiojf.PNG",
+                "competitorName": "Wong Mei Yee",
+                "skillName": "Software Engineering"
+              }
+            ],
+            "bronze": [
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-2390r23jfwecdqiojf.PNG",
+                "competitorName": "Lim Keng Soon",
+                "skillName": "UI/UX Design"
+              },
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-290jf4jf24fj9023frj9044.PNG",
+                "competitorName": "Tan Li Hua",
+                "skillName": "Network Administration"
+              },
+              {
+                "avatar":"https://d3izhzxqbknro4.cloudfront.net/image-2390r23jfwecdqiojf.PNG",
+                "competitorName": "Lau Jun Ming",
+                "skillName": "Cybersecurity"
+              }
+            ],
+            
+            "excellence" : 4
+          },
+          {
+            "country": "Chinese Taipei",
+            "countryImage": "https://d3izhzxqbknro4.cloudfront.net/chinese_taipei.png",
+            "gold": [
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-2390r23jfwecdqiojf.PNG",
+                "competitorName": "Shi wo Ni",
+                "skillName": "Web Technologies"
+              },
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-290jf4jf24fj9023frj9044.PNG",
+                "competitorName": "Li No Ma",
+                "skillName": "Digital Marketing"
+              },
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-2390r23jfwecdqiojf.PNG",
+                "competitorName": "Holi Mo Ka",
+                "skillName": "Mobile App Development"
+              }
+            ],
+            "silver": [
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-2390r23jfwecdqiojf.PNG",
+                "competitorName": "Hui Shi Ka",
+                "skillName": "Graphic Design"
+              },
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-290jf4jf24fj9023frj9044.PNG",
+                "competitorName": "Kok Xiao Ma",
+                "skillName": "Data Science"
+              },
+              {
+                "avatar":  "https://d3izhzxqbknro4.cloudfront.net/image-2390r23jfwecdqiojf.PNG",
+                "competitorName": "Ma Long Lin",
+                "skillName": "Software Engineering"
+              }
+            ],
+            "bronze": [
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-2390r23jfwecdqiojf.PNG",
+                "competitorName": "Ni Da Li",
+                "skillName": "UI/UX Design"
+              },
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-290jf4jf24fj9023frj9044.PNG",
+                "competitorName": "Pu Yu Hua",
+                "skillName": "Network Administration"
+              },
+              {
+                "avatar":"https://d3izhzxqbknro4.cloudfront.net/image-2390r23jfwecdqiojf.PNG",
+                "competitorName": "Lu Bing Ting",
+                "skillName": "Cybersecurity"
+              }
+            ],
+            
+            "excellence" : 3
+          },
+          {
+            "country": "Brazil",
+            "countryImage": "https://d3izhzxqbknro4.cloudfront.net/brazil.png",
+            "gold": [
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-2390r23jfwecdqiojf.PNG",
+                "competitorName": "Skewi Pon",
+                "skillName": "Web Technologies"
+              },
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-290jf4jf24fj9023frj9044.PNG",
+                "competitorName": "John Kompo",
+                "skillName": "Digital Marketing"
+              },
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-2390r23jfwecdqiojf.PNG",
+                "competitorName": "Shom la",
+                "skillName": "Mobile App Development"
+              }
+            ],
+            "silver": [
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-2390r23jfwecdqiojf.PNG",
+                "competitorName": "Poulet Chice",
+                "skillName": "Graphic Design"
+              },
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-290jf4jf24fj9023frj9044.PNG",
+                "competitorName": "Frui Tour De",
+                "skillName": "Data Science"
+              },
+              {
+                "avatar":  "https://d3izhzxqbknro4.cloudfront.net/image-2390r23jfwecdqiojf.PNG",
+                "competitorName": "Bram Shimk",
+                "skillName": "Software Engineering"
+              }
+            ],
+            "bronze": [
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-2390r23jfwecdqiojf.PNG",
+                "competitorName": "Dawson Brighton",
+                "skillName": "UI/UX Design"
+              },
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-290jf4jf24fj9023frj9044.PNG",
+                "competitorName": "Actuai Nim",
+                "skillName": "Network Administration"
+              },
+              {
+                "avatar":"https://d3izhzxqbknro4.cloudfront.net/image-2390r23jfwecdqiojf.PNG",
+                "competitorName": "Ronaldo Socc",
+                "skillName": "Cybersecurity"
+              }
+            ],
+            
+            "excellence" : 2
+          },
+          {
+            "country": "Switzerland",
+            "countryImage": "https://d3izhzxqbknro4.cloudfront.net/switzerland.jpg",
+            "gold": [
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-2390r23jfwecdqiojf.PNG",
+                "competitorName": "Felix Kjellberg",
+                "skillName": "Web Technologies"
+              },
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-290jf4jf24fj9023frj9044.PNG",
+                "competitorName": "Ikea Kmoro",
+                "skillName": "Digital Marketing"
+              },
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-2390r23jfwecdqiojf.PNG",
+                "competitorName": "Fjellni Appl",
+                "skillName": "Mobile App Development"
+              }
+            ],
+            "silver": [
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-2390r23jfwecdqiojf.PNG",
+                "competitorName": "Meetball Ikea",
+                "skillName": "Graphic Design"
+              },
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-290jf4jf24fj9023frj9044.PNG",
+                "competitorName": "So Bjorn",
+                "skillName": "Data Science"
+              },
+              {
+                "avatar":  "https://d3izhzxqbknro4.cloudfront.net/image-2390r23jfwecdqiojf.PNG",
+                "competitorName": "Kompo No",
+                "skillName": "Software Engineering"
+              }
+            ],
+            "bronze": [
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-2390r23jfwecdqiojf.PNG",
+                "competitorName": "Frjell Nplo",
+                "skillName": "UI/UX Design"
+              },
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-290jf4jf24fj9023frj9044.PNG",
+                "competitorName": "Njell Ni",
+                "skillName": "Network Administration"
+              },
+              {
+                "avatar":"https://d3izhzxqbknro4.cloudfront.net/image-2390r23jfwecdqiojf.PNG",
+                "competitorName": "Ojo Oto",
+                "skillName": "Cybersecurity"
+              }
+            ],
+            
+            "excellence" : 2
+          },
+          {
+            "country": "Hungary",
+            "countryImage": "https://d3izhzxqbknro4.cloudfront.net/hungary.png",
+            "gold": [
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-2390r23jfwecdqiojf.PNG",
+                "competitorName": "Turkey Chicken",
+                "skillName": "Web Technologies"
+              },
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-290jf4jf24fj9023frj9044.PNG",
+                "competitorName": "Apple and Grapes",
+                "skillName": "Digital Marketing"
+              },
+          
+            ],
+            "silver": [
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-2390r23jfwecdqiojf.PNG",
+                "competitorName": "Poulet Apple",
+                "skillName": "Graphic Design"
+              },
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-290jf4jf24fj9023frj9044.PNG",
+                "competitorName": "Spotted Pie",
+                "skillName": "Data Science"
+              },
+              {
+                "avatar":  "https://d3izhzxqbknro4.cloudfront.net/image-2390r23jfwecdqiojf.PNG",
+                "competitorName": "Boston Creampai",
+                "skillName": "Software Engineering"
+              }
+            ],
+            "bronze": [
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-2390r23jfwecdqiojf.PNG",
+                "competitorName": "New York Cheesecake",
+                "skillName": "UI/UX Design"
+              },
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-290jf4jf24fj9023frj9044.PNG",
+                "competitorName": "Beef Wellington",
+                "skillName": "Network Administration"
+              },
+           
+            ],
+            
+            "excellence" : 1
+          },
+          {
+            "country": "Sweden",
+            "countryImage": "https://d3izhzxqbknro4.cloudfront.net/sweden.png",
+            "gold": [
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-2390r23jfwecdqiojf.PNG",
+                "competitorName": "Felix Kjellberg",
+                "skillName": "Web Technologies"
+              },
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-290jf4jf24fj9023frj9044.PNG",
+                "competitorName": "Ikea 4",
+                "skillName": "Digital Marketing"
+              },
+         
+            ],
+            "silver": [
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-2390r23jfwecdqiojf.PNG",
+                "competitorName": "Freja Thor",
+                "skillName": "Graphic Design"
+              },
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-290jf4jf24fj9023frj9044.PNG",
+                "competitorName": "Alma Yorushika",
+                "skillName": "Data Science"
+              },
+           
+            ],
+            "bronze": [
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-2390r23jfwecdqiojf.PNG",
+                "competitorName": "Fjellacy For",
+                "skillName": "UI/UX Design"
+              },
+              {
+                "avatar": "https://d3izhzxqbknro4.cloudfront.net/image-290jf4jf24fj9023frj9044.PNG",
+                "competitorName": "Edvin Edgar",
+                "skillName": "Network Administration"
+              },
+              {
+                "avatar":"https://d3izhzxqbknro4.cloudfront.net/image-2390r23jfwecdqiojf.PNG",
+                "competitorName": "Shalom Thunder",
+                "skillName": "Cybersecurity"
+              }
+            ],
+            
+            "excellence" : 0
+          }
+        ]
+      }

@@ -1,0 +1,40 @@
+{
+        "historyEvents": [
+          {
+            "image": "https://d3izhzxqbknro4.cloudfront.net/image-j23jorjrio23jr23iorj3.PNG",
+            "startDate": "10 September 2024",
+            "endDate": "15 September 2022",
+            "title": "WorldSkills Lyon 2024",
+            "description": "The 47th WorldSkills Competition will take place 10-15 September 2024, following the postponement of the 46th Worldskills Competition in shanghai, China by one year due to the COVID-19 pandemic"
+          },
+          {
+            "image": "https://d3izhzxqbknro4.cloudfront.net/worldskills.png",
+            "startDate": "10 October 2022",
+            "endDate": "15 October 2022",
+            "title": "WorldSkills Competition 2022 Special Edition",
+            "description": "In 2022, the WorldSkills global network will collaborate to host skill competitions in a variety of countries and regions. These skill competitions are collecitvely known as WorldSkills Competition 2022"
+          },
+          {
+            "image": "https://d3izhzxqbknro4.cloudfront.net/ws_shanghai.jpg",
+            "startDate": "12 September 2022",
+            "endDate": "16 September 2022",
+            "title": "WorldSkills Shanghai 2022",
+            "description": "The cancellation of WorldSkills Shanghai 2022 was announced on 31 May 2022. The lockdowns in Shanghai at that time and the pandemic prevention and control restrictions in China made hosting the event not possible in 2022."
+          },
+          {
+            "image": "https://d3izhzxqbknro4.cloudfront.net/worldskills_kazan.png",
+            "startDate": "18 November 2019",
+            "endDate": "22 November 2019",
+            "title": "WorldSkills Kazan 2019",
+            "description": "The 45th WorldSkills Competition was held at the KAZAN EXPO international exhibition Centre in Kazan Russia in August 2019"
+          },
+          {
+            "image": "https://d3izhzxqbknro4.cloudfront.net/worldskills_abu.png",
+            "startDate": "22 August 2017",
+            "endDate": "30 Auguest 2017",
+            "title": "WorldSkills Abu Dhabi 2017",
+            "description": "The 44th WorldSkills Competition took place at the Abu Dhabi National Exhibition Centre, Abu Dhabi, United Arab Emirates in October 2017"
+          },
+        
+        ]
+      } 

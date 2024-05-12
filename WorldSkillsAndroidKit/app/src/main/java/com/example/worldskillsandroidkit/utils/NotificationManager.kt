@@ -37,6 +37,9 @@ class NotificationManager(private val context: Context) {
         // Show the notification
         val notificationId = (System.currentTimeMillis()/1000).toInt()
         notificationManager.notify(notificationId, notificationBuilder.build())
+
+
+
     }
 }
 
