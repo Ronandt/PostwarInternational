@@ -25,18 +25,23 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.draganddrop.dragAndDropSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -64,12 +69,20 @@ import androidx.core.database.getStringOrNull
 import androidx.core.graphics.drawable.IconCompat
 import androidx.core.net.toUri
 import androidx.fragment.app.FragmentActivity
-import androidx.glance.appwidget.lazy.LazyColumn
+import com.example.worldskillsandroidkit.Practice.Db
+import com.example.worldskillsandroidkit.Practice.Test
+import com.example.worldskillsandroidkit.data.RealmDatabase
 import com.example.worldskillsandroidkit.presentation.DragAndDropHandler
 
 import com.example.worldskillsandroidkit.presentation.ui.theme.WorldSkillsAndroidKitTheme
 import com.example.worldskillsandroidkit.utils.SendBinaryIntents
+import io.realm.kotlin.ext.query
+import io.realm.kotlin.types.RealmObject
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.asFlow
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MainActivity : FragmentActivity() {
     @OptIn(ExperimentalFoundationApi::class, ExperimentalComposeUiApi::class)
@@ -80,6 +93,20 @@ class MainActivity : FragmentActivity() {
         setContent {
             val context = LocalContext.current
 
+            val db = remember { Db().getDb()}
+            val scope = rememberCoroutineScope()
+            val testData =  db.query<Test>().find().asFlow().map { it.list }.collectAsState(initial = listOf<Test>())
+            LaunchedEffect(Unit) {
+
+               withContext(Dispatchers.IO) {
+                   db.write {
+
+                       copyToRealm(Test())
+                   }
+
+
+               }
+            }
 
             var composableBounds by remember {
                 mutableStateOf<Rect?>(null)
@@ -91,6 +118,22 @@ class MainActivity : FragmentActivity() {
                /* Column(modifier = Modifier.fillMaxSize()) {
                     DragAndDropHandler()
                 }*/
+                LazyColumn {
+                    items(testData.value.size) {
+                        Text(testData.value[it].data, modifier = Modifier
+                            .padding(10.dp)
+                            .clickable {
+                                scope.launch(Dispatchers.IO) {
+                                    db.write {
+                                        val query = this.query<Test>("id == $0", testData.value[it].id)
+                                        delete(query)
+                                    }
+
+                                }
+                            })
+
+                    }
+                }
                 Column {
                     val context = LocalContext.current
                     val scope = rememberCoroutineScope()
@@ -117,6 +160,7 @@ class MainActivity : FragmentActivity() {
                         Text(text = "Test")
                     }
                     Button(onClick = {
+
                         var bitmap = composableBounds?.height?.toInt()
                             ?.let { composableBounds?.width?.toInt()
                                 ?.let { it1 -> Bitmap.createBitmap(it1, it, Bitmap.Config.ARGB_8888) } }

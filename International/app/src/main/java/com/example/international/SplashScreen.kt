@@ -72,6 +72,8 @@ Column(modifier = Modifier
 
     )
 
+
+
     var scope = rememberCoroutineScope()
     var lampMove by remember {mutableStateOf(false)}
     var contentsAppear by remember {mutableStateOf(false)}
@@ -79,6 +81,7 @@ Column(modifier = Modifier
     LaunchedEffect(key1 = Unit ) {
         lampMove = true
     }
+
     var alpha = animateFloatAsState(targetValue = if(contentsAppear) 1f else 0f)
     var alphas = animateFloatAsState(targetValue = if(lightAppear) 1f else 0f)
     val distance by  animateDpAsState(targetValue = if(lampMove )120.dp else 0.dp    ,
@@ -126,8 +129,10 @@ Column(modifier = Modifier
             Canvas(
                 Modifier
                     .align(Alignment.TopCenter)
-                    .offset(x = -483.5.dp, y = 35.dp).alpha(alphas.value).graphicsLayer {
-                                                 this.alpha = alphas.value
+                    .offset(x = -483.5.dp, y = 35.dp)
+                    .alpha(alphas.value)
+                    .graphicsLayer {
+                        this.alpha = alphas.value
                     }, onDraw = {
 
                     drawPath(path = trianglePath, color = Color.White, alpha = alphas.value)
@@ -142,14 +147,19 @@ Column(modifier = Modifier
 
             Column(modifier = Modifier.align(Alignment.Center), horizontalAlignment = Alignment.CenterHorizontally) {
 
-                Text(text = "Master Skills Change The World", fontWeight = FontWeight.Black, fontSize = 32.sp, modifier = Modifier.width(300.dp).alpha(alpha.value), textAlign = TextAlign.Center, lineHeight = 35.sp)
+                Text(text = "Master Skills Change The World", fontWeight = FontWeight.Black, fontSize = 32.sp, modifier = Modifier
+                    .width(300.dp)
+                    .alpha(alpha.value), textAlign = TextAlign.Center, lineHeight = 35.sp)
                 Spacer(modifier = Modifier.height(30.dp))
-                Image(painter = painterResource(R.drawable.world), contentDescription = "World", contentScale = ContentScale.Crop, modifier = Modifier.size(500.dp, 300.dp).alpha(alpha.value))
+                Image(painter = painterResource(R.drawable.world), contentDescription = "World", contentScale = ContentScale.Crop, modifier = Modifier
+                    .size(500.dp, 300.dp)
+                    .alpha(alpha.value))
             }
 
 
 
-            Icon(imageVector = Icons.Default.KeyboardArrowDown, contentDescription = "Down", modifier = Modifier.alpha(alpha.value)
+            Icon(imageVector = Icons.Default.KeyboardArrowDown, contentDescription = "Down", modifier = Modifier
+                .alpha(alpha.value)
                 .size(50.dp)
                 .align(Alignment.BottomCenter)
                 .offset(y = 0.dp + -50.dp)

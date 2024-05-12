@@ -1,0 +1,200 @@
+{
+  "tradeCategories": [
+    {
+      "category": "Information and Communication Technology",
+      "subcategories": [
+        {
+          "subcategory": "Information Network Cabling",
+          "newsItems": [
+            {
+              "title": "New advances in fiber optic technology",
+              "time": "09:30 Feb 04 2024",
+              "description": "Discover the latest breakthroughs in fiber optic technology that promise faster data transmission speeds and improved connectivity."
+            },
+            {
+              "title": "Introduction to structured cabling systems",
+              "time": "13:45 Feb 31 2023",
+              "description": "Learn about the fundamentals of structured cabling systems and their importance in establishing reliable network infrastructure."
+            },
+            
+            {
+              "title": "The Amazing Billboard of the 20th century",
+              "time": "13:45 Mar 31 2022",
+              "description": "Learn about the fundamentals of structured cabling systems and their importance in establishing reliable network infrastructure."
+            },
+            {
+              "title": "Learn How To Connect Undersea Network Cables",
+              "time": "13:45 Mar 31 2020",
+              "description": "Learn about the fundamentals of structured cabling systems and their importance in establishing reliable network infrastructure."
+            },
+            {
+              "title": "The Sickening Nature of Networking",
+              "time": "13:45 Mar 31 2020",
+              "description": "Learn about the fundamentals of structured cabling systems and their importance in establishing reliable network infrastructure."
+            },
+            {
+              "title": " London Railway And The Cup Of Tea",
+              "time": "13:45 Mar 31 2020",
+              "description": "Learn about the fundamentals of structured cabling systems and their importance in establishing reliable network infrastructure."
+            }
+          ]
+        },
+        {
+          "subcategory": "Mobile Application Development",
+          "newsItems": [
+            {
+              "title": "Latest trends in web development",
+              "time": "11:20 Apr 02 2022",
+              "description": "Discover the cutting-edge technologies and methodologies shaping the future of web development."
+            },
+            {
+              "title": "Revolutionizing web design practices",
+              "time": "11:20 May 15 2022",
+              "description": "Explore innovative approaches and strategies revolutionizing the landscape of web design."
+            },
+            {
+              "title": "The future of web applications",
+              "time": "11:20 Jun 20 2022",
+              "description": "Delve into the possibilities and advancements driving the evolution of web applications."
+            },
+            {
+              "title": "Elevating user experiences in web development",
+              "time": "11:20 Jul 08 2022",
+              "description": "Discover how to create seamless and captivating user experiences in web development."
+            },
+            {
+              "title": "Navigating the complexities of web development",
+              "time": "11:20 Aug 04 2022",
+              "description": "Learn strategies for navigating the intricate landscape of modern web development."
+            },
+            {
+              "title": "Mastering web design fundamentals",
+              "time": "11:20 Sep 13 2022",
+              "description": "Gain expertise in the foundational principles and practices of web design."
+            },
+            {
+              "title": "Innovations in web development technologies",
+              "time": "11:20 Apr 28 2022",
+              "description": "Explore the latest innovations and advancements in web development technologies."
+            },
+            {
+              "title": "Optimizing web performance for success",
+              "time": "11:20 May 10 2022",
+              "description": "Discover strategies for optimizing web performance to achieve business success."
+            },
+            {
+              "title": "Enhancing accessibility in web design",
+              "time": "11:20 Jun 16 2022",
+              "description": "Explore techniques for enhancing accessibility and inclusivity in web design."
+            },
+            {
+              "title": "Revolutionizing web development with AI",
+              "time": "11:20 Jul 21 2022",
+              "description": "Discover how artificial intelligence is revolutionizing the field of web development."
+            },
+            {
+              "title": "The art of responsive web design",
+              "time": "11:20 Aug 09 2022",
+              "description": "Master the art of creating responsive and adaptive web designs for diverse devices."
+            },
+            {
+              "title": "Exploring the future of web technologies",
+              "time": "11:20 Sep 29 2022",
+              "description": "Delve into the exciting possibilities and potential of future web technologies."
+            }
+          ]
+        },
+        {
+          "subcategory": "Database Management",
+          "newsItems": [
+            {
+              "title": "Introduction to NoSQL databases",
+              "time": "14:10 Jan 29 2024",
+              "description": "Gain insights into the world of NoSQL databases and understand their advantages over traditional relational databases."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Healthcare",
+      "subcategories": [
+        {
+          "subcategory": "Medical Imaging",
+          "newsItems": [
+            {
+              "title": "Advancements in MRI technology",
+              "time": "10:55 Feb 03 2024",
+              "description": "Discover the latest advancements in magnetic resonance imaging (MRI) technology and their impact on diagnostic imaging."
+            }
+          ]
+        },
+        {
+          "subcategory": "Telemedicine Solutions",
+          "newsItems": [
+            {
+              "title": "Finding telemedicine MANADR",
+              "time": "08:15 Feb 01 2024",
+              "description": "Explore the challenges and opportunities in implementing telemedicine solutions and leveraging technology to improve patient care."
+            }
+          ]
+        },
+        {
+          "subcategory": "Health Information Systems",
+          "newsItems": [
+            {
+              "title": "Implementing electronic health records",
+              "time": "08:15 Feb 01 2024",
+              "description": "Learn about the benefits and challenges of implementing electronic health records (EHRs) in healthcare organizations and improving data management."
+            },
+            {
+              "title": "Cybersecurity in healthcare IT",
+              "time": "15:30 Jan 28 2024",
+              "description": "Explore the importance of cybersecurity measures in protecting sensitive patient data and ensuring the integrity of healthcare IT systems."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Construction and Engineering",
+      "subcategories": [
+        {
+          "subcategory": "Civil Engineering",
+          "newsItems": [
+            {
+              "title": "Innovations in bridge construction",
+              "time": "12:00 Feb 02 2024",
+              "description": "Discover innovative techniques and materials used in modern bridge construction projects to enhance durability and sustainability."
+            }
+          ]
+        },
+        {
+          "subcategory": "Architectural Design",
+          "newsItems": [
+            {
+              "title": "Sustainable architecture trends",
+              "time": "09:40 Feb 01 2024",
+              "description": "Explore the latest trends in sustainable architecture and design practices aimed at minimizing environmental impact and maximizing energy efficiency."
+            }
+          ]
+        },
+        {
+          "subcategory": "Project Management",
+          "newsItems": [
+            {
+              "title": "Agile project management methodologies",
+              "time": "14:20 Jan 30 2024",
+              "description": "Learn about agile project management methodologies and how they enable flexibility, collaboration, and rapid iteration in project execution."
+            },
+            {
+              "title": "Risk management strategies in construction",
+              "time": "16:05 Jan 27 2024",
+              "description": "Explore effective risk management strategies and best practices in the construction industry to mitigate potential risks and ensure project success."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -18,6 +18,12 @@
           <timeTargetWasSelectedWithDropDown value="2024-04-18T04:24:44.195032300Z" />
         </State>
       </entry>
+      <entry key="uiAutomatorTest()">
+        <State />
+      </entry>
+      <entry key="useAppContext()">
+        <State />
+      </entry>
     </value>
   </component>
 </project>

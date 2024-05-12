@@ -31,13 +31,15 @@ class ExampleInstrumentedTest {
     @Test
     fun uiAutomatorTest() {
         device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
-        var context = ApplicationProvider.getApplicationContext<android.content.Context>()
-        val intent =  context.packageManager.getLaunchIntentForPackage(context.packageName)
-        context.startActivity(intent)
+        val context = ApplicationProvider.getApplicationContext<android.content.Context>()
+        context.startActivity(context.packageManager.getLaunchIntentForPackage(context.packageName))
         device.wait(Until.hasObject(By.pkg(context.packageName)), 10000)
+
+
         device.findObject(By.res("test")).scrollUntil(Direction.DOWN, Until.findObject(By.textContains("30")))
         device.findObject(By.desc("close")).click()
         Thread.sleep(4000)
+
 
 
         device.findObject(By.res("search")).click()
@@ -52,6 +54,19 @@ class ExampleInstrumentedTest {
         val startY = screenHeight / 4 // Start swiping from one quarter down the screen
         val endY = screenHeight * 3 / 4 // Swipe to three quarters down the screen
         device.swipe(startX, endY, startX, startY, 10)
+
+    }
+
+    @Test
+    fun test() {
+        var devices = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
+        var context = ApplicationProvider.getApplicationContext<android.content.Context>()
+        context.startActivity(context.packageManager.getLaunchIntentForPackage(context.packageName))
+        devices.wait(Until.hasObject(By.pkg(context.packageName)), 10000)
+        devices.findObject(By.res("Bla")).click()
+        devices.findObject(By.desc("f")).click()
+        device.findObject(By.textContains(""))
+        device.findObject(By.res("list")).scrollUntil(Direction.DOWN, Until.findObject(By.res("10")))
 
     }
 

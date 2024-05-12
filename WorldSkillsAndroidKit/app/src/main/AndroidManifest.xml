@@ -61,14 +61,14 @@
             </intent-filter>
         </receiver>
 
+
         <provider
             android:authorities="${applicationId}.provider"
             android:name="androidx.core.content.FileProvider"
             android:grantUriPermissions="true"
             android:exported="false">
-            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_provider_path"/>
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/path_resource_test"/>
         </provider>
-
     </application>
 
 </manifest>

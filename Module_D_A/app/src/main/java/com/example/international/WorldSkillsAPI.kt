@@ -16,6 +16,7 @@ class WorldSkillsAPI {
     suspend fun getNewsInfo(): List<CategoryItem>? {
         val request = getRequest("/newsInfo")
         val jsonAdapter = moshi.adapter<List<CategoryItem>>()
+        println(request)
         return jsonAdapter.fromJson(request.getJSONArray("tradeCategories").toString())
     }
 
