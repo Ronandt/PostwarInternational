@@ -87,6 +87,7 @@ import androidx.exifinterface.media.ExifInterface
 
 import coil.compose.AsyncImage
 import com.example.worldskillsandroidkit.data.SocketManager
+import com.example.worldskillsandroidkit.data.XMLParser
 //import com.example.worldskillsandroidkit.presentation.DragAndDropHandler
 
 import com.example.worldskillsandroidkit.presentation.ui.theme.WorldSkillsAndroidKitTheme
@@ -114,6 +115,9 @@ class MainActivity :ComponentActivity(){
 
                 })
             val context = LocalContext.current
+            LaunchedEffect(key1 = Unit) {
+                XMLParser(context).parse()
+            }
            // (context as Activity).window.attributes.screenBrightness = 1f
             var activityResult = rememberLauncherForActivityResult(contract = ActivityResultContracts.TakePicture()) {
                 println(File(context.getExternalFilesDir(Environment.DIRECTORY_PICTURES), "tmp").totalSpace)

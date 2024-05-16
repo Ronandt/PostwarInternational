@@ -21,7 +21,7 @@ import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.core.app.NotificationCompat
-import androidx.glance.Button
+//import androidx.glance.Button
 
 @Composable
 fun Bounds() {
@@ -32,6 +32,7 @@ fun Bounds() {
         .onGloballyPositioned {
             composableBounds = it.boundsInWindow()
         }) {
+        /*
         Button(text = "Yes", onClick = {
             var bitmap = composableBounds?.width?.toInt()
                 ?.let { composableBounds?.height?.toInt()
@@ -42,6 +43,6 @@ fun Bounds() {
             }
             MediaStore.Images.Media.insertImage(context.contentResolver, bitmap, "", "")
 
-        })
+        })*/
     }
 }

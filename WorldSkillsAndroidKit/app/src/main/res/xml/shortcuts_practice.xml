@@ -7,7 +7,6 @@
         android:shortcutId="ersdfv"
         android:shortcutShortLabel = "@string/app_name"
         android:enabled = "true"
-        android:icon="@drawable/fingerprint_dialog_error"
         >
         <intent
             android:action="android.intent.action.VIEW"

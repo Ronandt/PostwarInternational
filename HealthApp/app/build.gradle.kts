@@ -52,8 +52,12 @@ android {
 
 dependencies {
 
+
+
+
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
+
 
     implementation("androidx.activity:activity-compose:1.7.0")
     implementation("androidx.compose.ui:ui:1.4.3")
@@ -64,23 +68,26 @@ dependencies {
     implementation("androidx.compose.animation:animation:1.4.3")
     implementation("androidx.compose.foundation:foundation:1.4.3")
 
+
     implementation("androidx.compose.runtime:runtime:1.4.3")
     implementation("io.coil-kt:coil-compose:2.4.0")
-   // implementation("com.squareup.moshi:moshi:1.15.0")
+
     implementation("androidx.navigation:navigation-compose:2.5.3")
 
-    implementation("androidx.exifinterface:exifinterface:1.3.7")
-
-   // kapt("com.squareup.moshi:moshi-kotlin-codegen:1.14.0")
 
 
+
+    implementation("com.google.code.gson:gson:2.9.0")
     val room_version = "2.5.1"
-    implementation("io.realm.kotlin:library-base:1.11.0")
+
+
     implementation("androidx.room:room-ktx:2.5.1")
     implementation("androidx.room:room-runtime:$room_version")
     annotationProcessor("androidx.room:room-compiler:$room_version")
     kapt("androidx.room:room-compiler:$room_version")
-    implementation("com.google.code.gson:gson:2.9.0")
+    implementation("com.squareup.okhttp3:okhttp:4.11.0")
+
+
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.5.0")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.0")
