@@ -135,7 +135,7 @@ dependencies {
     //implementation("androidx.camera:camera-core:${camerax_version}")
     //implementation("androidx.camera:camera-camera2:${camerax_version}")
     //implementation("androidx.camera:camera-view:${camerax_version}")
-    kapt("com.squareup.moshi:moshi-kotlin-codegen:1.14.0")
+    //kapt("com.squareup.moshi:moshi-kotlin-codegen:1.14.0")
    // implementation("androidx.biometric:biometric:1.1.0")
 
     implementation("com.google.code.gson:gson:2.9.0")

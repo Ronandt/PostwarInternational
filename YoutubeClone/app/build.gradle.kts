@@ -8,7 +8,7 @@ plugins {
 
 android {
     namespace = "com.example.youtubeclone"
-    compileSdk = 34
+    compileSdk = 33
 
     defaultConfig {
         applicationId = "com.example.youtubeclone"

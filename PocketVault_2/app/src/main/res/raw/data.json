@@ -1,0 +1,31 @@
+[
+  {
+    "title": "Facebook",
+    "username": "john",
+    "password": "fhjofj",
+    "website": "facebokk.com"
+
+  },
+  {
+    "title": "Gmail",
+    "username": "test@gmail.com",
+    "password": "fhjofj",
+    "website": "Gmail.com"
+
+  },
+  {
+    "title": "Reddit",
+    "username": "reddit@gmail.com",
+    "password": "fhjofj",
+    "website": "redddit.com"
+
+  },
+  {
+    "title": "Amazon",
+    "username": "john.smith",
+    "password": "fhjofj",
+    "website": "amazon.com"
+
+  }
+
+]
