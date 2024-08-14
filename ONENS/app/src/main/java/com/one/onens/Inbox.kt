@@ -36,7 +36,7 @@ fun InboxScreen(navController: NavController) {
                 Icon(imageVector = Icons.Default.ArrowBack, contentDescription = "Arorw", tint = Color.White )
             }
 
-            Text(text = "Inbox", color = Color.White, fontWeight = FontWeight.SemiBold, fontSize = 22.sp    )
+            Text(text = "Inbox", color = Color.White, fontWeight = FontWeight.SemiBold, fontSize = 22.sp  , modifier = Modifier.padding(horizontal = 10.dp  )  )
 
         }
         Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center, modifier = Modifier.padding(10.dp  )) {
