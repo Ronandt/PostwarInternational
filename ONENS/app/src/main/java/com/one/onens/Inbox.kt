@@ -30,16 +30,20 @@ import androidx.navigation.NavController
 @Composable
 fun InboxScreen(navController: NavController) {
     Column() {
-        Column(modifier = Modifier.fillMaxWidth()
-            .background(Color(0xFF161C28)).padding(10.dp    )) {
+        Column(modifier = Modifier
+            .fillMaxWidth()
+            .background(Color(0xFF161C28))
+            .padding(10.dp)) {
             IconButton(onClick = { /*TODO*/ }) {
                 Icon(imageVector = Icons.Default.ArrowBack, contentDescription = "Arorw", tint = Color.White )
             }
 
             Text(text = "Inbox", color = Color.White, fontWeight = FontWeight.SemiBold, fontSize = 22.sp  , modifier = Modifier.padding(horizontal = 10.dp  )  )
-
+            Spacer(modifier = Modifier.height(20.dp))
         }
-        Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center, modifier = Modifier.padding(10.dp  )) {
+        Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center, modifier = Modifier
+            .fillMaxSize()
+            .padding(10.dp)) {
             Image(painter = painterResource(id = R.drawable.inbox), contentDescription =  "Inbox", modifier = Modifier.size(200.dp  ))
             Spacer(modifier = Modifier.height(20.dp))
 
