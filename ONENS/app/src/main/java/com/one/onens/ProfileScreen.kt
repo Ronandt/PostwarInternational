@@ -3,6 +3,7 @@ package com.one.onens
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -20,13 +21,17 @@ import androidx.navigation.NavHostController
  fun ProfileScreen(navController: NavHostController) {
   Column(modifier = Modifier
    .background(Color(0xFF161C28))
+   .fillMaxSize()
    .padding(10.dp)) {
    Text(text ="DELECT IAAC KUOK LI HENG", color = Color.White, fontWeight = FontWeight.Bold)
-   Text(text = "******715 - Pre-Enlisttee")
-   Text(text = "Unit", modifier = Modifier.padding(vertical = 14.dp ))
-   Text(text = "-")
+   Text(text = "******715 - Pre-Enlisttee", color = Color.White)
+   Text(text = "Unit", modifier = Modifier.padding(vertical = 14.dp ), color = Color.White)
+   Text(text = "-", color= Color.White)
    Spacer(modifier = Modifier.height(20.dp))
+
    Divider(modifier = Modifier.fillMaxWidth())
+   Spacer(modifier = Modifier.height(30.dp))
+
   }
 
 }
