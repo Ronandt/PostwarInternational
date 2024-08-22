@@ -34,7 +34,7 @@ fun InboxScreen(navController: NavController) {
             .fillMaxWidth()
             .background(Color(0xFF161C28))
             .padding(10.dp)) {
-            IconButton(onClick = { /*TODO*/ }) {
+            IconButton(onClick = { navController.navigateUp() }) {
                 Icon(imageVector = Icons.Default.ArrowBack, contentDescription = "Arorw", tint = Color.White )
             }
 

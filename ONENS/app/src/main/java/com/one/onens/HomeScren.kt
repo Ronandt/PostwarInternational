@@ -19,6 +19,7 @@ import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Warning
@@ -129,8 +130,32 @@ fun HomeScreen(navController: NavController) {
             }
 
 
+
+
         }
-        
+        Column(modifier = Modifier.padding(16.dp)) {
+            Card(colors =  CardDefaults.cardColors(Color.White)) {
+                Row(verticalAlignment = Alignment.CenterVertically,modifier = Modifier
+                    .fillMaxWidth()
+                    .background(Color(0xFFE2FAEC))
+                    .padding(10.dp)) {
+                    Icon(Icons.Default.CheckCircle, contentDescription =  "ending", tint = Color(0xFF116B24))
+                    Text(text = "TASK COMPLETED ON 24 FEB 2023", fontWeight = FontWeight.Bold, color = Color(0xFF116B24))
+                }
+                Column(modifier = Modifier.padding(10.dp)) {
+                    Text(
+                        text = "Complete Medical Screening\nQuestionnaire",
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 20.sp
+                    )
+                    Spacer(modifier = Modifier.height(10.dp))
+                    Text(text = "Your Medica Screening Questionnaire has been Endorsede by your parent/guardian")
+                }
+                Spacer(modifier = Modifier.height(10.dp))
+
+            }
+        }
+
 
 
 

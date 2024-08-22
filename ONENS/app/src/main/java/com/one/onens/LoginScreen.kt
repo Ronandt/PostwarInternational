@@ -59,5 +59,6 @@ Box(modifier = Modifier.fillMaxSize()) {
         }
         Spacer(modifier = Modifier.height(60.dp))
     }
+
 }
 }
