@@ -20,7 +20,7 @@ enum class Method {
 class API() {
     val client = OkHttpClient()
     val gson = Gson()
-    private val mainUrl = "10.0.2.2:3000"
+    private val mainUrl = "http://10.0.2.2:3000"
     suspend fun photos() : List<Photo>{
        return gson.fromJson( makeRequest(mainUrl + "/photos", method = Method.GET), Array<Photo>::class.java).toList()
 
@@ -80,7 +80,7 @@ data class Video(
 
     val title: String,
     val thumbnail: String,
-    val comments: List<Comment>,
+    val comments: List<edu.ws2022.axx.myapplication.Comment>,
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0
 

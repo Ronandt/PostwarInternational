@@ -37,6 +37,17 @@ class ExampleInstrumentedTest {
         device.wait(Until.hasObject(By.pkg(context.packageName)), 10000)
 
 
+    /*    device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
+        val context = ApplicationProvider.getApplicationContext<android.content.Context>()
+        context.startActivity(context.packageManager.getLauchIntentForPackage(context.packageName))*
+
+        device = UiDevice.getInstane(IntrumentationRegistyr.getInstrumentation())
+        val context = ApplicationProvider.getApplicationContext<android.content.Context>()
+        context.startAcitvity(context.pacckageManger.getInstrumentatFOrPckage(cnotext.pckagename))
+        /
+     */
+
+
         device.findObject(By.res("test")).scrollUntil(Direction.DOWN, Until.findObject(By.textContains("30")))
         device.findObject(By.desc("close")).click()
         Thread.sleep(4000)

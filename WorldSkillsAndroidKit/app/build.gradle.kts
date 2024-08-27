@@ -108,10 +108,21 @@ dependencies {
     androidTestImplementation("androidx.test.uiautomator:uiautomator:2.3.0")
     debugImplementation("androidx.compose.ui:ui-test-manifest") */
 
+/*
+
+ */
+
+    /*
+
+
+
+
+
+     */
+
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
-
     implementation("androidx.activity:activity-compose:1.7.0")
     //implementation(platform("androidx.compose:compose-bom:2024.04.01"))
     implementation("androidx.compose.ui:ui:1.4.3")
@@ -124,23 +135,16 @@ dependencies {
 
     implementation("androidx.compose.runtime:runtime:1.4.3")
     implementation("io.coil-kt:coil-compose:2.4.0")
-    implementation("com.squareup.moshi:moshi:1.15.0")
+
     implementation("androidx.navigation:navigation-compose:2.5.3")
 
 
     implementation("androidx.exifinterface:exifinterface:1.3.7")
 
-   // var camerax_version = "1.1.3"
-
-    //implementation("androidx.camera:camera-core:${camerax_version}")
-    //implementation("androidx.camera:camera-camera2:${camerax_version}")
-    //implementation("androidx.camera:camera-view:${camerax_version}")
-    //kapt("com.squareup.moshi:moshi-kotlin-codegen:1.14.0")
-   // implementation("androidx.biometric:biometric:1.1.0")
 
     implementation("com.google.code.gson:gson:2.9.0")
     val room_version = "2.5.1"
-    implementation("io.realm.kotlin:library-base:1.11.0")
+
     implementation("androidx.room:room-ktx:2.5.1")
     implementation("androidx.room:room-runtime:$room_version")
     annotationProcessor("androidx.room:room-compiler:$room_version")
